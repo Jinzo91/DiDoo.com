@@ -1,4 +1,4 @@
-"use strict";//定义api有哪些接口
+"use strict";
 
 
 const express    = require('express');
@@ -29,7 +29,7 @@ api.use(middlewares.allowCrossDomain);
 // Basic route
 api.get('/', (req, res) => {
     res.json({
-        name: 'SEBA Master Movie Backend'
+        name: 'DiDoo Backend'
     });
 });
 

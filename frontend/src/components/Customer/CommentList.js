@@ -9,8 +9,6 @@ import {CommentRow} from "./CommentRow";
 
 const testCard = (key, title, image) => <CommentRow
     key={key}
-    // image='http://www.tourismmail.com/wp-content/uploads/2018/01/Palace-Museum.jpg'
-    // title='sdf'
     image={image}
     title={title}
     comment = 'hh'
@@ -21,8 +19,7 @@ const testCard = (key, title, image) => <CommentRow
 class CommentList extends Component {
     constructor(props) {
         super(props);
-        // this.testCards = Array.from(Array(15)).map((_, i) => testCard(i));
-        this.testCards = props.data.map((data, i)=>testCard(i, data.title, data.posters.thumbnail));
+        this.testCards = props.data.map((data, i)=>testCard(i, data.title, data.posters.original));
     }
 
     render() {

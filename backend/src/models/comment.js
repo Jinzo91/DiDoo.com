@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 // Define the Comment schema
 
-const CommentSchema  = new mongoose.Schema({//数据结构
+const CommentSchema  = new mongoose.Schema({
 
     userId:  {
         type: mongoose.Schema.Types.ObjectId,
@@ -19,8 +19,7 @@ const CommentSchema  = new mongoose.Schema({//数据结构
     }
 
 });
-CommentSchema.set('versionKey', false);//啥意思，自动加version
-CommentSchema.set('timestamps', true);//啥意思,自动加时间,creatAt,
+CommentSchema.set('versionKey', false);
 
 // Export the Comment model
 module.exports = mongoose.model('Comment', CommentSchema);

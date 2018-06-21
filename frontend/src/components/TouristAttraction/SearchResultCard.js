@@ -1,22 +1,17 @@
-"use strict";
-import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button, Media } from 'react-md';
-import { Link } from 'react-router-dom';
-import { SimpleLink } from '../SimpleLink';
-import UserService from '../../services/UserService';
-
-export class ShoppingCartRow extends React.Component {
-
+import React, { Component } from 'react';
+import { Avatar, Button, Card, CardText,FontIcon, CardTitle, Media } from 'react-md';
+class SearchResultCard extends Component {
     constructor(props) {
         super(props);
     }
+
+
     render() {
         return (
             <div  style={{
                 marginTop:'10px',
-                marginLeft:'15%',
-                width: '80%',
-                maxHeight: '250px',
+                marginLeft:'5%',
+                width: '90%',
                 display: 'flex',
                 paddingTop:'1%',
                 paddingBottom:'1%',
@@ -25,50 +20,50 @@ export class ShoppingCartRow extends React.Component {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
             }}>
-                {/* <TableRow key={this.props.key}>*/}
-
                 <div style={{
                     width: '30%',
                     height: '20%'
                 }}>
                     <Media aspectRatio='1-1'>
-                        <img src={this.props.image} alt="presentation" style={{
-                            objectFit: 'cover', maxHeight: "50%", maxWidth: "50%"
+                        <img src={this.props.img} alt="presentation" style={{
+                            objectFit: 'cover'
                         }}/>
                     </Media>
                 </div>
 
-
                 <div style={{
-                    width: '70%',
+                    width: '60%',
                     marginLeft:'3%'
                 }}>
                     <h1>{this.props.title}</h1>
-
-                    <div>
-
-                        {this.props.comment}
-
-                    </div>
+                    <StarRatingComponent
+                        name="rate2"
+                        editing={false}
+                        starCount={5}
+                        value={this.props.rating}
+                    />
+                    <div>{this.props.address}</div>
+                    <div>{this.props.description}</div>
                 </div>
 
                 <div>
+                    <div  style={{
+                        color:'green',
+                        marginTop:'200px',
+                        marginRight:'20px',
+                        fontSize:'20px'
+                    }}>¥{this.props.price}</div>
                     <Button style={{
                         background:'green',
                         color:'white',
                         fontSize:'20px'
 
-                    }}  onClick={() => this.props.history.push('/')}>edit</Button>
-                    <Button style={{
-                        background:'green',
-                        color:'white',
-                        fontSize:'20px'
-
-                    }}  onClick={() => this.props.history.push('/')}>delete</Button>
+                    }}  onClick={() => this.props.history.push('/')}>Select</Button>
                 </div>
-
 
             </div>
         );
     }
 }
+
+export default SearchResultCard;

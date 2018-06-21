@@ -10,10 +10,14 @@ import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 import { TAManagementView } from "./views/AdminView/TAManagementView";
 import { ApproveTAView } from "./views/AdminView/ApproveTAView";
-import { MyOrderView} from "./views/CustomerView/MyOrderView";
-import {MyCommentView} from "./views/CustomerView/MyCommentView";
+import { MyOrderView } from "./views/CustomerView/MyOrderView";
+import { MyCommentView } from "./views/CustomerView/MyCommentView";
 import UserService from "./services/UserService";
-import {MyCartView} from "./views/ShoppingView/MyCartView";
+import { MyCartView } from "./views/ShoppingView/MyCartView";
+import { VisitorManagementView } from "./views/AdminView/VisitorManagementView";
+import { ReportChartView } from "./views/AdminView/ReportChartView";
+import { ManageTAView } from "./views/TouristAttractionView/ManageTAView";
+import { ManageInventoryView } from "./views/TouristAttractionView/ManageInventoryView";
 
 
 export default class App extends React.Component {
@@ -26,6 +30,10 @@ export default class App extends React.Component {
             routes: [
                 { component: TAManagementView , path: '/admin', exact: true},
                 { component: ApproveTAView , path: '/admin/approveta', exact: true},
+                { component: VisitorManagementView , path: '/admin/managevisitor', exact: true},
+                { component: ReportChartView , path: '/admin/report', exact: true},
+                { component: ManageTAView , path: '/ta', exact: true},
+                { component: ManageInventoryView , path: '/ta/inventory', exact: true},
                 /*{ render: (props) => {
                         if(UserService.isAuthenticated() && UserService.getCurrentUser().isAdmin) {
                             return (<AdminView {... props} />)
@@ -36,7 +44,6 @@ export default class App extends React.Component {
                 { component: MovieListView , path: '/', exact: true},
                 { component: MyOrderView , path: '/myorder',exact: true},
                 { component: MyCommentView , path: '/mycomments',exact: true},
-
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {

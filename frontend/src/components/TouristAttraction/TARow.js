@@ -1,11 +1,12 @@
 "use strict";
 import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button, Media } from 'react-md';
+import { TableRow, TableColumn, FontIcon, Button,Media } from 'react-md';
 import { Link } from 'react-router-dom';
 import { SimpleLink } from '../SimpleLink';
 import UserService from '../../services/UserService';
+import SearchResultCard from "./SearchResultCard";
 
-export class ShoppingCartRow extends React.Component {
+export class TARow extends React.Component {
 
     constructor(props) {
         super(props);
@@ -15,8 +16,7 @@ export class ShoppingCartRow extends React.Component {
             <div  style={{
                 marginTop:'10px',
                 marginLeft:'15%',
-                width: '80%',
-                maxHeight: '250px',
+                width: '90%',
                 display: 'flex',
                 paddingTop:'1%',
                 paddingBottom:'1%',
@@ -33,7 +33,7 @@ export class ShoppingCartRow extends React.Component {
                 }}>
                     <Media aspectRatio='1-1'>
                         <img src={this.props.image} alt="presentation" style={{
-                            objectFit: 'cover', maxHeight: "50%", maxWidth: "50%"
+                            objectFit: 'cover'
                         }}/>
                     </Media>
                 </div>

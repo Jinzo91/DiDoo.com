@@ -1,6 +1,6 @@
 "use strict";
 
-const MovieModel = require('../models/movie');//这是啥，调用吗
+const MovieModel = require('../models/movie');
 
 
 const create = (req, res) => {
@@ -17,8 +17,8 @@ const create = (req, res) => {
         }));
 };
 
-const read   = (req, res) => {//req,res举个例子
-    MovieModel.findById(req.params.id).exec()//id，和route movie :/id里面差不多
+const read   = (req, res) => {
+    MovieModel.findById(req.params.id).exec()
         .then(movie => {
 
             if (!movie) return res.status(404).json({
@@ -70,7 +70,7 @@ const list  = (req, res) => {
 
 
 
-module.exports = {//这里为啥也有export
+module.exports = {
     create,
     read,
     update,

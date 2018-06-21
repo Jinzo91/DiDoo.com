@@ -2,13 +2,12 @@
 
 import React from 'react';
 
-import { MovieList } from '../../components/Admin/ApproveList';
+import {InventoryList} from '../../components/TouristAttraction/InventoryList';
 
-import MovieService from '../../services/MovieService';
-import SearchResultPage from "../../components/TouristAttraction/SearchResultPage";
+import TicketService from '../../services/TicketService';
 
 
-export class ApproveTAView extends React.Component {
+export class ManageInventoryView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -24,7 +23,7 @@ export class ApproveTAView extends React.Component {
             loading: true
         });
 
-        MovieService.getMovies().then((data) => {
+        TicketService.getTickets().then((data) => {
             this.setState({
                 data: [...data],
                 loading: false
@@ -34,23 +33,32 @@ export class ApproveTAView extends React.Component {
         });
     }
 
-    deleteMovie(id) {
+    deleteTicket(id) {
         this.setState({
             data: [...this.state.data],
             loading: true
         });
-        MovieService.deleteMovie(id).then((message) => {
+        TicketService.deleteTicket(id).then((message) => {
 
-            let movieIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
-            let movies = this.state.data;
-            movies.splice(movieIndex, 1);
+            let ticketIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
+            let ticket = this.state.data;
+            ticket.splice(ticketIndex, 1);
             this.setState({
-                data: [...movies],
+                data: [...tick()],
                 loading: false
             });
         }).catch((e) => {
             console.error(e);
         });
+    }
+
+
+    returnTicket(id){
+
+    }
+
+    commentTicket(id){
+
     }
 
     render() {
@@ -59,8 +67,7 @@ export class ApproveTAView extends React.Component {
         }
 
         return (
-            <MovieList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
-            /*<SearchResultPage/>*/
+            <InventoryList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
         );
     }
 }

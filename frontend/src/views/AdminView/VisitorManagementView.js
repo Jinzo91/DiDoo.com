@@ -2,13 +2,12 @@
 
 import React from 'react';
 
-import { MovieList } from '../../components/Admin/ApproveList';
+import { MovieList } from '../../components/Admin/ManageList';
 
 import MovieService from '../../services/MovieService';
-import SearchResultPage from "../../components/TouristAttraction/SearchResultPage";
 
 
-export class ApproveTAView extends React.Component {
+export class VisitorManagementView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -60,7 +59,6 @@ export class ApproveTAView extends React.Component {
 
         return (
             <MovieList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
-            /*<SearchResultPage/>*/
         );
     }
 }

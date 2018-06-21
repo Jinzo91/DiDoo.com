@@ -76,16 +76,33 @@ const adminNavItems = [
     }
 ];
 
+const taNavItems = [
+    {
+        exact: true,
+        label: 'Manage Attractions',
+        to: '/ta',
+        icon: 'view_list',
+    }, {
+        label: 'Manage Inventory',
+        to: '/ta/inventory',
+        icon: 'storage',
+    }
+];
 
 
 class NavigationMenu extends React.Component {
 
     constructor(props) {
         super(props);
+        const navMap = {
+            admin: adminNavItems,
+            ta: taNavItems,
+
+        }
         this.state = {
             loading: false,
             data: [],
-            navItems: (props.userRole === 'admin') ? adminNavItems : defaultNavItems
+            navItems: navMap[this.props.userRole] ? navMap[this.props.userRole] : defaultNavItems,
         };
     }
 

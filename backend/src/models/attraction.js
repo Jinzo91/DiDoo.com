@@ -30,8 +30,8 @@ const AttractionSchema  = new mongoose.Schema({
 
 });
 
-AttractionSchema.set('versionKey', false);//啥意思，自动加version
-AttractionSchema.set('timestamps', true);//啥意思,自动加时间,creatAt,
+AttractionSchema.set('versionKey', false);
+AttractionSchema.set('timestamps', true);
 
 // Export the attraction model
 module.exports = mongoose.model('attraction', AttractionSchema);

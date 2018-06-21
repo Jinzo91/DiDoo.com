@@ -30,7 +30,7 @@ const UserSchema  = new mongoose.Schema({
     },
 });
 
-UserSchema.set('versionKey', false);//啥意思
+UserSchema.set('versionKey', false);
 
 // Export the Movie model
 module.exports = mongoose.model('User', UserSchema);

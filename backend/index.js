@@ -1,9 +1,9 @@
-"use strict";//我觉得可以直接用
+"use strict";
 
 const http       = require('http');
 const mongoose   = require('mongoose');
 
-const api        = require('./src/api');//also local repository
+const api        = require('./src/api');
 const config     = require('./src/config');
 
 
@@ -17,8 +17,8 @@ const server = http.createServer(api);
 //Connect to the MongoDB database; then start the server
 mongoose
     .connect(config.mongoURI)
-    .then(() => server.listen(config.port))//promise成功了就执行
-    .catch(err => {//不成功执行，promise
+    .then(() => server.listen(config.port))
+    .catch(err => {
         console.log('Error connecting to the database', err.message);
         process.exit(err.statusCode);
     });
