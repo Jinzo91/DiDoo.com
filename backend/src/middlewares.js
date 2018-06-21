@@ -1,4 +1,4 @@
-"use strict";//主要和密码确认有关
+"use strict";
 
 const jwt    = require('jsonwebtoken');
 

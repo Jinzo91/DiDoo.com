@@ -15,7 +15,7 @@ const UserSchema  = new mongoose.Schema({
         type: String,
         required: true,
     },
-    email: {
+    /*email: {
         type: String,
         required: true
     },
@@ -27,7 +27,7 @@ const UserSchema  = new mongoose.Schema({
         type: String,
         enum: ['visitor', 'admin', 'attractionadmin'],
         default:  'visitor',
-    },
+    },*/
 });
 
 UserSchema.set('versionKey', false);

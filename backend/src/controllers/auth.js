@@ -1,20 +1,18 @@
-"use strict";//java-jvm node.js(environment)-express. express 是后端段框架。学express
-//200，400啥意思 http status code 200 ok
+"use strict";//java-jvm node.js(environment)-express
 const jwt        = require('jsonwebtoken');
-const bcrypt     = require('bcryptjs');//需要的库
+const bcrypt     = require('bcryptjs');
 
 const config     = require('../config');
-const UserModel  = require('../models/user');//啥意思,和return model啥关系
+const UserModel  = require('../models/user');
 
-//先回调，然后
-const login = (req,res) => {//和数据库交互，请求monggodb拿出来，在express里面看
+const login = (req,res) => {
     if (!Object.prototype.hasOwnProperty.call(req.body, 'password')) return res.status(400).json({
         error: 'Bad Request',
         message: 'The request body must contain a password property'
     });
 
     if (!Object.prototype.hasOwnProperty.call(req.body, 'username')) return res.status(400).json({
-        error: 'Bad Request',//传回一个json
+        error: 'Bad Request',
         message: 'The request body must contain a username property'
     });
 
@@ -28,7 +26,7 @@ const login = (req,res) => {//和数据库交互，请求monggodb拿出来，在
             // if user is found and password is valid
             // create a token
             const token = jwt.sign({ id: user._id, username: user.username }, config.JwtSecret, {
-                expiresIn: 86400 // expires in 24 hours
+                expiresIn: 0 // expires in 24 hours
             });
 
             res.status(200).json({token: token});
@@ -51,7 +49,7 @@ const register = (req,res) => {
     if (!Object.prototype.hasOwnProperty.call(req.body, 'username')) return res.status(400).json({
         error: 'Bad Request',
         message: 'The request body must contain a username property'
-    });//上面是不成功的
+    });
 
     const user = Object.assign(req.body, {password: bcrypt.hashSync(req.body.password, 8)});//please change the password to this way
 
@@ -62,7 +60,7 @@ const register = (req,res) => {
             // if user is registered without errors
             // create a token
             const token = jwt.sign({ id: user._id, username: user.username }, config.JwtSecret, {
-                expiresIn: 86400 // expires in 24 hours
+                expiresIn: 0 // time until it expires, set to 0 for no expiration
             });
 
             res.status(200).json({token: token});
@@ -89,7 +87,7 @@ const register = (req,res) => {
 
 const me = (req, res) => {
     UserModel.findById(req.userId).select('username').exec()
-        .then(user => {//then是执行完前面的执行后面
+        .then(user => {
 
             if (!user) return res.status(404).json({
                 error: 'Not Found',
@@ -113,7 +111,7 @@ const list  = async (req, res) => {
 
     res.status(200).json(visitors);
 };
-module.exports = {//export出去再别的地方调用
+module.exports = {
     login,
     register,
     logout,
