@@ -9,13 +9,13 @@ class SearchResultPage extends Component {
 
     render() {
         return (
-            <div >
-                <div style={{
-                    position:'relative',
-                }}>
-                    {this.TACards}
+                <div >
+                    <div style={{
+                        position:'relative',
+                    }}>
+                        {this.TACards}
+                    </div>
                 </div>
-            </div>
         );
     }
 }
