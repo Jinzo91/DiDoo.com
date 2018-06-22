@@ -33,8 +33,8 @@ export default class AttractionService {
     static deleteAttractions(id) {
         return new Promise((resolve, reject) => {
             HttpService.remove(`${AttractionService.baseURL()}/${id}`, function(data) {
-                if(data.message != undefined) {
-                    resolve(data.message);
+                if(data != undefined) {
+                    resolve(data);
                 }
                 else {
                     reject('Error while deleting');

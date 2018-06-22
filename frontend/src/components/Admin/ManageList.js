@@ -56,8 +56,8 @@ export class ManageList extends Component {
                     <div style={{
                         position:'relative',
                     }}>
-                        {/*{props.data.map((data, i) => <ManageCard key={i} data={data} onDelete={(id) => props.onDelete(id)} />)}*/}
-                        {this.state.testCards}
+                        {this.props.data.map((data, i) => <ManageCard key={i} {...data} onDelete={(id) => this.props.onDelete(id)} />)}
+                        {/*{this.state.testCards}*/}
                     </div>
                 </div>
             </Page>
