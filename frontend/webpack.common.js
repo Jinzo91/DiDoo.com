@@ -21,6 +21,17 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env', 'react'],
+                        plugins: ['transform-class-properties']
+                    }
+                }
+            },
+            {
                 test: /\.(png|jpg|gif|svg)$/,
                 use: [
                     {
@@ -30,16 +41,6 @@ module.exports = {
                         }
                     }
                 ]
-            },
-            {
-                test: /\.js$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env', 'react']
-                    }
-                }
             },
             {
                 test: /\.html$/,

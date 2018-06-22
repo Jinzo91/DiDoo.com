@@ -7,6 +7,7 @@ const AttractionController = require('../controllers/attraction');
 
 
 router.get('/search', AttractionController.search); // List all attractions
+router.post('/filter', AttractionController.filterattraction); // List all attractions
 router.post('/', AttractionController.createpreattraction); // List all attractions
 router.put('/', AttractionController.updateattraction); // Update content of attraction by Id
 router.delete('/', AttractionController.removeattraction); // Delete a attraction by Id
