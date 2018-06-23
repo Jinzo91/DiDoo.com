@@ -4,6 +4,8 @@ import CausualLookPage from '../../components/Search/CausualLookPage';
 import Background from '../../images/searchresultbg.png';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
+import { Footer } from '../../components/Footer';
+import NavigationMenu from '../../components/NavigationMenu';
 
 export class CausualLookView extends React.Component {
 
@@ -34,9 +36,10 @@ export class CausualLookView extends React.Component {
 
         return (
             <div>
-                <SearchResultHeader />
+                <NavigationMenu/>
                 <img src={Background} className="bg" />
                 <CausualLookPage data={this.state.data}/>
+                <Footer />
             </div>
         );
     }
