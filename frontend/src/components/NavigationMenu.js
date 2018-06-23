@@ -103,6 +103,7 @@ class NavigationMenu extends React.Component {
             loading: false,
             data: [],
             navItems: navMap[this.props.userRole] ? navMap[this.props.userRole] : defaultNavItems,
+            searchValue: []
         };
     }
 
@@ -119,10 +120,12 @@ class NavigationMenu extends React.Component {
                     </Item>}
                     toolbarTitleMenu={this.props.userRole !== 'admin' && <Item>
                             <Autocomplete style={{margin: "auto", width: "30%", left: "-30px", height: "35px", background: "white", color: 'black'}}
-                                          data={['The Forbidden City','The Great Wall']}
+                                          data={['Hutongs', 'Forbidden City', 'Great Wall', 'Olympic Sites', 'Ming Tombs']}
                                           filter={Autocomplete.caseInsensitiveFilter}
+                                          onAutocomplete={(value) => this.setState({ searchValue: value })}
+                                          onChange={(value) => this.setState({ searchValue: value })}
                             />
-                            <Button style={{margin: "auto", width: "10%", left: "-30px"}} onClick={() => this.props.history.push('/')} flat iconBefore={true} iconChildren={"search"}/>
+                            <Button style={{margin: "auto", width: "10%", left: "-30px"}} onClick={() => this.props.history.push(`/searchresult?query=${this.state.searchValue}`)} flat iconBefore={true} iconChildren={"search"}/>
 
                     </Item>}
                     toolbarActions={<KebabMenu id="toolbar-colored-kebab-menu" />}

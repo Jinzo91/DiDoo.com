@@ -20,7 +20,7 @@ import { ManageTAView } from "./views/TouristAttractionView/ManageTAView";
 import { ManageInventoryView } from "./views/TouristAttractionView/ManageInventoryView";
 import {SearchPageView} from "./views/SearchView/SearchPageView";
 import {SearchResultView} from "./views/SearchView/SearchResultView";
-import {CausualLookView} from "./views/SearchView/CausualLookView";
+import {CasualLookView} from "./views/SearchView/CasualLookView";
 
 export default class App extends React.Component {
 
@@ -32,7 +32,7 @@ export default class App extends React.Component {
             routes: [
                 { component: SearchPageView ,  path: '/',exact:true},
                 { component: SearchResultView , path: '/searchresult',exact:true},
-                { component: CausualLookView, path: '/causuallook'},
+                { component: CasualLookView, path: '/casuallook'},
                 { component: TAManagementView , path: '/admin', exact: true},
                 { component: ApproveTAView , path: '/admin/approveta', exact: true},
                 { component: VisitorManagementView , path: '/admin/managevisitor', exact: true},

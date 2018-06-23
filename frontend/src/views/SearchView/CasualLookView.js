@@ -1,13 +1,13 @@
 import React from 'react';
 import SearchResultHeader from '../../components/Search/SearchResultHeader';
-import CausualLookPage from '../../components/Search/CausualLookPage';
+import CasualLookPage from '../../components/Search/CasualLookPage';
 import Background from '../../images/searchresultbg.png';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
 import { Footer } from '../../components/Footer';
 import NavigationMenu from '../../components/NavigationMenu';
 
-export class CausualLookView extends React.Component {
+export class CasualLookView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -38,7 +38,7 @@ export class CausualLookView extends React.Component {
             <div>
                 <NavigationMenu/>
                 <img src={Background} className="bg" />
-                <CausualLookPage data={this.state.data}/>
+                <CasualLookPage data={this.state.data}/>
                 <Footer />
             </div>
         );

@@ -33,7 +33,7 @@ class SearchBarComponent extends React.Component {
                         fontSize:'15px',
                         background:'green',
                         color:'white'
-                    }}  onClick={() => this.props.history.push('/causuallook')}>Causual Look</Button>
+                    }}  onClick={() => this.props.history.push('/casuallook')}>Casual Look</Button>
                 </div>
 
             </div>
