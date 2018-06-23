@@ -31,7 +31,7 @@ export class MyCommentView extends React.Component {
         //     console.error(e);
         // });
 
-        MovieService.getMovies().then(data => {
+        CommentService.getComments().then(data => {  // 從SERVICE裏抓數據放入data
             this.setState({
                 data,
                 loading: false,

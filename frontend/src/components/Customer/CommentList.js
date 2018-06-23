@@ -7,11 +7,11 @@ import {Autocomplete} from "react-md/es/index";
 import {CommentRow} from "./CommentRow";
 
 
-const testCard = (key, title, image) => <CommentRow
+const testCard = (key, title, image,comment) => <CommentRow
     key={key}
     image={image}
     title={title}
-    comment = 'hh'
+    comment = {comment}
 
 />;
 
@@ -19,7 +19,7 @@ const testCard = (key, title, image) => <CommentRow
 class CommentList extends Component {
     constructor(props) {
         super(props);
-        this.testCards = props.data.map((data, i)=>testCard(i, data.title, data.posters.original));
+        this.testCards = props.data.map((data, i)=>testCard(i, data.title, data.posters.original,data.synopsis));
     }
 
     render() {
