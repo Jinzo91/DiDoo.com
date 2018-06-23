@@ -3,6 +3,6 @@ import {Component} from "react";
 
 export const ReportChart = ({data}) => (
     <Page>
-        <Doughnut/>
+    <Doughnut/>
     </Page>
 );

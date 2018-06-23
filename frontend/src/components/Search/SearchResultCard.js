@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Avatar, Button, Card, CardText,FontIcon, CardTitle, Media } from 'react-md';
+import { Button, Media } from 'react-md';
+import StarRatingComponent from 'react-star-rating-component';
 class SearchResultCard extends Component {
     constructor(props) {
         super(props);
+
     }
 
 
@@ -22,18 +24,15 @@ class SearchResultCard extends Component {
             }}>
                 <div style={{
                     width: '30%',
-                    height: '20%'
                 }}>
-                    <Media aspectRatio='1-1'>
-                        <img src={this.props.img} alt="presentation" style={{
+                    <Media >
+                        <img src={this.props.image} alt="presentation" style={{
                             objectFit: 'cover'
                         }}/>
                     </Media>
                 </div>
-
                 <div style={{
-                    width: '60%',
-                    marginLeft:'3%'
+                    width: '50%',
                 }}>
                     <h1>{this.props.title}</h1>
                     <StarRatingComponent
@@ -42,25 +41,33 @@ class SearchResultCard extends Component {
                         starCount={5}
                         value={this.props.rating}
                     />
-                    <div>{this.props.address}</div>
-                    <div>{this.props.description}</div>
+                    <div style={{
+                        marginTop:'10px',
+                        color:'grey'
+                    }}
+                    >{this.props.address}</div>
+                    <h3  style={{
+                            width: '70%',
+                            marginTop:'70px'
+                        }}>Type:{this.props.type}</h3>
+                    <div>{this.props.introduction}
                 </div>
-
+                </div>
                 <div>
                     <div  style={{
                         color:'green',
-                        marginTop:'200px',
-                        marginRight:'20px',
-                        fontSize:'20px'
+                        marginTop:'100px',
+                        marginRight:'50px',
+                        fontSize:'40px'
                     }}>¥{this.props.price}</div>
                     <Button style={{
                         background:'green',
                         color:'white',
-                        fontSize:'20px'
+                        marginRight:'50px',
+                        fontSize:'40px'
 
                     }}  onClick={() => this.props.history.push('/')}>Select</Button>
                 </div>
-
             </div>
         );
     }

@@ -1,12 +1,10 @@
 import React from 'react';
-
-import { ApproveList } from '../../components/Admin/ApproveList';
-import Background from '../../images/AdminBG.png';
+import SearchResultHeader from '../../components/Search/SearchResultHeader';
+import SearchResultPage from '../../components/Search/SearchResultPage';
+import Background from '../../images/searchresultbg.png';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
-import MovieService from "../../services/MovieService";
-
-export class ApproveTAView extends React.Component {
+export class SearchResultView extends React.Component {//四人任务最开始的点
 
     constructor(props) {
         super(props);
@@ -15,29 +13,28 @@ export class ApproveTAView extends React.Component {
             data: []
         };
     }
-
-    componentWillMount()
-    {
-        this.setState({
+    componentWillMount(props){
+       this.setState({
             loading: true
         });
 
-        AttractionService.getPreAttractions().then((data) => {
+        AttractionService.getAttractionbysearch(this.props.location.search.split('=')[1]).then((data) => {
+            //console.log(data)
             this.setState({
                 data: [...data],
                 loading: false
             });
         }).catch((e) => {
             console.error(e);
-        });/*获得数据，从后端*/
+        });
     }
-
     render() {
 
         return (
             <div>
+                <SearchResultHeader />
                 <img src={Background} className="bg" />
-                <ApproveList data={this.state.data}/>
+                <SearchResultPage data={this.state.data}/>
             </div>
         );
     }

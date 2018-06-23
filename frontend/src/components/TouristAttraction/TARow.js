@@ -1,10 +1,6 @@
 "use strict";
 import React from 'react';
 import { TableRow, TableColumn, FontIcon, Button,Media } from 'react-md';
-import { Link } from 'react-router-dom';
-import { SimpleLink } from '../SimpleLink';
-import UserService from '../../services/UserService';
-import SearchResultCard from "./SearchResultCard";
 
 export class TARow extends React.Component {
 
@@ -25,47 +21,47 @@ export class TARow extends React.Component {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
             }}>
-                {/* <TableRow key={this.props.key}>*/}
+               {/* <TableRow key={this.props.key}>*/}
 
-                <div style={{
-                    width: '30%',
-                    height: '20%'
-                }}>
-                    <Media aspectRatio='1-1'>
-                        <img src={this.props.image} alt="presentation" style={{
-                            objectFit: 'cover'
-                        }}/>
-                    </Media>
-                </div>
+                    <div style={{
+                        width: '30%',
+                        height: '20%'
+                    }}>
+                        <Media aspectRatio='1-1'>
+                            <img src={this.props.image} alt="presentation" style={{
+                                objectFit: 'cover'
+                            }}/>
+                        </Media>
+                    </div>
 
 
-                <div style={{
-                    width: '70%',
-                    marginLeft:'3%'
-                }}>
+                    <div style={{
+                        width: '70%',
+                        marginLeft:'3%'
+                    }}>
                     <h1>{this.props.title}</h1>
 
-                    <div>
+                        <div>
 
-                        {this.props.comment}
+                           {this.props.comment}
 
+                        </div>
                     </div>
-                </div>
 
-                <div>
-                    <Button style={{
-                        background:'green',
-                        color:'white',
-                        fontSize:'20px'
+                    <div>
+                        <Button style={{
+                            background:'green',
+                            color:'white',
+                            fontSize:'20px'
 
-                    }}  onClick={() => this.props.history.push('/')}>edit</Button>
-                    <Button style={{
-                        background:'green',
-                        color:'white',
-                        fontSize:'20px'
+                        }}  onClick={() => this.props.history.push('/')}>edit</Button>
+                        <Button style={{
+                            background:'green',
+                            color:'white',
+                            fontSize:'20px'
 
-                    }}  onClick={() => this.props.history.push('/')}>delete</Button>
-                </div>
+                        }}  onClick={() => this.props.history.push('/')}>delete</Button>
+                    </div>
 
 
             </div>
