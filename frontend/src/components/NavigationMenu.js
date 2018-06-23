@@ -119,7 +119,7 @@ class NavigationMenu extends React.Component {
                     </Item>}
                     toolbarTitleMenu={this.props.userRole !== 'admin' && <Item>
                             <Autocomplete style={{margin: "auto", width: "30%", left: "-30px", height: "35px", background: "white", color: 'black'}}
-                                          data={['abc','bcd']}
+                                          data={['The Forbidden City','The Great Wall']}
                                           filter={Autocomplete.caseInsensitiveFilter}
                             />
                             <Button style={{margin: "auto", width: "10%", left: "-30px"}} onClick={() => this.props.history.push('/')} flat iconBefore={true} iconChildren={"search"}/>
