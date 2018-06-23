@@ -5,6 +5,7 @@ import React from 'react';
 import CommentList from '../../components/Customer/CommentList';
 import CommentService from '../../services/CommentService';
 import MovieService from '../../services/MovieService'
+import UserService from "../../services/UserService";
 
 export class MyCommentView extends React.Component {
 
@@ -13,7 +14,8 @@ export class MyCommentView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.getCurrentUser()
         };
     }
 
@@ -30,16 +32,19 @@ export class MyCommentView extends React.Component {
         // }).catch((e) => {
         //     console.error(e);
         // });
-
-        CommentService.getComments().then(data => {  // 從SERVICE裏抓數據放入data
+        let id = this.state.user.id//'5b2e8301edbee41df00f6433';
+        CommentService.getCommentsUser(id).then(data => {  // 從SERVICE裏抓數據放入data
             this.setState({
-                data,
+                data: [...data],
                 loading: false,
-            })
+            });
+        }).catch((e) => {
+            console.error(e);
         });
+
     }
 
-    deleteComment(id) {
+    /*deleteComment(id) {
         this.setState({
             data: [...this.state.data],
             loading: true
@@ -56,7 +61,7 @@ export class MyCommentView extends React.Component {
         }).catch((e) => {
             console.error(e);
         });
-    }
+    }*/
 
     render() {
         if (this.state.loading) {

@@ -7,7 +7,7 @@ export default class CommentService {
     constructor(){
     }
 
-    static baseURL() {return "http://localhost:3000/comment" }
+    static baseURL() {return "http://localhost:3000/comment" }//後端
 
     /*static getComments(){
         return new Promise((resolve, reject) => {
