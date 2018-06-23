@@ -1,66 +1,44 @@
-"use strict";
-
 import React from 'react';
 
-import { MovieList } from '../../components/Admin/ApproveList';
-
-import MovieService from '../../services/MovieService';
-import SearchResultPage from "../../components/TouristAttraction/SearchResultPage";
-
+import { ApproveList } from '../../components/Admin/ApproveList';
+import Background from '../../images/AdminBG.png';
+import '../../css/bg.css';
+import AttractionService from "../../services/AttractionService";
+import MovieService from "../../services/MovieService";
 
 export class ApproveTAView extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             loading: false,
             data: []
         };
     }
 
-    componentWillMount(){
+    componentWillMount()
+    {
         this.setState({
             loading: true
         });
 
-        MovieService.getMovies().then((data) => {
+        AttractionService.getPreAttractions().then((data) => {
             this.setState({
                 data: [...data],
                 loading: false
             });
         }).catch((e) => {
             console.error(e);
-        });
-    }
-
-    deleteMovie(id) {
-        this.setState({
-            data: [...this.state.data],
-            loading: true
-        });
-        MovieService.deleteMovie(id).then((message) => {
-
-            let movieIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
-            let movies = this.state.data;
-            movies.splice(movieIndex, 1);
-            this.setState({
-                data: [...movies],
-                loading: false
-            });
-        }).catch((e) => {
-            console.error(e);
-        });
+        });/*获得数据，从后端*/
     }
 
     render() {
-        if (this.state.loading) {
-            return (<h2>Loading...</h2>);
-        }
 
         return (
-            <MovieList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
-            /*<SearchResultPage/>*/
+            <div>
+                <img src={Background} className="bg" />
+                <ApproveList data={this.state.data}/>
+            </div>
         );
     }
 }

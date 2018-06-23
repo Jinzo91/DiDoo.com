@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Page from '../Page';
-import { TACard } from '../TouristAttraction/TACard';
+import { ManageCard } from '../Admin/ManageCard';
 
-const testCard = (key,title,type,image,introduction) => <TACard
+const testCard = (key,title,type,image,introduction) => <ManageCard
     key={key}
     title={title}
     type={type}
@@ -10,7 +10,7 @@ const testCard = (key,title,type,image,introduction) => <TACard
     introduction={introduction}
 />;
 
-export class ApproveList extends Component {
+export class ManageList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,5 +39,3 @@ export class ApproveList extends Component {
         );
     }
 }
-
-

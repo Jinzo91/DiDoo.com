@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import { TAList } from '../../components/TouristAttraction/TAList';
-import { TACard } from '../../components/TouristAttraction/TACard1';
+import TAList from '../../components/TouristAttraction/TAList';
+import TACard from '../../components/TouristAttraction/TACard1';
 
 import MovieService from '../../services/MovieService'
 

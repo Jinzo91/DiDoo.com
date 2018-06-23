@@ -1,50 +1,49 @@
-"use strict";
-
 import React from 'react';
 
-import { MovieList } from '../../components/Admin/ManageList';
-
-import MovieService from '../../services/MovieService';
-
+import { ManageList } from '../../components/Admin/ManageList';
+import Background from '../../images/AdminBG.png';
+import '../../css/bg.css';
+import AttractionService from "../../services/AttractionService";
+import MovieService from "../../services/MovieService";
 
 export class TAManagementView extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             loading: false,
             data: []
         };
     }
 
-    componentWillMount(){
+    componentWillMount()
+    {
         this.setState({
             loading: true
         });
 
-        MovieService.getMovies().then((data) => {
+        AttractionService.getAttractions().then((data) => {
             this.setState({
                 data: [...data],
                 loading: false
             });
         }).catch((e) => {
             console.error(e);
-        });
+        });/*获得数据，从后端*/
     }
 
-    deleteMovie(id) {
+    deleteAttractions(id) {
         this.setState({
             data: [...this.state.data],
             loading: true
         });
-        MovieService.deleteMovie(id).then((message) => {
+        AttractionService.deleteAttractions(id).then((message) => {
 
-            let movieIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
-            let movies = this.state.data;
-            movies.splice(movieIndex, 1);
+            let attractionIndex = this.state.data.map(attraction => attraction['_id']).indexOf(id);
+            let attractions = this.state.data;
+            attractions.splice(attractionIndex, 1);
             this.setState({
-                data: [...movies],
+                data: [...attractions],
                 loading: false
             });
         }).catch((e) => {
@@ -53,12 +52,12 @@ export class TAManagementView extends React.Component {
     }
 
     render() {
-        if (this.state.loading) {
-            return (<h2>Loading...</h2>);
-        }
 
         return (
-            <MovieList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
+            <div>
+                <img src={Background} className="bg" />
+                <ManageList data={this.state.data} onDelete={(id) => this.deleteAttractions(id)}/>
+            </div>
         );
     }
 }
