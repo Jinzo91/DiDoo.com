@@ -1,9 +1,9 @@
 import React from 'react';
-import SearchResultHeader from '../../components/Search/SearchResultHeader';
 import SearchResultPage from '../../components/Search/SearchResultPage';
 import Background from '../../images/searchresultbg.png';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
+import NavigationMenu from '../../components/NavigationMenu';
 export class SearchResultView extends React.Component {//四人任务最开始的点
 
     constructor(props) {
@@ -32,7 +32,7 @@ export class SearchResultView extends React.Component {//四人任务最开始�
 
         return (
             <div>
-                <SearchResultHeader />
+                <NavigationMenu/>
                 <img src={Background} className="bg" />
                 <SearchResultPage data={this.state.data}/>
             </div>

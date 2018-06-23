@@ -13,7 +13,7 @@ const testCard = (key,title,image,type,rating,address,introduction,price) => <Se
     price={price}
 />;
 
-class CausualLookPage extends Component {
+class CasualLookPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,4 +40,4 @@ class CausualLookPage extends Component {
     }
 }
 
-export default CausualLookPage;
+export default CasualLookPage;
