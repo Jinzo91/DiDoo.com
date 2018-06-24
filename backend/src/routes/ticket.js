@@ -7,6 +7,7 @@ const TicketController = require('../controllers/ticket');
 
 router.post('/',TicketController.create);
 router.put('/',TicketController.update);
+router.put('/stock',TicketController.updatestock);
 router.delete('/',TicketController.remove);
 router.get('/:attractionId',TicketController.list);
 router.get('/remainingticket/:ticketId',TicketController.remainingticket);

@@ -59,9 +59,9 @@ export default class AttractionService {
             });
         });
     }
-    static getAttraction(id) {
+    static getAttractionDetail(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${AttractionService.baseURL()}/pre/${id}`, function(data) {
+            HttpService.get(`${AttractionService.baseURL()}/readdetail/${id}`, function(data) {
                 if(data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }

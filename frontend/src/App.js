@@ -21,6 +21,7 @@ import { ManageInventoryView } from "./views/TouristAttractionView/ManageInvento
 import {SearchPageView} from "./views/SearchView/SearchPageView";
 import {SearchResultView} from "./views/SearchView/SearchResultView";
 import {CasualLookView} from "./views/SearchView/CasualLookView";
+import {AttractionDetailView} from "./views/SearchView/AttractionDetailView";
 
 export default class App extends React.Component {
 
@@ -32,7 +33,8 @@ export default class App extends React.Component {
             routes: [
                 { component: SearchPageView ,  path: '/',exact:true},
                 { component: SearchResultView , path: '/searchresult',exact:true},
-                { component: CasualLookView, path: '/casuallook'},
+                { component: CasualLookView, path: '/casuallook',exact: true},
+                { component: AttractionDetailView , path: '/attraction/:id'},
                 { component: TAManagementView , path: '/admin', exact: true},
                 { component: ApproveTAView , path: '/admin/approveta', exact: true},
                 { component: VisitorManagementView , path: '/admin/managevisitor', exact: true},
