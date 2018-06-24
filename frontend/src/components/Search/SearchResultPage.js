@@ -28,7 +28,7 @@ class SearchResultPage extends Component {
 
     render() {
         return (
-                <div >
+                <div style={{marginBottom: "40px"}}>
                     <SearchFilter/>
                     <div style={{
                         position:'relative',

@@ -17,7 +17,7 @@ export class SearchResultView extends React.Component {//四人任务最开始�
        this.setState({
             loading: true
         });
-
+        
         AttractionService.getAttractionbysearch(this.props.location.search.split('=')[1]).then((data) => {
             //console.log(data)
             this.setState({

@@ -7,26 +7,41 @@ export default class CommentService {
     constructor(){
     }
 
-    static baseURL() {return "http://localhost:3000/movies" }
+    static baseURL() {return "http://localhost:3000/comment" }//後端
 
-    static getComments(){
+    /*static getComments(){
         return new Promise((resolve, reject) => {
-            HttpService.get(this.baseURL(), function(data) {
+            HttpService.get(`${CommentService.baseURL()}/visitor/:userId`, function(data) {
                 resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }*/
+
+    static getCommentsUser(id) {//用user找評論
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${CommentService.baseURL()}/visitor/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving comment');
+                }
             }, function(textStatus) {
                 reject(textStatus);
             });
         });
     }
 
-    static getComment(id) {
+    static getCommentsAttraction(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${TicketService.baseURL()}/${id}`, function(data) {
+            HttpService.get(`${CommentService.baseURL()}/visitor/:${id}`, function(data) {
                 if(data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
-                    reject('Error while retrieving movie');
+                    reject('Error while retrieving comment');
                 }
             }, function(textStatus) {
                 reject(textStatus);
@@ -36,7 +51,7 @@ export default class CommentService {
 
     static deleteComment(id) {
         return new Promise((resolve, reject) => {
-            HttpService.remove(`${TicketService.baseURL()}/${id}`, function(data) {
+            HttpService.remove(`${CommentService.baseURL()}/${id}`, function(data) {
                 if(data.message != undefined) {
                     resolve(data.message);
                 }
@@ -49,14 +64,14 @@ export default class CommentService {
         });
     }
 
-    static returnComment(ticket) {
-        /*return new Promise((resolve, reject) => {
-            HttpService.put(`${this.baseURL()}/${movie._id}`, movie, function(data) {
-                resolve(data);
-            }, function(textStatus) {
-                reject(textStatus);
-            });
-        });*/
+    static creatComment(ticket) {
+        return new Promise((resolve, reject) => {
+             HttpService.put(`${this.baseURL()}/${comment._id}`, comment, function(data) {
+                 resolve(data);
+             }, function(textStatus) {
+                 reject(textStatus);
+             });
+         });
     }
 
     static editComments(ticket) {
@@ -68,7 +83,7 @@ export default class CommentService {
             original: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg"
         };*/
         return new Promise((resolve, reject) => {
-            HttpService.post(CommentService.baseURL(), movie, function(data) {
+            HttpService.post(CommentService.baseURL(), comment, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
