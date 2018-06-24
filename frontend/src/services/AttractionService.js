@@ -1,6 +1,8 @@
 "use strict";
 
 import HttpService from './HttpService';
+import MovieService from "./MovieService";
+import CommentService from "./CommentService";
 
 export default class AttractionService {
 
@@ -29,6 +31,21 @@ export default class AttractionService {
         });
     }
 
+    static getAttraction(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${AttractionService.baseURL()}/readdetail/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving attraction');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static deleteAttractions(id) {
         return new Promise((resolve, reject) => {
             HttpService.remove(`${AttractionService.baseURL()}/${id}`, function(data) {
@@ -37,6 +54,64 @@ export default class AttractionService {
                 }
                 else {
                     reject('Error while deleting');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static approveAttractions(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(`${AttractionService.baseURL()}/approve/${id}`,{}, function(data) {
+                console.log(data);
+                if(data != undefined) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while approving');
+                }
+            }, function(textStatus) {
+                console.log(textStatus)
+                reject(textStatus);
+            });
+        });
+    }
+
+    static updateAttractions(attraction) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(`${this.baseURL()}/${attraction._id}`, attraction, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static createAttractions(attraction) {
+        /*attraction.posters = {
+            thumbnail: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
+            profile: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
+            detailed: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
+            original: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg"
+        };*/
+        return new Promise((resolve, reject) => {
+            HttpService.post(AttractionService.baseURL(),attraction, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getAttractionsUser(id) {//用user找評論
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${AttractionService.baseURL()}/visitor/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving attraction');
                 }
             }, function(textStatus) {
                 reject(textStatus);

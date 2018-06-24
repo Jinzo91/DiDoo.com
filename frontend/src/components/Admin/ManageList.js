@@ -2,15 +2,10 @@ import React, { Component } from 'react';
 import Page from '../Page';
 import { ManageCard } from '../Admin/ManageCard';
 import { Autocomplete } from "react-md/es/index";
-import {  Button } from 'react-md';
 
-const testCard = (key,title,type,image,introduction) => <ManageCard
-    key={key}
-    title={title}
-    type={type}
-    image={image}
-    introduction={introduction}
-    onDelete={(id) => this.props.onDelete(id)}
+const testCard = (key,data, onDelete) => <ManageCard
+    {...data}
+    onDelete={onDelete}
 />;
 
 export class ManageList extends Component {
@@ -24,7 +19,7 @@ export class ManageList extends Component {
 
     componentWillReceiveProps(props){
         console.log(this.props);
-        const testCards = props.data.map( (data, i)=>testCard(i, data.title, data.type, data.posters.original, data.introduction));
+        const testCards = props.data.map( (data, i)=>testCard(i,data, props.onDelete));
         /*赋予上一个view的，用数据库的名字*/
         this.setState({testCards});
     }
@@ -32,7 +27,7 @@ export class ManageList extends Component {
     onSearch(value) {
         const newCards = this.props.data
             .filter(data => data.title.toLowerCase().includes(value.toLowerCase()))
-            .map( (data, i)=>testCard(i, data.title, data.type, data.posters.original,data.introduction));
+            .map( (data, i)=>testCard(i,data, this.props.onDelete));
         this.setState({
             testCards: newCards
         })

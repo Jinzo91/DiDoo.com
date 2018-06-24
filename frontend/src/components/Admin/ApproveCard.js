@@ -6,26 +6,33 @@ import {
     CardActions,
     CardText,
     CardTitle,
+    FontIcon,
 } from 'react-md';
+import { SimpleLink } from '../SimpleLink';
+import { Link } from 'react-router-dom';
 
 const style = { maxWidth: '80%', marginBottom: '5px', marginTop: '5px'};
 
 export class ApproveCard extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
     }
 
     render() {
         return (
-            <Card style={style} className="md-block-centered">
+            <Card style={style}
+                  className="md-block-centered"
+                  key={this.props.key}>
                 <CardTitle
                     title={this.props.title}
                     subtitle={this.props.type}
-                    avatar={<Avatar src={this.props.image} role="presentation"/>}
-                />
+                    avatar={<Avatar src={this.props.posters.detailed} role="presentation"/>}
+                >
+                    {/*<SimpleLink to={`/attractiondetail/${this.props.movie._id}`}>{this.props.movie.title}</SimpleLink>*/}
+                </CardTitle>
                 <CardActions expander>
-                    <Button flat>Approve</Button>
-                    <Button flat>Reject</Button>
+                    <Button flat onClick={() => this.props.onApprove(this.props._id)} icon>verified_user</Button>
                 </CardActions>
                 <CardText expandable>
                     <p>
