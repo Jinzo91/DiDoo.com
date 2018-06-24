@@ -15,9 +15,11 @@ import { MyCommentView } from "./views/CustomerView/MyCommentView";
 import UserService from "./services/UserService";
 import { MyCartView } from "./views/ShoppingView/MyCartView";
 import { VisitorManagementView } from "./views/AdminView/VisitorManagementView";
+import { AttractionCreateView } from "./views/AttractionCreateView";
 import { ReportChartView } from "./views/AdminView/ReportChartView";
 import { ManageTAView } from "./views/TouristAttractionView/ManageTAView";
 import { ManageInventoryView } from "./views/TouristAttractionView/ManageInventoryView";
+import {AttractionFormView} from "./views/AttractionFormView";
 import {SearchPageView} from "./views/SearchView/SearchPageView";
 import {SearchResultView} from "./views/SearchView/SearchResultView";
 import {CasualLookView} from "./views/SearchView/CasualLookView";
@@ -36,11 +38,14 @@ export default class App extends React.Component {
                 { component: CasualLookView, path: '/casuallook',exact: true},
                 { component: AttractionDetailView , path: '/attraction/:id'},
                 { component: TAManagementView , path: '/admin', exact: true},
+                { component: AttractionFormView , path: '/edit/:attractionId', exact: true},
+                { component: AttractionCreateView , path: '/add', exact: true},
                 { component: ApproveTAView , path: '/admin/approveta', exact: true},
-                { component: VisitorManagementView , path: '/admin/managevisitor', exact: true},
+                /*{ component: VisitorManagementView , path: '/admin/managevisitor', exact: true},*/
                 { component: ReportChartView , path: '/admin/report', exact: true},
                 { component: ManageTAView , path: '/ta', exact: true},
-                { component: ManageInventoryView , path: '/ta/inventory', exact: true},
+                { component: ManageInventoryView , path: '/admin/inventory', exact: true},
+
                 /*{ render: (props) => {
                         if(UserService.isAuthenticated() && UserService.getCurrentUser().isAdmin) {
                             return (<AdminView {... props} />)

@@ -4,7 +4,6 @@ import { ManageList } from '../../components/Admin/ManageList';
 import Background from '../../images/AdminBG.png';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
-import MovieService from "../../services/MovieService";
 
 export class TAManagementView extends React.Component {
 

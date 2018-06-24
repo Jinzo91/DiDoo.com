@@ -2,19 +2,20 @@
 
 import React from 'react';
 
-import TAList from '../../components/TouristAttraction/TAList';
-import TACard from '../../components/TouristAttraction/TACard1';
-
+import CommentList from '../../components/Customer/CommentList';
+import CommentService from '../../services/CommentService';
 import MovieService from '../../services/MovieService'
+import UserService from "../../services/UserService";
 
-export class ManageTAView extends React.Component {
+export class MyCommentView extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.getCurrentUser()
         };
     }
 
@@ -31,16 +32,19 @@ export class ManageTAView extends React.Component {
         // }).catch((e) => {
         //     console.error(e);
         // });
-
-        MovieService.getMovies().then(data => {
+        let id = this.state.user.id//'5b2e8301edbee41df00f6433';
+        CommentService.getCommentsUser(id).then(data => {  // 從SERVICE裏抓數據放入data
             this.setState({
-                data,
+                data: [...data],
                 loading: false,
-            })
+            });
+        }).catch((e) => {
+            console.error(e);
         });
+
     }
 
-    deleteComment(id) {
+    /*deleteComment(id) {
         this.setState({
             data: [...this.state.data],
             loading: true
@@ -57,7 +61,7 @@ export class ManageTAView extends React.Component {
         }).catch((e) => {
             console.error(e);
         });
-    }
+    }*/
 
     render() {
         if (this.state.loading) {
@@ -65,7 +69,7 @@ export class ManageTAView extends React.Component {
         }
 
         return (
-            <TAList/>
+            <TAList data={this.state.data}/>
         );
     }
 }

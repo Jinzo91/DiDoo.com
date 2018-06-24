@@ -4,7 +4,6 @@ import { ApproveList } from '../../components/Admin/ApproveList';
 import Background from '../../images/AdminBG.png';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
-import MovieService from "../../services/MovieService";
 
 export class ApproveTAView extends React.Component {
 
@@ -32,12 +31,30 @@ export class ApproveTAView extends React.Component {
         });/*获得数据，从后端*/
     }
 
+    approveAttractions(id) {
+        this.setState({
+            data: [...this.state.data],
+            loading: true
+        });
+        AttractionService.approveAttractions(id).then((message) => {
+            let attractionIndex = this.state.data.map(attraction => attraction['_id']).indexOf(id);
+            let attractions = this.state.data;
+            attractions.splice(attractionIndex, 1);
+            this.setState({
+                data: [...attractions],
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        });
+    }
+
     render() {
 
         return (
             <div>
                 <img src={Background} className="bg" />
-                <ApproveList data={this.state.data}/>
+                <ApproveList data={this.state.data} onApprove={(id) => this.approveAttractions(id)}/>
             </div>
         );
     }
