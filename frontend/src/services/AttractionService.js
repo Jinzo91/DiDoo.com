@@ -1,7 +1,6 @@
 "use strict";
 
 import HttpService from './HttpService';
-import MovieService from "./MovieService";
 
 export default class AttractionService {
 
@@ -52,7 +51,7 @@ export default class AttractionService {
                     resolve(data);
                 }
                 else {
-                    reject('Error while retrieving movie');
+                    reject('Error while retrieving attraction');
                 }
             }, function(textStatus) {
                 reject(textStatus);

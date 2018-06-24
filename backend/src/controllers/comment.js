@@ -46,7 +46,7 @@ const listcommentbyvisitor  = async (req, res) => {
     const {
         userId,
     } = req.params;
-    let comments = await CommentModel.find({userId},{attractionId:1,context:1,createdAt:1});
+    let comments = await CommentModel.find({userId},{attractionId:1,context:1});
     const attractions = await AttractionModel.find({
         _id: {
             $in: comments.map(comment => comment.attractionId)

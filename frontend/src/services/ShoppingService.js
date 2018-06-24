@@ -2,31 +2,31 @@
 
 import HttpService from './HttpService';
 
-export default class CommentService {
+export default class ShoppingService {
 
     constructor(){
     }
 
-    static baseURL() {return "http://localhost:3000/comment" }//後端
+    static baseURL() {return "http://localhost:3000/cartOrder" }
 
-    /*static getComments(){
+    static getTickets(){
         return new Promise((resolve, reject) => {
-            HttpService.get(`${CommentService.baseURL()}/visitor/:userId`, function(data) {
+            HttpService.get(this.baseURL(), function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
             });
         });
-    }*/
+    }
 
-    static getCommentsUser(id) {//用user找評論
+    static getCart(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${CommentService.baseURL()}/visitor/${id}`, function(data) {
+            HttpService.get(`${TicketService.baseURL()}/${id}`, function(data) {
                 if(data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
-                    reject('Error while retrieving comment');
+                    reject('Error while retrieving shopping cart');
                 }
             }, function(textStatus) {
                 reject(textStatus);
@@ -34,29 +34,14 @@ export default class CommentService {
         });
     }
 
-    static getCommentsAttraction(id) {
+    static deleteCartItem(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${CommentService.baseURL()}/visitor/:${id}`, function(data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
-                    resolve(data);
-                }
-                else {
-                    reject('Error while retrieving comment');
-                }
-            }, function(textStatus) {
-                reject(textStatus);
-            });
-        });
-    }
-
-    static deleteComment(id) {
-        return new Promise((resolve, reject) => {
-            HttpService.remove(`${CommentService.baseURL()}/${id}`, function(data) {
+            HttpService.remove(`${TicketService.baseURL()}/${id}`, function(data) {
                 if(data.message != undefined) {
                     resolve(data.message);
                 }
                 else {
-                    reject('Error while deleting');
+                    reject('Error while deleting item');
                 }
             }, function(textStatus) {
                 reject(textStatus);
@@ -64,17 +49,17 @@ export default class CommentService {
         });
     }
 
-    static creatComment(ticket) {
-        return new Promise((resolve, reject) => {
-             HttpService.put(`${this.baseURL()}/${comment._id}`, comment, function(data) {
-                 resolve(data);
-             }, function(textStatus) {
-                 reject(textStatus);
-             });
-         });
+    static returnTicket(ticket) {
+        /*return new Promise((resolve, reject) => {
+            HttpService.put(`${this.baseURL()}/${movie._id}`, movie, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });*/
     }
 
-    static editComments(ticket) {
+    static createComments(ticket) {
         ticket.id = Math.floor((Math.random() * 100000000) + 1).toString();
         /*movie.posters = {
             thumbnail: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
@@ -83,7 +68,7 @@ export default class CommentService {
             original: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg"
         };*/
         return new Promise((resolve, reject) => {
-            HttpService.post(CommentService.baseURL(), comment, function(data) {
+            HttpService.post(TicketService.baseURL(), movie, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
