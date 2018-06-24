@@ -22,12 +22,12 @@ const UserSchema  = new mongoose.Schema({
     sex: String,
     phone: String,
     adress: String,
-    portrait: String,
+    portrait: String,*/
     status: {
         type: String,
-        enum: ['visitor', 'admin', 'attractionadmin'],
-        default:  'visitor',
-    },*/
+        enum: ['visitor', 'admin', 'ta'],
+        default: 'visitor',
+    },
 });
 
 UserSchema.set('versionKey', false);

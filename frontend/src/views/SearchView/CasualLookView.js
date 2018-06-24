@@ -6,6 +6,7 @@ import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
 import { Footer } from '../../components/Footer';
 import NavigationMenu from '../../components/NavigationMenu';
+import UserService from "../../services/UserService";
 
 export class CasualLookView extends React.Component {
 
@@ -13,7 +14,9 @@ export class CasualLookView extends React.Component {
         super(props);
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.getCurrentUser(),
+            userRole: '',
         };
     }
 
@@ -36,7 +39,7 @@ export class CasualLookView extends React.Component {
 
         return (
             <div>
-                <NavigationMenu/>
+                <NavigationMenu userRole={this.state.userRole = this.state.user.status}/>
                 <img src={Background} className="bg" />
                 <CasualLookPage data={this.state.data}/>
                 <Footer />
