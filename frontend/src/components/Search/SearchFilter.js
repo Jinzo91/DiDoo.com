@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Checkbox, Divider, Slider} from 'react-md';
+import AttractionService from "../../services/AttractionService";
 
 const districts = {
     District: ['Dongcheng', 'Xicheng','Haidian', 'Fengtai','Shunyi', 'Tongzhou'],
@@ -14,64 +15,88 @@ const prices = {
 class SearchFilter extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            loading: false,
+            data: [],
+        };
     }
-    /*写一个functioon,再写一个循环三遍*/
-    districtsCheckboxs = (districts) => {
-        const rendered = [];
-        let key = 0;
+    componentWillMount(props) {
+        this.setState({
+            loading: true
+        });
+
+    }
+
+/*       AttractionService.filterattraction(this.props.location.search.split('=')[1]).then((data) => {
+            //console.log(data)
+            this.setState({
+                data: [...data],
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        });*/
+    
+
+        /*写一个functioon,再写一个循环三遍*/
+
+        districtsCheckboxs = (districts) => {
+            const rendered = [];
+            let key = 0;
             rendered.push(<h2>District:</h2>);
-            for (let district of districts.District){
+            for (let district of districts.District) {
                 rendered.push(<Checkbox
                     className='filter-checkbox'
                     key={key++}
-                    id={'checkbox-'+district}
+                    id={'checkbox-' + district}
                     name={district}
                     label={district}
                     value={district}
+                    onChange={ ischecked=> this.setState({ ischecked })}
                 />)
             }
-            rendered.push(<Divider key={key++} />)
-        return rendered;
+            rendered.push(<Divider key={key++}/>)
+            return rendered;
 
-    };
+        };
 
-    typesCheckboxs = (types) => {
-        const rendered = [];
-        let key = 0;
-            rendered.push(<h2 >Type:</h2>);
-            for (let type of types.Type){
+        typesCheckboxs = (types) => {
+            const rendered = [];
+            let key = 0;
+            rendered.push(<h2>Type:</h2>);
+            for (let type of types.Type) {
                 rendered.push(<Checkbox
                     className='filter-checkbox'
                     key={key++}
-                    id={'checkbox-'+type}
+                    id={'checkbox-' + type}
                     name={type}
                     label={type}
                     value={type}
                 />)
             }
-            rendered.push(<Divider key={key++} />)
-        return rendered;
-    };
+            rendered.push(<Divider key={key++}/>)
+            return rendered;
+        };
 
-    pricesCheckboxs = (prices) => {
-        const rendered = [];
-        let key = 0;
+        pricesCheckboxs = (prices) => {
+            const rendered = [];
+            let key = 0;
 
-            rendered.push(<h2 >Price:</h2>);
-            for (let price of prices.Price){
+            rendered.push(<h2>Price:</h2>);
+            for (let price of prices.Price) {
                 rendered.push(<Checkbox
                     className='filter-checkbox'
                     key={key++}
-                    id={'checkbox-'+price}
+                    id={'checkbox-' + price}
                     name={price}
                     label={price}
                     value={price}
                 />)
             }
-            rendered.push(<Divider key={key++} />)
+            rendered.push(<Divider key={key++}/>)
 
-        return rendered;
-    };
+            return rendered;
+        };
 
 
     render() {
@@ -114,6 +139,7 @@ class SearchFilter extends Component {
         );
     }
 }
+
 
 export default SearchFilter;
 

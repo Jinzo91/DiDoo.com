@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchResultHeader from '../../components/Search/SearchResultHeader';
 import CasualLookPage from '../../components/Search/CasualLookPage';
 import Background from '../../images/searchresultbg.png';
 import '../../css/bg.css';

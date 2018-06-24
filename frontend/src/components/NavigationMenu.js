@@ -62,34 +62,33 @@ const defaultNavItems = [{
 const adminNavItems = [
     {
         exact: true,
-        label: 'Manage Attractions',
+        label: 'Manage approved Attractions',
         to: '/admin',
-        icon: 'view_list',
+        icon: 'playlist_add_check',
     }, {
-        label: 'Approve Attractions',
-        to: '/admin/approveta',
-        icon: 'verified_user',
+        label: 'Manage unapproved Attractions',
+        to: '/admin/unapproved',
+        icon: 'playlist_play',
     }, {
-        label: 'Manage Visitor',
-        to: '/admin/managevisitor',
-        icon: 'people',
+        label: 'Create new Attraction',
+        to: '/add',
+        icon: 'playlist_add',
     }, {
-        label: 'Sales Report',
-        to: '/admin/report',
-        icon: 'show_chart',
+        label: 'Inventory',
+        to: '/admin/inventory',
+        icon: 'store',
     }
 ];
 
 const taNavItems = [
     {
-        exact: true,
-        label: 'Manage Attractions',
-        to: '/ta',
-        icon: 'view_list',
+        label: 'Approve Attractions',
+        to: '/admin/approveta',
+        icon: 'verified_user',
     }, {
-        label: 'Manage Inventory',
-        to: '/ta/inventory',
-        icon: 'storage',
+        label: 'Sales Report',
+        to: '/admin/report',
+        icon: 'show_chart',
     }
 ];
 
