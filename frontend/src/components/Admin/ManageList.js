@@ -10,6 +10,7 @@ const testCard = (key,title,type,image,introduction) => <ManageCard
     type={type}
     image={image}
     introduction={introduction}
+    onDelete={(id) => this.props.onDelete(id)}
 />;
 
 export class ManageList extends Component {
@@ -23,7 +24,7 @@ export class ManageList extends Component {
 
     componentWillReceiveProps(props){
         console.log(this.props);
-        const testCards = props.data.map( (data, i)=>testCard(i, data.title, data.type, data.posters.original,data.introduction));
+        const testCards = props.data.map( (data, i)=>testCard(i, data.title, data.type, data.posters.original, data.introduction));
         /*赋予上一个view的，用数据库的名字*/
         this.setState({testCards});
     }
@@ -56,8 +57,8 @@ export class ManageList extends Component {
                     <div style={{
                         position:'relative',
                     }}>
-                        {this.props.data.map((data, i) => <ManageCard key={i} {...data} onDelete={(id) => this.props.onDelete(id)} />)}
-                        {/*{this.state.testCards}*/}
+                        {/*{this.props.data.map((data, i) => <ManageCard key={i} {...data} onDelete={(id) => this.props.onDelete(id)} />)}*/}
+                        {this.state.testCards}
                     </div>
                 </div>
             </Page>

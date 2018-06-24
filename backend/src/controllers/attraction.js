@@ -35,7 +35,7 @@ const updateattraction = async (req, res) => {
 const removeattraction = async (req, res) => {
     const {
         attractionId,
-    } = req.body;
+    } = req.params;
     await AttractionModel.findByIdAndRemove(attractionId);
     res.status(200).json({message: `attraction with id${attractionId} was deleted`});
 };

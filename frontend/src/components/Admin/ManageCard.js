@@ -33,7 +33,7 @@ export class ManageCard extends Component {
             <CardActions expander>
                 {/*<Button flat><Link to={`/edit/${this.props.movie._id}`}><FontIcon>mode_edit</FontIcon></Link></Button>*/}
                 <Button flat>edit</Button>
-                <Button flat onClick={() => this.props.onDelete(this.props.attraction._id)} icon>delete</Button>
+                <Button flat onClick={() => this.props.onDelete(this.props._id)} icon>delete</Button>
             </CardActions>
             <CardText expandable>
                 <p>
