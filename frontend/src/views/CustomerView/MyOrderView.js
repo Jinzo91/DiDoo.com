@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import { OrderList } from '../../components/Customer/OrderList';
-
-import TicketService from '../../services/TicketService';
+import OrderList from '../../components/Customer/OrderList';
+import ShoppingService from "../../services/ShoppingService";
+import UserService from "../../services/UserService";
 
 
 export class MyOrderView extends React.Component {
@@ -14,7 +14,8 @@ export class MyOrderView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.getCurrentUser() //獲得當前用戶id
         };
     }
 
@@ -22,23 +23,25 @@ export class MyOrderView extends React.Component {
         this.setState({
             loading: true
         });
-
-        TicketService.getTickets().then((data) => {
+        //let id = this.state.user.id//'5b22622b0fa7313444b36628';
+        let id = '5b22622b0fa7313444b36628'//'5b22622b0fa7313444b36628';
+        ShoppingService.getOrder(id).then(data => {  // 從SERVICE裏抓數據放入data
             this.setState({
                 data: [...data],
-                loading: false
+                loading: false,
             });
         }).catch((e) => {
             console.error(e);
         });
+
     }
 
-    deleteTicket(id) {
+    /*deleteTicket(id) {
         this.setState({
             data: [...this.state.data],
             loading: true
         });
-        TicketService.deleteTicket(id).then((message) => {
+        ShoppingService.deleteTicket(id).then((message) => {
 
             let ticketIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
             let ticket = this.state.data;
@@ -50,7 +53,7 @@ export class MyOrderView extends React.Component {
         }).catch((e) => {
             console.error(e);
         });
-    }
+    }*/
 
 
     returnTicket(id){
@@ -67,7 +70,7 @@ export class MyOrderView extends React.Component {
         }
 
        return (
-            <OrderList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
+            <OrderList data={this.state.data}onDelete={(id) => this.deleteMovie(id)}/>
         );
     }
 }

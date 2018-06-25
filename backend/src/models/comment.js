@@ -20,6 +20,6 @@ const CommentSchema  = new mongoose.Schema({
 
 });
 CommentSchema.set('versionKey', false);
-
+CommentSchema.set('timestamps', true);
 // Export the Comment model
 module.exports = mongoose.model('Comment', CommentSchema);

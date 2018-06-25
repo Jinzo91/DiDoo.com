@@ -141,19 +141,19 @@ class NavigationMenu extends React.Component {
                         <Button onClick={() => this.props.history.push('/')}><Avatar src={imgURL} role="presentation" suffix="green-300" /></Button>
                     </Item>}
                     toolbarTitleMenu={this.props.userRole !== 'admin' && <Item>
-                            <Autocomplete style={{margin: "auto", width: "30%", left: "-30px", height: "35px", background: "white", color: 'black'}}
+                            <Autocomplete style={{marginLeft: "-50px", width: "30%", height: "35px", background: "white", color: 'black'}}
                                           data={this.state.titles = this.state.attractions.map(attractions => attractions.title)}
                                           filter={Autocomplete.caseInsensitiveFilter}
                                           onAutocomplete={(value) => this.setState({ searchValue: value })}
                                           onChange={(value) => this.setState({ searchValue: value })}
                             />
-                            <Button style={{margin: "auto", width: "10%", left: "-30px"}} onClick={() => this.newSearch()} flat iconBefore={true} iconChildren={"search"}/>
+                            <Button style={{marginLeft: "auto", width: "10%"}} onClick={() => this.newSearch()} flat iconBefore={true} iconChildren={"search"}/>
 
                     </Item>}
                     toolbarActions={<KebabMenu id="toolbar-colored-kebab-menu" />}
                     /*toolbarChildren={<Button style={{width: "15"}} flat iconChildren="shopping_cart"></Button>}*/
                     /*toolbarChildren={<Button style={{marginTop: "12px", marginRight: "5px"}} onClick={() => this.props.history.push('/mycart')} icon>shopping_cart</Button>}*/
-                    toolbarChildren={<CartPopUp id="toolbar-cart-overlay" />}
+                    toolbarChildren={this.props.userRole === 'visitor' && <CartPopUp id="toolbar-cart-overlay" />}
                     navItems={this.state.navItems.map(props => <NavLink {...props} key={props.to} />)}
                 >
                 </NavigationDrawer>

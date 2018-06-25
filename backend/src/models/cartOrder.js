@@ -26,6 +26,6 @@ const CartorderSchema  = new mongoose.Schema({
 
 });
 CartorderSchema.set('versionKey', false);
-
+CartorderSchema.set('timestamps', true);
 // Export the Movie model
 module.exports = mongoose.model('CartOrder', CartorderSchema);
