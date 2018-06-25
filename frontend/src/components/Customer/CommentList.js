@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from 'react-md';
 import Page from '../Page'
 import {Autocomplete} from "react-md/es/index";
-import {CommentRow} from "./CommentRow";
+import CommentRow from "../Customer/CommentRow";
 
 
 const testCard = (key, attractionId, context, attraction) => <CommentRow
@@ -12,6 +12,7 @@ const testCard = (key, attractionId, context, attraction) => <CommentRow
     attractionId = {attractionId}
     context = {context}
     attraction={attraction}
+
 />;
 
 
@@ -19,7 +20,7 @@ class CommentList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            testCards: []/*新建一个字符串*/
+            testCard: []/*新建一个字符串*/
         }
 
     }

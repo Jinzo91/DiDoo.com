@@ -51,7 +51,7 @@ const listcommentbyvisitor  = async (req, res) => {
         _id: {
             $in: comments.map(comment => comment.attractionId)
         }
-    },{title:1});
+    },{title:1, posters: 1});
     comments = comments.map(comment => {
         comment = comment.toObject();
         comment.attraction = attractions.filter(user => user._id.toString() === comment.attractionId.toString())[0].toObject();

@@ -5,23 +5,26 @@ import { Toolbar, Button } from 'react-md';//从react-md里面要东西
 import { withRouter } from 'react-router-dom'
 import KebabMenu from '../KebabMenu';
 import searchtoolbar from '../../css/searchtoolbar.css';
+import CartPopUp from '../ShoppingCart/CartPopUp';
+import UserService from "../../services/UserService";
+
 class SearchHeader extends React.Component {
 
     constructor(props) {//构造函数，传入的数据
         super(props);
+        this.state = {
+            title: '',
+            user: UserService.getCurrentUser(),
+        }
     }
 
     render() {
         return (
             <Toolbar  className={searchtoolbar}
-
                 actions={
-                    [
-                        <Button
-                                style={{color: 'white'}}
-                                icon
-                                onClick={() => console.log('onCart')}>shopping_cart</Button>,
-                        <KebabMenu id="toolbar-colored-kebab-menu" />
+                    [this.state.user.status == 'visitor' &&
+                    <CartPopUp id="toolbar-cart-overlay" />,
+                    <KebabMenu id="toolbar-colored-kebab-menu" />
                     ]
                 }>
 

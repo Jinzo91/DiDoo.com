@@ -1,47 +1,49 @@
 "use strict";
 
 import React from 'react';
-import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from 'react-md';
-
-import { MovieListRow } from '../MovieListRow';
 import Page from '../Page'
-import {Autocomplete} from "react-md/es/index";
-import {OrderRow} from "./OrderRow";
-export const OrderList = ({data, onDelete}) => (
-    <Page>
-        <div style={{
-            display: 'flex',
-            flexDirection: 'row-reverse'
-        }}>
-            
-            {/*Simple = () => (
-            <Card style={style} className="md-block-centered">
-                <CardTitle title="Using CardTitle" subtitle="With CardText" />
-                <CardText>
-                    <p>
-                        The <code>CardText</code> component is really just useful for displaying any
-                        content with some additional padding.
-                    </p>
-                    <Slider id="example-card-slider" />
-                </CardText>
-            </Card>
-            );*/}
-        </div>
-        <DataTable plain>
-            <TableHeader>
-                <TableRow>
-                    <TableColumn></TableColumn>
-                    <TableColumn>Name</TableColumn>
-                    <TableColumn>Date</TableColumn>
-                    <TableColumn>comment</TableColumn>
-                    <TableColumn>apply to return</TableColumn>
-                    <TableColumn>delete</TableColumn>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {data.map((movie, i) => <OrderRow key={i} movie={movie} onDelete={(id) => onDelete(id)} />)}
-            </TableBody>
-        </DataTable>
-    </Page>
-);
+import OrderRow from "../Customer/OrderRow";
+
+const testCard = (key, quantity, ticketId,createdAt,ticket,date,attractionId,attraction) => <OrderRow
+    key={key}
+    quantity = {quantity}
+    ticketId = {ticketId}
+    createdAt = {createdAt}
+    ticket = {ticket}
+    date = {date}
+    attractionId = {attractionId}
+    attraction = {attraction}
+/>;
+
+
+class OrderList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            testCard: []/*新建一个字符串*/
+        }
+
+    }
+    componentWillReceiveProps(props){
+        console.log(this.props);
+        const testCards = props.data.map( (data, i)=>testCard(i, data.quantity, data.ticketId, data.createdAt, data.ticket, data.date, data.attractionId, data.attraction));
+        /*赋予上一个view的，用数据库的名字*/
+        this.setState({testCards});
+    }
+
+    render() {
+        return (
+            <Page>
+                    <div style={{
+                        position:'relative',
+                    }}>
+                        {this.props.data.map((data, i) => <OrderRow key={i} {...data}/>)}
+                    </div>
+
+            </Page>
+        );
+    }
+}
+
+export default OrderList;
 
