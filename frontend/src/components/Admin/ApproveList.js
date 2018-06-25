@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import Page from '../Page';
 import { ApproveCard } from '../Admin/ApproveCard';
-import {Autocomplete} from "react-md/es/index";
+import { Autocomplete } from "react-md/es/index";
 
-const testCard = (key,title,type,image,introduction) => <ApproveCard
-    key={key}
-    title={title}
-    type={type}
-    image={image}
-    introduction={introduction}
+const testCard = (key,data, onApprove) => <ApproveCard
+    {...data}
+    onApprove={onApprove}
 />;
 
 export class ApproveList extends Component {
@@ -22,7 +19,7 @@ export class ApproveList extends Component {
 
     componentWillReceiveProps(props){
         console.log(this.props);
-        const testCards = props.data.map( (data, i)=>testCard(i, data.title, data.type, data.posters.original,data.introduction));
+        const testCards = props.data.map( (data, i)=>testCard(i,data, props.onApprove));
         /*赋予上一个view的，用数据库的名字*/
         this.setState({testCards});
     }
@@ -30,18 +27,18 @@ export class ApproveList extends Component {
     onSearch(value) {
         const newCards = this.props.data
             .filter(data => data.title.toLowerCase().includes(value.toLowerCase()))
-            .map( (data, i)=>testCard(i, data.title, data.type, data.posters.original,data.introduction));
+            .map( (data, i)=>testCard(i,data, this.props.onApprove));
         this.setState({
             testCards: newCards
         })
     }
 
-    render() {
+    render(props) {
         return (
             <Page>
                 <div style={{
-                    /*display: 'flex',*/
-                    /*flexDirection: 'row-reverse'*/
+                    /*display: 'flex',
+                    flexDirection: 'row-reverse'*/
                 }}>
                     {/*<Button onClick={() => this.props.history.push('/')} icon>search</Button>*/}
                     <Autocomplete style={{ maxWidth: '20%', marginLeft: '120px'}}
@@ -55,6 +52,7 @@ export class ApproveList extends Component {
                     <div style={{
                         position:'relative',
                     }}>
+                        {/*{this.props.data.map((data, i) => <ManageCard key={i} {...data} onDelete={(id) => this.props.onDelete(id)} />)}*/}
                         {this.state.testCards}
                     </div>
                 </div>

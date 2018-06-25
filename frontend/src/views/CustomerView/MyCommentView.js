@@ -22,7 +22,9 @@ export class MyCommentView extends React.Component {
         this.setState({
             loading: true
         });
-        let id = this.state.user.id//'5b2e8301edbee41df00f6433';
+
+        let id = this.state.user.id;//'5b2e8301edbee41df00f6433';
+
         CommentService.getCommentsUser(id).then(data => {  // 從SERVICE裏抓數據放入data
             this.setState({
                 data: [...data],

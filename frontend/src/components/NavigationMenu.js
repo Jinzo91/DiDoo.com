@@ -5,8 +5,12 @@ import {Route, Link, withRouter} from 'react-router-dom';
 import {FontIcon, ListItem, NavigationDrawer, Button, Avatar, IconSeparator, Autocomplete, TextField} from 'react-md';
 import KebabMenu from './KebabMenu';
 import imgURL from '../images/didoo.png';
-import NavigationMenuStyle from '../css/NavigationMenuStyle.css';//required
+import NavigationMenuStyle from '../css/NavigationMenuStyle.css';
 import CartPopUp from './ShoppingCart/CartPopUp';
+import AttractionService from '../services/AttractionService';
+import UserService from "../services/UserService";
+import MovieService from "../services/MovieService";
+import CommentService from "../services/CommentService";
 
 
 const Item = ({ label, children }) => (
@@ -58,34 +62,33 @@ const defaultNavItems = [{
 const adminNavItems = [
     {
         exact: true,
-        label: 'Manage Attractions',
+        label: 'Manage approved Attractions',
         to: '/admin',
-        icon: 'view_list',
+        icon: 'playlist_add_check',
     }, {
-        label: 'Approve Attractions',
-        to: '/admin/approveta',
-        icon: 'verified_user',
+        label: 'Manage unapproved Attractions',
+        to: '/admin/unapproved',
+        icon: 'playlist_play',
     }, {
-        label: 'Manage Visitor',
-        to: '/admin/managevisitor',
-        icon: 'people',
+        label: 'Create new Attraction',
+        to: '/add',
+        icon: 'playlist_add',
     }, {
-        label: 'Sales Report',
-        to: '/admin/report',
-        icon: 'show_chart',
+        label: 'Inventory',
+        to: '/admin/inventory',
+        icon: 'store',
     }
 ];
 
 const taNavItems = [
     {
-        exact: true,
-        label: 'Manage Attractions',
-        to: '/ta',
-        icon: 'view_list',
+        label: 'Approve Attractions',
+        to: '/admin/approveta',
+        icon: 'verified_user',
     }, {
-        label: 'Manage Inventory',
-        to: '/ta/inventory',
-        icon: 'storage',
+        label: 'Sales Report',
+        to: '/admin/report',
+        icon: 'show_chart',
     }
 ];
 
@@ -103,10 +106,28 @@ class NavigationMenu extends React.Component {
             loading: false,
             data: [],
             navItems: navMap[this.props.userRole] ? navMap[this.props.userRole] : defaultNavItems,
-            searchValue: []
+            searchValue: [],
+            attractions: [],
+            titles: [],
         };
     }
 
+    componentWillMount(){
+        AttractionService.getAttractions().then((data) => {
+            this.setState({
+                attractions: [...data],
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e);
+        });
+    }
+
+    newSearch() {
+        window.location.reload();
+        this.props.history.push(`/searchresult?query=${this.state.searchValue}`);
+
+    }
 
     render() {
         return (
@@ -121,12 +142,12 @@ class NavigationMenu extends React.Component {
                     </Item>}
                     toolbarTitleMenu={this.props.userRole !== 'admin' && <Item>
                             <Autocomplete style={{margin: "auto", width: "30%", left: "-30px", height: "35px", background: "white", color: 'black'}}
-                                          data={['Hutongs', 'Forbidden City', 'Great Wall', 'Olympic Sites', 'Ming Tombs']}
+                                          data={this.state.titles = this.state.attractions.map(attractions => attractions.title)}
                                           filter={Autocomplete.caseInsensitiveFilter}
                                           onAutocomplete={(value) => this.setState({ searchValue: value })}
                                           onChange={(value) => this.setState({ searchValue: value })}
                             />
-                            <Button style={{margin: "auto", width: "10%", left: "-30px"}} onClick={() => this.props.history.push(`/searchresult?query=${this.state.searchValue}`)} flat iconBefore={true} iconChildren={"search"}/>
+                            <Button style={{margin: "auto", width: "10%", left: "-30px"}} onClick={() => this.newSearch()} flat iconBefore={true} iconChildren={"search"}/>
 
                     </Item>}
                     toolbarActions={<KebabMenu id="toolbar-colored-kebab-menu" />}

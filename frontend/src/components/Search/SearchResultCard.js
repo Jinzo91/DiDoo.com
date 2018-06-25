@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Media } from 'react-md';
+import { withRouter } from 'react-router-dom'
 import StarRatingComponent from 'react-star-rating-component';
 class SearchResultCard extends Component {
     constructor(props) {
@@ -65,12 +66,11 @@ class SearchResultCard extends Component {
                         color:'white',
                         marginRight:'50px',
                         fontSize:'40px'
-
-                    }}  onClick={() => this.props.history.push('/')}>Select</Button>
+                    }}  onClick={() => this.props.history.push(`/attraction/${this.props.id}`)}>Select</Button>
                 </div>
             </div>
         );
     }
 }
 
-export default SearchResultCard;
+export default withRouter (SearchResultCard);

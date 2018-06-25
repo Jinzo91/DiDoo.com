@@ -49,13 +49,26 @@ const createpreattraction = async (req, res) => {
     res.status(200).json(attraction);
 };
 
+/*const createpreattraction = async (req, res) => {
+    if (Object.keys(req.body).length === 0) return res.status(400).json({
+        error: 'Bad Request',
+        message: 'The request body is empty'
+    });
+
+    AttractionModel.create(req.body)
+        .then(attraction => res.status(201).json(attraction))
+        .catch(error => res.status(500).json({
+            error: 'Internal server error',
+            message: error.message
+        }));
+};*/
+
 const updateattraction = async (req, res) => {
-    const {
-        attractionId,
-        attractionInfo,
-    } = req.body;
+
+    const {attractionId} = req.params;
+
     const attraction = await AttractionModel.findByIdAndUpdate(attractionId, {
-        $set: attractionInfo
+        $set: req.body
     }, {
         new: true
     });
@@ -73,7 +86,7 @@ const removeattraction = async (req, res) => {
 const approveattraction = async (req, res) => {
     const {
         attractionId,
-    } = req.body;
+    } = req.params;
     const attraction = await AttractionModel.findByIdAndUpdate(attractionId, {status: 'hasapproved',}, {
         new: true
     });

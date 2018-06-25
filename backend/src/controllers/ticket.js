@@ -37,6 +37,23 @@ const update = async (req, res) => {
     res.status(200).json(ticket);
 };
 
+const updatestock = async (req, res) => {
+    const {
+        attractionId,
+        date,
+        stock,
+    } = req.body;
+    const ticket = await TicketModel.findOneAndUpdate({attractionId:attractionId,date:date},
+        {
+            $set: {
+                stock,
+            },
+        },{
+            new: true
+        });
+    res.status(200).json(ticket);
+};
+
 const remove = async (req, res) => {
     const {
         ticketId,
@@ -106,6 +123,7 @@ const checksale  = async(req, res) => {
 module.exports = {//这里为啥也有export
     create,
     update,
+    updatestock,
     remove,
     list,
     remainingticket,

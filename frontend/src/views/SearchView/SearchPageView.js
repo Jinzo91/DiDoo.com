@@ -21,7 +21,7 @@ export class  SearchPageView extends React.Component {
             <section>
                 <SearchHeader title={this.state.title} />
                 <img src={Background} className="bg" />
-                <div style={{marginTop:'500px', position: 'relative'}}>
+                <div style={{marginTop:'350px', position: 'relative'}}>
                 <SearchBarComponent
                 /></div>
             </section>

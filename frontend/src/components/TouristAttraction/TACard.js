@@ -23,8 +23,9 @@ export class TACard extends Component {
                         <img src={this.props.image} alt="Nature from lorempixel" />
                         <MediaOverlay>
                             <CardTitle title={this.props.title} subtitle={this.props.type}>
-                                <Button className="md-cell--right" icon>edit_outline</Button>
-                                <Button className="md-cell--right" icon>delete_outline</Button>
+                                {<Button flat><Link to={`/edit/${this.props._id}`}><FontIcon>edit_outline</FontIcon></Link></Button>}
+                                {/*<Button flat>edit</Button>*/}
+                                <Button flat onClick={() => this.props.onDelete(this.props._id)} icon>delete_outline</Button>
                             </CardTitle>
                         </MediaOverlay>
                     </Media>
