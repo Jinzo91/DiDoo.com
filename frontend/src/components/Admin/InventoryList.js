@@ -7,7 +7,7 @@ import Page from '../Page'
 
 import { InventoryRow } from "./InventoryRow";
 
-export const InventoryList = ({data, onSubmit}) => (
+export const InventoryList = ({data}) => (
     <Page>
         <div style={{
             display: 'flex',
@@ -38,7 +38,7 @@ export const InventoryList = ({data, onSubmit}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((attraction, i) => <InventoryRow key={i} attraction={attraction} onSubmit={(id) => this.props.onSubmit(id)} />)}/>)}
+                {data.map((attraction, i) => <InventoryRow key={i} attraction={attraction}/>)}
             </TableBody>
         </DataTable>
     </Page>

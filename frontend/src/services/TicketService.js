@@ -10,6 +10,15 @@ export default class TicketService {
 
     static baseURL() {return "http://localhost:3000/ticket" }// API routes
 
+    static updatestock(attractionId, stock, date) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(`${TicketService.baseURL()}/stock`,{attractionId, stock, date},function (data) {
+                resolve(data);
+            }, function (textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
     static getTickets(){
         return new Promise((resolve, reject) => {
             HttpService.get(this.baseURL(), function(data) {

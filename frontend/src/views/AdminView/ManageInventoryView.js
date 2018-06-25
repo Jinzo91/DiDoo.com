@@ -82,9 +82,9 @@ export class ManageInventoryView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: false,
-            dataAttraction: [],
-            dataTicket:[]
+            loading: true,
+            data: [],
+/*            dataTicket:[]*/
         };
     }
 
@@ -96,24 +96,24 @@ export class ManageInventoryView extends React.Component {
 
         AttractionService.getAttractions().then((data) => {
             this.setState({
-                dataAttraction: [...data],
+                data: data,
                 loading: false
             });
         }).catch((e) => {
             console.error(e);
         });/*获得数据，从后端*/
 
-        TicketService.getTicket(id).then((data) => {
+/*        TicketService.getTicket(id).then((data) => {
             this.setState({
                 dataTicket: data,
                 loading: false
             });
         }).catch((e) => {
             console.error(e);
-        });/*获得数据，从后端*/
+        });/!*获得数据，从后端*!/*/
     }
 
-    updateTicket(ticket) {
+/*    updateTicket(ticket) {
             console.log(ticket);
             TicketService.updateTicket(ticket).then((ticket) => {
                 this.setState({
@@ -124,14 +124,17 @@ export class ManageInventoryView extends React.Component {
                 console.error(e + ' Error while updating attraction');
                 this.setState(Object.assign({}, this.state, {error: 'Error while updating ticket'}));
             });
-    }
+    }*/
 
     render() {
 
         return (
             <div>
                 <img src={Background} className="bg" />
-                <InventoryList dataAttraction={this.state.dataAttraction} dataTicket={this.state.dataTicket} onSubmit={(id) => this.updateTicket(id)}/>
+                {
+                    !this.state.loading &&
+                    <InventoryList data={this.state.data} />
+                }
             </div>
         );
     }
