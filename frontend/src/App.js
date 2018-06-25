@@ -23,11 +23,9 @@ import {AttractionFormView} from "./views/AttractionFormView";
 import {SearchPageView} from "./views/SearchView/SearchPageView";
 import {SearchResultView} from "./views/SearchView/SearchResultView";
 import {CasualLookView} from "./views/SearchView/CasualLookView";
-<<<<<<< HEAD
 import ShoppingService from "./services/ShoppingService";
-=======
 import {AttractionDetailView} from "./views/SearchView/AttractionDetailView";
->>>>>>> d9a4a03cc197c9127ab8943295fa81506f0d6d6e
+
 
 export default class App extends React.Component {
 
