@@ -3,7 +3,7 @@
 import React from 'react';
 import { Footer } from './Footer';
 import NavigationMenu from './NavigationMenu';
-
+import UserService from  '../services/UserService';
 
 export default class Page extends React.Component {
 
@@ -11,21 +11,24 @@ export default class Page extends React.Component {
         super(props);
 
         this.state = {
-            title: ''
+            title: '',
+            user: UserService.getCurrentUser(),
+            userRole: '',
         }
     }
 
     componentDidMount(){
        this.setState({
-           title: document.title
+           title: document.title,
        });
+
     }
 
     render() {
         return (
             <section>
                 {/*set user role below*/}
-                <NavigationMenu title={this.state.title} userRole='admin'/>
+                <NavigationMenu title={this.state.title} userRole={this.state.userRole = this.state.user.status}/>
                 {this.props.children}
                 <Footer />
             </section>

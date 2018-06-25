@@ -11,7 +11,7 @@ cd path/to/workspace/DiDoo.com
 **Install node dependencies**
 
 ```
-Open command shell in backend and frontend fodlers and run: npm install
+Open command shell in backend and frontend folders and run: npm install
 ```
 
 **Set up your database**
@@ -20,6 +20,8 @@ Open command shell in backend and frontend fodlers and run: npm install
 * Start the database server
 ```
 mongod --dbpath relative/path/to/database
+OR if you have already set the path just run
+mongod
 ```
 * Create all database schemes and import data to begin with
 ```

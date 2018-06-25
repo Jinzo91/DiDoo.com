@@ -1,6 +1,7 @@
 "use strict";
 
 import HttpService from "./HttpService";
+import AttractionService from "./AttractionService";
 
 export default class UserService {
 
@@ -39,6 +40,7 @@ export default class UserService {
         window.localStorage.removeItem('jwtToken');
     }
 
+    //gets data from jwtToken, which is prefilled with user data. Data from database has to be added to token beforehand.
     static getCurrentUser() {
         let token = window.localStorage['jwtToken'];
         if (!token) return {};
@@ -48,9 +50,25 @@ export default class UserService {
         return {
             id : JSON.parse(window.atob(base64)).id,
             username: JSON.parse(window.atob(base64)).username,
-            isAdmin: JSON.parse(window.atob(base64)).isAdmin,
+            status: JSON.parse(window.atob(base64)).status,
         };
     }
+
+    /*//gets user data from DATABASE
+    static findUser(username){
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/findUser/${username}`, function(data) {
+                if(data != undefined) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving comment');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }*/
 
     static isAuthenticated() {
         return !!window.localStorage['jwtToken'];
