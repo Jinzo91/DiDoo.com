@@ -3,7 +3,7 @@ import AttractionService from "../../services/AttractionService";
 import CommentService from "../../services/CommentService";
 import { Footer } from '../../components/Footer';
 import NavigationMenu from '../../components/NavigationMenu';
-import { AttractionDetail } from '../../components/Search/AttractionDetail';
+import AttractionDetail  from '../../components/Search/AttractionDetail';
 import CommentDetailPage from '../../components/Search/CommentDetailPage';
 export class AttractionDetailView extends React.Component {
 

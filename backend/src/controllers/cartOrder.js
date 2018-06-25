@@ -8,14 +8,13 @@ const addtocart = async (req, res) => {
         quantity,userId,date,attractionId
     } = req.body;
     const ticket =  await TicketModel.findOne({attractionId:attractionId, date:date});
-    console.log(ticket._id);
-/*    const cart = await CartOrderModel.create({
+    const cart = await CartOrderModel.create({
         quantity: quantity || 1,
         ticketId:ticket._id,
         userId:userId,
-    });*/
+    });
 
-    res.status(200).json('good');
+    res.status(200).json(cart);
 };
 
 const removefromcart = async (req, res) => {
