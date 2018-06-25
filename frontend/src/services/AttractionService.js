@@ -1,8 +1,6 @@
 "use strict";
 
 import HttpService from './HttpService';
-import MovieService from "./MovieService";
-import CommentService from "./CommentService";
 
 export default class AttractionService {
 
