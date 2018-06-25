@@ -42,6 +42,7 @@ class KebabMenu extends React.Component {
                 menuStyle={{marginTop: "3px"}}
                 id={this.props.id}
                 /*icon*/
+                style={{color: 'white'}}
                 iconChildren={'account_circle'}
                 className={this.props.className}
                 menuItems={this.state.user ? [
