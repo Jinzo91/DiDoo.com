@@ -19,6 +19,15 @@ const create = async (req, res) => {
     res.status(200).json(tickets);
 };
 
+const readdetailinfo  = async(req, res) => {
+    const {
+        ticketId,
+    } = req.params;
+    const ticket = await TicketModel.findById(ticketId);
+
+    res.status(200).json(ticket);
+};
+
 const update = async (req, res) => {
     const {
         ticketId,
@@ -125,6 +134,7 @@ module.exports = {//这里为啥也有export
     update,
     updatestock,
     remove,
+    readdetailinfo,
     list,
     remainingticket,
     checksale,

@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import AttractionForm from './../components/AttractionForm';
+import AttractionForm from '../../components/Admin/AttractionForm';
 
-import AttractionService from '../services/AttractionService';
+import AttractionService from '../../services/AttractionService';
 
 
 export class AttractionFormView extends React.Component {
