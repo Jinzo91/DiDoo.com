@@ -21,7 +21,7 @@ export default class ShoppingService {
 
     static getCart(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${TicketService.baseURL()}/${id}`, function(data) {
+            HttpService.get(`${ShoppingService.baseURL()}/cart/${id}`, function(data) {
                 if(data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
@@ -33,6 +33,22 @@ export default class ShoppingService {
             });
         });
     }
+
+    static getOrder(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${ShoppingService.baseURL()}/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving order list');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
 
     static deleteCartItem(id) {
         return new Promise((resolve, reject) => {

@@ -21,6 +21,7 @@ import { ManageInventoryView } from "./views/TouristAttractionView/ManageInvento
 import {SearchPageView} from "./views/SearchView/SearchPageView";
 import {SearchResultView} from "./views/SearchView/SearchResultView";
 import {CasualLookView} from "./views/SearchView/CasualLookView";
+import ShoppingService from "./services/ShoppingService";
 
 export default class App extends React.Component {
 

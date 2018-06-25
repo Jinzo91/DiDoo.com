@@ -25,7 +25,7 @@ export default class Page extends React.Component {
         return (
             <section>
                 {/*set user role below*/}
-                <NavigationMenu title={this.state.title} userRole='admin'/>
+                <NavigationMenu title={this.state.title} userRole='visitor'/>
                 {this.props.children}
                 <Footer />
             </section>
