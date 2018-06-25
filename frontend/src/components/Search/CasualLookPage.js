@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import SearchResultCard from './SearchResultCard';
 import SearchFilter from './SearchFilter';
 
-const testCard = (key,title,image,type,rating,address,introduction,price) => <SearchResultCard
+const testCard = (key,id,title,image,type,rating,address,introduction,price) => <SearchResultCard
     key={key}
+    id = {id}
     image={image}
     type = {type}
     rating={rating}
@@ -22,7 +23,7 @@ class CasualLookPage extends Component {
     }
 
     componentWillReceiveProps(props){
-        const testCards = props.data.map((data, i)=>testCard(i, data.title, data.posters.original,data.type,data.rating,data.address,data.introduction,data.price));
+        const testCards = props.data.map((data, i)=>testCard(i, data._id,data.title, data.posters.original,data.type,data.rating,data.address,data.introduction,data.price));
         this.setState({testCards});
     }
 

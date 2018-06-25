@@ -23,6 +23,7 @@ import {AttractionFormView} from "./views/AttractionFormView";
 import {SearchPageView} from "./views/SearchView/SearchPageView";
 import {SearchResultView} from "./views/SearchView/SearchResultView";
 import {CasualLookView} from "./views/SearchView/CasualLookView";
+import {AttractionDetailView} from "./views/SearchView/AttractionDetailView";
 
 export default class App extends React.Component {
 
@@ -34,7 +35,8 @@ export default class App extends React.Component {
             routes: [
                 { component: SearchPageView ,  path: '/',exact:true},
                 { component: SearchResultView , path: '/searchresult',exact:true},
-                { component: CasualLookView, path: '/casuallook'},
+                { component: CasualLookView, path: '/casuallook',exact: true},
+                { component: AttractionDetailView , path: '/attraction/:id'},
                 { component: TAManagementView , path: '/admin', exact: true},
                 { component: AttractionFormView , path: '/edit/:attractionId', exact: true},
                 { component: AttractionCreateView , path: '/add', exact: true},

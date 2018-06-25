@@ -25,11 +25,10 @@ const login = (req,res) => {
 
             // if user is found and password is valid
             // create a token
-            const token = jwt.sign({ id: user._id, username: user.username }, config.JwtSecret, {
-                expiresIn: 0 // expires in 24 hours
+            const token = jwt.sign({ id: user._id, username: user.username, status: user.status }, config.JwtSecret, {
+                expiresIn: 999999 // time in seconds until it expires
             });
-
-            res.status(200).json({token: token});
+            res.status(200).json({token: token, user});
 
         })
         .catch(error => res.status(404).json({
@@ -59,8 +58,8 @@ const register = (req,res) => {
 
             // if user is registered without errors
             // create a token
-            const token = jwt.sign({ id: user._id, username: user.username }, config.JwtSecret, {
-                expiresIn: 0 // time until it expires, set to 0 for no expiration
+            const token = jwt.sign({ id: user._id, username: user.username, status: user.status }, config.JwtSecret, {
+                expiresIn: 999999 // time in seconds until it expires
             });
 
             res.status(200).json({token: token});
@@ -111,10 +110,22 @@ const list  = async (req, res) => {
 
     res.status(200).json(visitors);
 };
+
+const findUser  = async (req, res) => {
+    const {
+        username,
+    } = req.params;
+
+    const user = await UserModel.find({username: username});
+
+    res.status(200).json(user);
+};
+
 module.exports = {
     login,
     register,
     logout,
     me,
-    list
+    list,
+    //findUser
 };

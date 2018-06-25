@@ -131,4 +131,27 @@ export default class AttractionService {
             });
         });
     }
+    static getAttractionDetail(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${AttractionService.baseURL()}/readdetail/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving movie');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+    static filterattraction(filterinfo) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${AttractionService.baseURL()}/filter`, filterinfo, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
 }

@@ -90,4 +90,18 @@ export default class CommentService {
             });
         });
     }
+    static getCommentsbyAttration(id) {//用attraction找評論
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${CommentService.baseURL()}/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving comment');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
 }
