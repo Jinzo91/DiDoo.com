@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import MovieForm from '../components/AttractionForm';
+import MovieForm from '../components/Admin/AttractionForm';
 
 import MovieService from '../services/MovieService';
 

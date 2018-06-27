@@ -46,11 +46,8 @@ const filterattraction = async (req, res) => {
 
 
 const createpreattraction = async (req, res) => {
-    const {
-        attractionInfo,
-    } = req.body;
 
-    const attraction = await AttractionModel.find(attractionInfo);
+    const attraction = await AttractionModel.create(req.body);
 
     res.status(200).json(attraction);
 };
@@ -107,6 +104,7 @@ const readdetailinfo   = async(req, res) => {
 
     res.status(200).json(attraction);
 };
+
 const readgeneralinfo   = async(req, res) => {
     const {
         attractionId,

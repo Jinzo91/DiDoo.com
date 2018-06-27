@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../Page';
-import { ApproveCard } from '../Admin/ApproveCard';
+import { ApproveCard } from './ApproveCard';
 import { Autocomplete } from "react-md/es/index";
 
 const testCard = (key,data, onApprove) => <ApproveCard

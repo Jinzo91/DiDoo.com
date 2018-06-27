@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../Page';
-import { TACard } from '../TouristAttraction/TACard';
+import { TACard } from './/TACard';
 import { Autocomplete } from "react-md/es/index";
 
 const testCard = (key,data, onDelete) => <TACard

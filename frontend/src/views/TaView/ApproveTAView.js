@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ApproveList } from '../../components/Admin/ApproveList';
+import { ApproveList } from '../../components/Ta/ApproveList';
 import Background from '../../images/AdminBG.png';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";

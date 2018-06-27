@@ -2,12 +2,12 @@
 
 import React from 'react';
 
-import AttractionForm from './../components/AttractionForm';
+import AttractionForm from '../../components/Admin/AttractionForm';
 
-import AttractionService from '../services/AttractionService';
+import AttractionService from '../../services/AttractionService';
 
 
-export class AttractionFormView extends React.Component {
+export class AttractionCreateView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -50,7 +50,7 @@ export class AttractionFormView extends React.Component {
     updateAttractions(attraction) {
         if(this.state.data === undefined) {
             AttractionService.createAttractions(attraction).then((data) => {
-                console.log(data);
+                console.log(attraction)
                 this.props.history.push('/');
             }).catch((e) => {
                 console.error(e + ' Error while creating attraction');
