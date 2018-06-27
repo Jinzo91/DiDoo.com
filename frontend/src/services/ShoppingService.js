@@ -8,7 +8,7 @@ export default class ShoppingService {
     }
 
     static baseURL() {
-        return "http://localhost:3000/cartOrder"
+        return "http://localhost:3000/cartOrder/"
     }
 
     static addToCart(userId, attractionId, quantity, date) {

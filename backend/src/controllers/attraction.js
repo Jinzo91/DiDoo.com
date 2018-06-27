@@ -20,19 +20,24 @@ const filterattraction = async (req, res) => {
         price,
     } = req.body;
     let pricerange;
-    if(price ==='0'){
-        pricerange= { "$lte": 25, "$gte": 0 };
-    } else if (price ==='25'){
-         pricerange= { "$lte": 50, "$gte": 26 };
-    } else if (price ==='50'){
-         pricerange= { "$lte":75 , "$gte": 51 };
-    }  else if (price ==='75'){
-         pricerange= { "$lte": 100, "$gte": 76 };
+
+    const mapPriceRange = (price) => {
+        if (price === '0') {
+            return {price: {"$lte": 24, "$gte": 0}};
+        } else if (price === '25') {
+            return {price: {"$lte": 49, "$gte": 25}};
+        } else if (price === '50') {
+            return {price: {"$lte": 74, "$gte": 50}};
+        } else if (price === '75') {
+            return {price: {"$lte": 100, "$gte": 75}};
+        }
     }
+
     const query = {};
-    if (!!price ) query.price = pricerange;
-    if (!!district) query.district  = district;
-    if (!!type) query.type  = type;
+    if (price.length !== 0) query.$or = price.map(mapPriceRange);
+    if (district.length !== 0) query.district  = {$in: district};
+    if (type.length !== 0) query.type  = {$in: type};
+    query.status = 'hasapproved';
     const attraction = await AttractionModel.find(query,{title: 1,type: 1,district:1,address: 1,introduction: 1,rating: 1 ,price:1,posters:1});
 
     res.status(200).json(attraction);
