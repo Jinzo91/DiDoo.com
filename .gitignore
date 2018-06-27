@@ -62,3 +62,5 @@ database/journal/WiredTigerLog.0000000008
 database/diagnostic.data/metrics.2018-06-27T08-49-02Z-00000
 database/diagnostic.data/metrics.2018-06-26T20-21-38Z-00000
 database/diagnostic.data/metrics.2018-06-26T16-22-50Z-00000
+database/journal/WiredTigerLog.0000000009
+database/diagnostic.data/metrics.2018-06-27T18-34-31Z-00000

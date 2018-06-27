@@ -9,17 +9,17 @@ const search = async (req, res) => {
         $or : [
             {title: titleRegex},
             {type : titleRegex}
-        ]
+        ],status:"hasapproved"
     },{title: 1,type: 1,address: 1,introduction: 1,rating: 1 ,price:1,posters:1});
     res.status(200).json(attractions);
 };
 const filterattraction = async (req, res) => {
     const {
+        attractionIds,
         district,
         type,
         price,
     } = req.body;
-    let pricerange;
 
     const mapPriceRange = (price) => {
         if (price === '0') {
@@ -34,6 +34,7 @@ const filterattraction = async (req, res) => {
     }
 
     const query = {};
+    if (attractionIds.length !== 0) query._id  = {$in: attractionIds};
     if (price.length !== 0) query.$or = price.map(mapPriceRange);
     if (district.length !== 0) query.district  = {$in: district};
     if (type.length !== 0) query.type  = {$in: type};

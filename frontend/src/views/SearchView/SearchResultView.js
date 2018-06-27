@@ -30,8 +30,8 @@ export class SearchResultView extends React.Component {//四人任务最开始�
         });
 
     }
-    filterattraction(district, type, price) {
-        AttractionService.filterattraction(district, type, price).then((data) => {
+    filterattraction(attractionIds,district, type, price) {
+        AttractionService.filterattraction(attractionIds,district, type, price).then((data) => {
             this.setState({
                 data: data,
                 loading: false
@@ -47,7 +47,7 @@ export class SearchResultView extends React.Component {//四人任务最开始�
             <div>
                 <NavigationMenu/>
                 <img src={Background} className="bg" />
-                <SearchResultPage data={this.state.data} onFilter={(district, type, price) => this.filterattraction(district, type, price)} error={this.state.error}/>
+                <SearchResultPage data={this.state.data} onFilter={(attractionIds,district, type, price) => this.filterattraction(attractionIds,district, type, price)} error={this.state.error}/>
             </div>
         );
     }

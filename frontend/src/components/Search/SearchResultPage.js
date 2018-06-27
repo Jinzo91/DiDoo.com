@@ -29,13 +29,15 @@ class SearchResultPage extends Component {
         super(props);
         this.state = {
             testCards: [],
+            attractionIds:[],
             district: [],
             type: [],
             price: []
-        }
+        };
+
     }
     componentWillReceiveProps(props){
-        //console.log(props.data);
+        props.data.map( data => this.state.attractionIds.push(data._id));
         const testCards = props.data.map((data, i)=>testCard(i, data._id,data.title, data.posters.original,data.type,data.rating,data.address,data.introduction,data.price));
         this.setState({testCards});
     }
@@ -75,7 +77,7 @@ class SearchResultPage extends Component {
     }
 
     handlefilter() {
-        this.props.onFilter(this.state.district, this.state.type, this.state.price);
+        this.props.onFilter(this.state.attractionIds,this.state.district, this.state.type, this.state.price);
     }
 
     districtsCheckboxs = (districts) => {

@@ -36,8 +36,8 @@ export class CasualLookView extends React.Component {
 
     }
 
-    filterattraction(district, type, price) {
-        AttractionService.filterattraction(district, type, price).then((data) => {
+    filterattraction(attractionIds,district, type, price) {
+        AttractionService.filterattraction(attractionIds,district, type, price).then((data) => {
             this.setState({
                 data: data,
                 loading: false
@@ -54,7 +54,7 @@ export class CasualLookView extends React.Component {
             <div>
                 <NavigationMenu userRole={this.state.userRole = this.state.user.status}/>
                 <img src={Background} className="bg"/>
-                <CasualLookPage data={this.state.data} onFilter={(district, type, price) => this.filterattraction(district, type, price)} error={this.state.error}/>
+                <CasualLookPage data={this.state.data} onFilter={(attractionIds,district, type, price) => this.filterattraction(attractionIds,district, type, price)} error={this.state.error}/>
                 <Footer/>
             </div>
         );
