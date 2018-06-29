@@ -10,7 +10,8 @@ export class SearchResultView extends React.Component {//四人任务最开始�
         super(props);
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            error: undefined
         };
     }
     componentWillMount(props){
@@ -27,6 +28,18 @@ export class SearchResultView extends React.Component {//四人任务最开始�
         }).catch((e) => {
             console.error(e);
         });
+
+    }
+    filterattraction(attractionIds,district, type, price) {
+        AttractionService.filterattraction(attractionIds,district, type, price).then((data) => {
+            this.setState({
+                data: data,
+                loading: false
+            });
+        }).catch((e) => {
+            console.error(e + ' Error while updating movie');
+            this.setState(Object.assign({}, this.state, {error: 'Error while updating movie'}));
+        });
     }
     render() {
 
@@ -34,7 +47,7 @@ export class SearchResultView extends React.Component {//四人任务最开始�
             <div>
                 <NavigationMenu/>
                 <img src={Background} className="bg" />
-                <SearchResultPage data={this.state.data}/>
+                <SearchResultPage data={this.state.data} onFilter={(attractionIds,district, type, price) => this.filterattraction(attractionIds,district, type, price)} error={this.state.error}/>
             </div>
         );
     }

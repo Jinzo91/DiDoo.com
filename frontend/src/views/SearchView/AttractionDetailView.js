@@ -5,6 +5,17 @@ import { Footer } from '../../components/Footer';
 import NavigationMenu from '../../components/NavigationMenu';
 import AttractionDetail  from '../../components/Search/AttractionDetail';
 import CommentDetailPage from '../../components/Search/CommentDetailPage';
+
+const districts = {
+    District: ['Dongcheng', 'Xicheng', 'Haidian', 'Fengtai', 'Shunyi', 'Tongzhou'],
+}
+const types = {
+    Type: ['Architectural Buildings', 'History Museums', 'Ancient Ruins', 'Bodies of Water', 'Sight&Landmarks', 'Specialy Museums'],
+}
+
+const prices = {
+    Price: ['¥ 0 - 25', '¥ 25 - 50', '¥ 50 - 75', '¥ 75 - 100']
+}
 export class AttractionDetailView extends React.Component {
 
     constructor(props) {
