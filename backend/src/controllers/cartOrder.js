@@ -5,12 +5,13 @@ const TicketModel = require('../models/ticket');
 const AttractionModel = require('../models/attraction');//这是啥，调用吗
 const addtocart = async (req, res) => {
     const {
-        quantity, ticketId,userId
+        quantity,userId,date,attractionId
     } = req.body;
+    const ticket =  await TicketModel.findOne({attractionId:attractionId, date:date});
     const cart = await CartOrderModel.create({
         quantity: quantity || 1,
-        ticketId,
-        userId,
+        ticketId:ticket._id,
+        userId:userId,
     });
 
     res.status(200).json(cart);

@@ -10,7 +10,7 @@ import MovieService from "../../services/MovieService";
 
 
 const Item = ({ label, children }) => (
-    <IconSeparator labelStyle={{marginLeft: "-20px"}} label={label} iconBefore component="li" className="md-cell md-cell--12">
+    <IconSeparator labelStyle={{color: 'white', marginLeft: "-20px"}} label={label} iconBefore component="li" className="md-cell md-cell--12">
         {children}
     </IconSeparator>
 );
@@ -70,7 +70,7 @@ class CartPopUp extends React.Component {
                 menuStyle={{marginTop: "15px", marginRight: "5px"}}
                 id={this.props.id}
                 /*icon*/
-                iconChildren={'shopping_cart'}
+                iconChildren={<icon style={{color:'white'}}>shopping_cart</icon>}
                 className={this.props.className}
                 menuItems={this.state.username !== 'admin' && this.state.user ? [
                     <CartList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>]

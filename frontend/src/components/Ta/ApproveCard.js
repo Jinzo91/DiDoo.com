@@ -8,8 +8,6 @@ import {
     CardTitle,
     FontIcon,
 } from 'react-md';
-import { SimpleLink } from '../SimpleLink';
-import { Link } from 'react-router-dom';
 
 const style = { maxWidth: '80%', marginBottom: '5px', marginTop: '5px'};
 

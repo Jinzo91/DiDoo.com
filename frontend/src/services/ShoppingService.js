@@ -4,16 +4,28 @@ import HttpService from './HttpService';
 
 export default class ShoppingService {
 
-    constructor(){
+    constructor() {
     }
 
-    static baseURL() {return "http://localhost:3000/cartOrder" }
+    static baseURL() {
+        return "http://localhost:3000/cartOrder/"
+    }
 
-    static getTickets(){
+    static addToCart(userId, attractionId, quantity, date) {
         return new Promise((resolve, reject) => {
-            HttpService.get(this.baseURL(), function(data) {
+            HttpService.post(this.baseURL(),{userId, attractionId, quantity, date},function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getTickets() {
+        return new Promise((resolve, reject) => {
+            HttpService.get(this.baseURL(), function (data) {
+                resolve(data);
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -28,7 +40,7 @@ export default class ShoppingService {
                 else {
                     reject('Error while retrieving shopping cart');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -52,14 +64,14 @@ export default class ShoppingService {
 
     static deleteCartItem(id) {
         return new Promise((resolve, reject) => {
-            HttpService.remove(`${TicketService.baseURL()}/${id}`, function(data) {
-                if(data.message != undefined) {
+            HttpService.remove(`${TicketService.baseURL()}/${id}`, function (data) {
+                if (data.message != undefined) {
                     resolve(data.message);
                 }
                 else {
                     reject('Error while deleting item');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -84,9 +96,9 @@ export default class ShoppingService {
             original: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg"
         };*/
         return new Promise((resolve, reject) => {
-            HttpService.post(TicketService.baseURL(), movie, function(data) {
+            HttpService.post(TicketService.baseURL(), movie, function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });

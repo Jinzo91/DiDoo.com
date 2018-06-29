@@ -7,7 +7,7 @@ import Page from '../Page'
 
 import { InventoryRow } from "./InventoryRow";
 
-export const InventoryList = ({data, onDelete}) => (
+export const InventoryList = ({data}) => (
     <Page>
         <div style={{
             display: 'flex',
@@ -35,11 +35,10 @@ export const InventoryList = ({data, onDelete}) => (
                     <TableColumn>Date</TableColumn>
                     <TableColumn>Amount</TableColumn>
                     <TableColumn>OK</TableColumn>
-                    <TableColumn>Cancel</TableColumn>
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((movie, i) => <InventoryRow key={i} movie={movie} onDelete={(id) => onDelete(id)} />)}
+                {data.map((attraction, i) => <InventoryRow key={i} attraction={attraction}/>)}
             </TableBody>
         </DataTable>
     </Page>
