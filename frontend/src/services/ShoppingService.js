@@ -4,17 +4,28 @@ import HttpService from './HttpService';
 
 export default class ShoppingService {
 
-    constructor(){
+    constructor() {
     }
 
-    static baseURL() {return "http://localhost:3000/cartOrder" }
+    static baseURL() {
+        return "http://localhost:3000/cartOrder/"
+    }
 
-
-    static addTicketToCart(){
+    static addToCart(userId, attractionId, quantity, date) {
         return new Promise((resolve, reject) => {
-            HttpService.get(this.baseURL(), function(data) {
+            HttpService.post(this.baseURL(),{userId, attractionId, quantity, date},function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getTickets() {
+        return new Promise((resolve, reject) => {
+            HttpService.get(this.baseURL(), function (data) {
+                resolve(data);
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -30,7 +41,7 @@ export default class ShoppingService {
                 else {
                     reject('Error while retrieving shopping cart');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -54,17 +65,26 @@ export default class ShoppingService {
 
     static deleteCartTicket(id) {
         return new Promise((resolve, reject) => {
-            HttpService.remove(`${TicketService.baseURL()}/${id}`, function(data) {
-                if(data.message != undefined) {
+            HttpService.remove(`${TicketService.baseURL()}/${id}`, function (data) {
+                if (data.message != undefined) {
                     resolve(data.message);
                 }
                 else {
                     reject('Error while deleting item');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
 
+    static returnTicket(ticket) {
+        /*return new Promise((resolve, reject) => {
+            HttpService.put(`${this.baseURL()}/${movie._id}`, movie, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });*/
+    }
 }

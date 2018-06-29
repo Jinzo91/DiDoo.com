@@ -19,6 +19,10 @@ export default class CommentService {
         });
     }*/
 
+
+
+
+
     static getCommentsUser(id) {//用user找評論
         return new Promise((resolve, reject) => {
             HttpService.get(`${CommentService.baseURL()}/visitor/${id}`, function(data) {
@@ -36,7 +40,7 @@ export default class CommentService {
 
     static getCommentsAttraction(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${CommentService.baseURL()}/visitor/:${id}`, function(data) {
+            HttpService.get(`${CommentService.baseURL()}/:${id}`, function(data) {
                 if(data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
@@ -64,9 +68,9 @@ export default class CommentService {
         });
     }
 
-    static creatComment(ticket) {
+    static createComment(comment) {
         return new Promise((resolve, reject) => {
-             HttpService.put(`${this.baseURL()}/${comment._id}`, comment, function(data) {
+             HttpService.post(`${this.baseURL()}`, comment, function(data) {
                  resolve(data);
              }, function(textStatus) {
                  reject(textStatus);
@@ -74,8 +78,8 @@ export default class CommentService {
          });
     }
 
-    static editComments(ticket) {
-        ticket.id = Math.floor((Math.random() * 100000000) + 1).toString();
+    static editComments(comment) {
+        comment.id = Math.floor((Math.random() * 100000000) + 1).toString();
         /*movie.posters = {
             thumbnail: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
             profile: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",

@@ -145,9 +145,9 @@ export default class AttractionService {
             });
         });
     }
-    static filterattraction(filterinfo) {
+    static filterattraction(attractionIds,district, type, price) {
         return new Promise((resolve, reject) => {
-            HttpService.post(`${AttractionService.baseURL()}/filter`, filterinfo, function(data) {
+            HttpService.post(`${AttractionService.baseURL()}/filter`,{attractionIds,district, type, price}, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);

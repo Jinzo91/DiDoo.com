@@ -19,6 +19,15 @@ const create = async (req, res) => {
     res.status(200).json(tickets);
 };
 
+const readdetailinfo  = async(req, res) => {
+    const {
+        ticketId,
+    } = req.params;
+    const ticket = await TicketModel.findById(ticketId);
+
+    res.status(200).json(ticket);
+};
+
 const update = async (req, res) => {
     const {
         ticketId,
@@ -95,16 +104,17 @@ const checksale  = async(req, res) => {
     const {
         fromdate,
         todate,
-        attracionId,
+        attractionId,
     } = req.body;
+
 
     let totalsale = 0;
 
     const tickets = await TicketModel.find({
-        attracionId,
-        buydate: {
-            $lte: todate,
-            $gte: fromdate
+        attractionId,
+        date: {
+            $lte: new Date(todate),
+            $gte: new Date(fromdate)
         }
     });
 
@@ -113,11 +123,10 @@ const checksale  = async(req, res) => {
             $in: tickets.map((ticket) => ticket._id)//
         }
     });
-
     orders.forEach((order) => {
         totalsale += order.quantity;
     });
-    res.status(200).send(totalsale);
+    res.status(200).json(totalsale);
 };
 
 module.exports = {//这里为啥也有export
@@ -125,6 +134,7 @@ module.exports = {//这里为啥也有export
     update,
     updatestock,
     remove,
+    readdetailinfo,
     list,
     remainingticket,
     checksale,

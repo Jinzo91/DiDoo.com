@@ -16,7 +16,6 @@ class CommentDetailPage extends Component {
     }
 
     componentWillReceiveProps(props){
-        console.log(props.comment);
         const commentcards = props.comment.map((data, i)=>commentCard(i, data.user.username,data.context));
         this.setState({commentcards});
     }

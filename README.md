@@ -27,3 +27,20 @@ mongod
 ```
 Open command shell in the backend folder and run: mongorestore dump/
 ```
+
+## Run Project
+
+1) Start mongodb with
+```
+mongod
+```
+
+2) Go to backend folder in the project files and run
+```
+npm start
+```
+
+3) Go to frontend folder and run
+```
+npm start
+```

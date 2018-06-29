@@ -23,7 +23,6 @@ export class CommentRow extends React.Component {
                 <p>
                     {this.props.context}
                 </p>
-                <Button flat>edit</Button>
                 <Button flat icon>delete</Button>
             </CardText>
         </Card>
