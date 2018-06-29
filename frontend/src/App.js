@@ -17,7 +17,7 @@ import { MyCartView } from "./views/ShoppingView/MyCartView";
 import { VisitorManagementView } from "./views/AdminView/VisitorManagementView";
 import { AttractionCreateView } from "./views/AttractionCreateView";
 import { ReportChartView } from "./views/AdminView/ReportChartView";
-import { ManageTAView } from "./views/TouristAttractionView/ManageTAView";
+import {ManageTAView} from "./views/TouristAttractionView/ManageTAView";
 import { ManageInventoryView } from "./views/TouristAttractionView/ManageInventoryView";
 import {AttractionFormView} from "./views/AttractionFormView";
 import {SearchPageView} from "./views/SearchView/SearchPageView";
@@ -25,6 +25,7 @@ import {SearchResultView} from "./views/SearchView/SearchResultView";
 import {CasualLookView} from "./views/SearchView/CasualLookView";
 import ShoppingService from "./services/ShoppingService";
 import {AttractionDetailView} from "./views/SearchView/AttractionDetailView";
+import {AddCommentView} from "./views/CustomerView/AddCommentView";
 
 
 export default class App extends React.Component {
@@ -58,6 +59,7 @@ export default class App extends React.Component {
                 { component: MovieListView , path: '/', exact: true},
                 { component: MyOrderView , path: '/myorder',exact: true},
                 { component: MyCommentView , path: '/mycomments',exact: true},
+                { component: AddCommentView ,path:'/mycomments/addcomments/:attractionId',exact:true},
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
