@@ -31,7 +31,7 @@ export class ReportChartView extends Component {
     render() {
         return (
             <Page>
-                <div id="main" style={{ width: 1200, height: 500 }}></div>
+                <div id="main" style={{ width: 1200, height: 500, maxWidth: '80%', marginTop:'5%', marginLeft: '200px' }}></div>
             </Page>
         );
     }
