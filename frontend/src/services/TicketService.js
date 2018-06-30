@@ -63,46 +63,15 @@ export default class TicketService {
         });
     }
 
-/*    static getTicket(id) {
+    static checksale(fromdate, todate, attractionId) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${TicketService.baseURL()}/${id}`, function(data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
-                    resolve(data);
-                }
-                else {
-                    reject('Error while retrieving movie');
-                }
-            }, function(textStatus) {
-                reject(textStatus);
-            });
-        });
-    }*/
-
-/*    static deleteTicket(id) {
-        return new Promise((resolve, reject) => {
-            HttpService.remove(`${TicketService.baseURL()}/${id}`, function(data) {
-                if(data.message != undefined) {
-                    resolve(data.message);
-                }
-                else {
-                    reject('Error while deleting');
-                }
-            }, function(textStatus) {
-                reject(textStatus);
-            });
-        });
-    }*/
-
-    static returnTicket(ticket) {
-        /*return new Promise((resolve, reject) => {
-            HttpService.put(`${this.baseURL()}/${movie._id}`, movie, function(data) {
+            HttpService.post(`${TicketService.baseURL()}/checksale`,{fromdate, todate, attractionId}, function(data) {
                 resolve(data);
             }, function(textStatus) {
                 reject(textStatus);
             });
-        });*/
+        });
     }
-
     static createComments(ticket) {
         ticket.id = Math.floor((Math.random() * 100000000) + 1).toString();
         /*movie.posters = {

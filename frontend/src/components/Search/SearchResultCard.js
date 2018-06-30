@@ -24,7 +24,8 @@ class SearchResultCard extends Component {
                 justifyContent: 'space-between',
             }}>
                 <div style={{
-                    width: '30%',
+                    width: '50%',
+                    flex:'0.8'
                 }}>
                     <Media >
                         <img src={this.props.image} alt="presentation" style={{
@@ -33,9 +34,12 @@ class SearchResultCard extends Component {
                     </Media>
                 </div>
                 <div style={{
-                    width: '50%',
+                    width: '40%',
                 }}>
-                    <h1>{this.props.title}</h1>
+                    <h1 style={{
+                        fontWeight:'bolder',
+                        fontFamily:'Lucida Bright'
+                    }}>{this.props.title}</h1>
                     <StarRatingComponent
                         name="rate2"
                         editing={false}
@@ -51,19 +55,25 @@ class SearchResultCard extends Component {
                             width: '70%',
                             marginTop:'70px'
                         }}>Type:{this.props.type}</h3>
-                    <div>{this.props.introduction}
+                    <div>{this.props.introduction.slice(0,200)+'...'}
                 </div>
                 </div>
-                <div>
+                <div style={{width:'20%'}}>
                     <div  style={{
                         color:'green',
-                        marginTop:'100px',
+                        marginTop:'75px',
                         marginRight:'50px',
-                        fontSize:'40px'
+                        fontSize:'40px',
                     }}>¥{this.props.price}</div>
-                    <Button style={{
+                    <Button  primary style={{
                         background:'green',
+                        borderRadius:'10px',
                         color:'white',
+                        marginTop:'35px',
+                        paddingLeft:'15px',
+                        paddingRight:'15px',
+                        paddingTop:'7px',
+                        paddingBottom:'7px',
                         marginRight:'50px',
                         fontSize:'40px'
                     }}  onClick={() => this.props.history.push(`/attraction/${this.props.id}`)}>Select</Button>

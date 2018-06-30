@@ -41,7 +41,7 @@ export class ManageList extends Component {
                     flexDirection: 'row-reverse'*/
                 }}>
                     {/*<Button onClick={() => this.props.history.push('/')} icon>search</Button>*/}
-                    <Autocomplete style={{ maxWidth: '20%', marginLeft: '120px'}}
+                    <Autocomplete style={{ maxWidth: '20%', marginLeft: '415px'}}
                                   label="Search"
                                   data={['abc','bcd']}
                                   filter={Autocomplete.caseInsensitiveFilter}

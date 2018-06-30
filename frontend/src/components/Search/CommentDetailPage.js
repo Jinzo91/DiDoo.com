@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import CommentCard from './CommentCard'
 
-const commentCard = (key,author,content) => <CommentCard
+const commentCard = (key,author,time,content) => <CommentCard
     key={key}
     author= {author}
+    time={time}
     content={content}
 />;
 
@@ -16,7 +17,7 @@ class CommentDetailPage extends Component {
     }
 
     componentWillReceiveProps(props){
-        const commentcards = props.comment.map((data, i)=>commentCard(i, data.user.username,data.context));
+        const commentcards = props.comment.map((data, i)=>commentCard(i, data.user.username,data.createdAt,data.context));
         this.setState({commentcards});
     }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Media , CardText,
-    CardTitle,} from 'react-md';
+    CardTitle,CardActions} from 'react-md';
 class CommentCard extends Component {
     constructor(props) {
         super(props);
@@ -10,16 +10,15 @@ class CommentCard extends Component {
 
     render() {
         return (
-            <Card  className="md-block-centered">
+            <Card className="md-block-centered">
                 <CardTitle
                     title={this.props.author}
-                    subtitle = {this.props.content}
+                    subtitle={(new Date(this.props.time)).toLocaleString("en-US")}
                 />
-                <CardText expandable>
+                <CardText >
                     <p>
                         {this.props.content}
                     </p>
-
                 </CardText>
             </Card>
         );
