@@ -8,7 +8,11 @@ import { AlertMessage } from '../AlertMessage';
 import Page from '../Page';
 
 
-const style = { maxWidth: 500 };
+const style = { maxWidth: 800,
+                 marginTop: '20px',
+                 marginBottom: '20px',
+                 borderRadius:'10px',
+};
 
 
 class AttractionForm extends React.Component {

@@ -8,10 +8,9 @@ import {
     CardTitle,
     FontIcon,
 } from 'react-md';
-import { SimpleLink } from '../SimpleLink';
 import { Link } from 'react-router-dom';
 
-const style = { maxWidth: '80%', marginBottom: '5px', marginTop: '5px'};
+const style = { maxWidth: '45%', marginBottom: '5px', marginTop: '5px'};
 
 export class ManageCard extends Component {
     constructor(props) {
@@ -32,9 +31,9 @@ export class ManageCard extends Component {
                 {/*<SimpleLink to={`/attractiondetail/${this.props.movie._id}`}>{this.props.movie.title}</SimpleLink>*/}
             </CardTitle>
             <CardActions expander>
-                {<Button flat><Link to={`/edit/${this.props._id}`}><FontIcon>mode_edit</FontIcon></Link></Button>}
+                {<Button style={{marginRight:'30px'}} raised primary><Link to={`/edit/${this.props._id}`}></Link>Edit</Button>}
                 {/*<Button flat>edit</Button>*/}
-                <Button flat onClick={() => this.props.onDelete(this.props._id)} icon>delete</Button>
+                <Button  raised primary onClick={() => this.props.onDelete(this.props._id)}>delete</Button>
             </CardActions>
             <CardText expandable>
                 <p>

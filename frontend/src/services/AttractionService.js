@@ -87,12 +87,10 @@ export default class AttractionService {
     }
 
     static createAttractions(attraction) {
-        /*attraction.posters = {
-            thumbnail: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
-            profile: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
+        attraction.posters = {
             detailed: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
             original: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg"
-        };*/
+        };
         return new Promise((resolve, reject) => {
             HttpService.post(AttractionService.baseURL(),attraction, function(data) {
                 resolve(data);
@@ -110,6 +108,21 @@ export default class AttractionService {
                 }
                 else {
                     reject('Error while retrieving attraction');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static getAttractionidbytitle(title) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${AttractionService.baseURL()}/title/${title}`, function(data)  {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving attractionId');
                 }
             }, function(textStatus) {
                 reject(textStatus);

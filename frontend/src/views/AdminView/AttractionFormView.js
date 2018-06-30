@@ -3,7 +3,7 @@
 import React from 'react';
 
 import AttractionForm from '../../components/Admin/AttractionForm';
-
+import Background from '../../images/frak-lopez-89003-unsplash.jpg';
 import AttractionService from '../../services/AttractionService';
 
 
@@ -72,6 +72,11 @@ export class AttractionFormView extends React.Component {
             return (<h2>Loading...</h2>);
         }
 
-        return (<AttractionForm data={this.state.data} onSubmit={(attraction) => this.updateAttractions(attraction)} error={this.state.error} />);
+        return (
+            <div>
+                <img src={Background} className="bg" />
+                <AttractionForm data={this.state.data} onSubmit={(attraction) => this.updateAttractions(attraction)} error={this.state.error} />
+            </div>
+            );
     }
 }

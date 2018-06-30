@@ -65,11 +65,11 @@ const adminNavItems = [
         label: 'Manage approved Attractions',
         to: '/admin',
         icon: 'playlist_add_check',
-    }, {
+    }, /*{
         label: 'Manage unapproved Attractions',
         to: '/admin/unapproved',
         icon: 'playlist_play',
-    }, {
+    }, */{
         label: 'Create new Attraction',
         to: '/add',
         icon: 'playlist_add',
