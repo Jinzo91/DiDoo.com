@@ -19,7 +19,7 @@ const addcomment= async (req, res) => {
 const removecomment = async(req, res) => {
     const {
         commentId,
-    } = req.body;
+    } = req.params;
     await CommentModel.findByIdAndRemove(commentId);
 
     res.status(200).json({message: `comment with id${commentId} was deleted`});

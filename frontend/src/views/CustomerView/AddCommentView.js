@@ -15,12 +15,11 @@ export class AddCommentView extends React.Component {
         this.setState({
             loading: true,
             data:[],
-            userId: UserService.getCurrentUser().id,
-            attractionId:this.props.match.params.attractionId,
+            attraction:[]
         })
     }
 
-    componentWillMount(){
+    componentWillMount() {
 
         this.setState({
             loading: false,
@@ -29,21 +28,13 @@ export class AddCommentView extends React.Component {
         });
     }
 
-    createComment(comment) {
-        CommentService.createComment(comment).then((data) => {
-            console.log(comment)
-            this.props.history.push('/mycomments');
-        }).catch((e) => {
-            console.error(e + ' Error while creating comment');
-            this.setState(Object.assign({}, this.state, {error: 'Error while creating comment'}));
-        });
-    }
+
 
     render() {
+
         if (this.state.loading) {
             return (<h2>Loading...</h2>);
         }
-
-        return (<AddComment data={this.state.data} userId = {this.state.userId} attractionId = {this.state.attractionId} onSubmit={(comment) => this.createComment(comment)} error={this.state.error} />);
+        return (<AddComment data={this.state.data} error={this.state.error}/>);
     }
 }
