@@ -6,11 +6,11 @@ import Page from '../Page'
 import {ShoppingCartRow} from "./ShoppingCartRow";
 
 
-const testCard = (key, title, image) => <ShoppingCartRow
+const testCard = (key, title, image, quantity) => <ShoppingCartRow
     key={key}
     image={image}
     title={title}
-    comment = 'hh'
+    quantity={quantity}
 
 />;
 

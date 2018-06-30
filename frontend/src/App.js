@@ -25,6 +25,7 @@ import {SearchResultView} from "./views/SearchView/SearchResultView";
 import {CasualLookView} from "./views/SearchView/CasualLookView";
 import ShoppingService from "./services/ShoppingService";
 import {AttractionDetailView} from "./views/SearchView/AttractionDetailView";
+import {AddCommentView} from "./views/CustomerView/AddCommentView";
 
 
 export default class App extends React.Component {
@@ -58,6 +59,7 @@ export default class App extends React.Component {
                 { component: MovieListView , path: '/', exact: true},
                 { component: MyOrderView , path: '/myorder',exact: true},
                 { component: MyCommentView , path: '/mycomments',exact: true},
+                { component: AddCommentView ,path:'/mycomments/addcomments/:attractionId',exact:true},
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
