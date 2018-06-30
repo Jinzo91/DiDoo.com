@@ -50,7 +50,7 @@ export class AttractionFormView extends React.Component {
     updateAttractions(attraction) {
         if(this.state.data === undefined) {
             AttractionService.createAttractions(attraction).then((data) => {
-                console.log(data);
+                console.log(attraction)
                 this.props.history.push('/');
             }).catch((e) => {
                 console.error(e + ' Error while creating attraction');

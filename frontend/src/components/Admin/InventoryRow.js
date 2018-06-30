@@ -10,6 +10,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import ShoppingService from "../../services/ShoppingService";
 import TicketService from "../../services/TicketService";
+import AttractionService from "../../services/AttractionService";
 
 
 export class InventoryRow extends React.Component {
@@ -31,7 +32,14 @@ export class InventoryRow extends React.Component {
         
         this.setState({
             date: value.hours(0).minutes(0).seconds(0).milliseconds(0),
+        });
 
+        TicketService.readstock(this.props.attraction._id,value.hours(0).minutes(0).seconds(0).milliseconds(0)).then((data) => {
+            this.setState({
+                stock: data.stock,
+            });
+        }).catch((e) => {
+            console.error(e);
         });
     }
     handleUpdateStock() {

@@ -11,6 +11,7 @@ export default class ShoppingService {
         return "http://localhost:3000/cartOrder/"
     }
 
+
     static addToCart(userId, attractionId, quantity, date) {
         return new Promise((resolve, reject) => {
             HttpService.post(this.baseURL(),{userId, attractionId, quantity, date},function (data) {
@@ -31,9 +32,9 @@ export default class ShoppingService {
         });
     }
 
-    static getCart(id) {
+    static listCart(userId) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${ShoppingService.baseURL()}/cart/${id}`, function(data) {
+            HttpService.get(`${ShoppingService.baseURL()}/cart/${userId}`, function(data) {
                 if(data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
@@ -62,9 +63,9 @@ export default class ShoppingService {
     }
 
 
-    static deleteCartItem(id) {
+    static deleteCartItem(cartId) {
         return new Promise((resolve, reject) => {
-            HttpService.remove(`${TicketService.baseURL()}/${id}`, function (data) {
+            HttpService.remove(`${ShoppingService.baseURL()}/cart`, function (data) {
                 if (data.message != undefined) {
                     resolve(data.message);
                 }

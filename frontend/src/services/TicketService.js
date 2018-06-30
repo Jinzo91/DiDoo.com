@@ -19,6 +19,15 @@ export default class TicketService {
             });
         });
     }
+    static readstock(attractionId,date) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${TicketService.baseURL()}/readstock`,{attractionId,date},function (data) {
+                resolve(data);
+            }, function (textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
     static getTickets(){
         return new Promise((resolve, reject) => {
             HttpService.get(this.baseURL(), function(data) {

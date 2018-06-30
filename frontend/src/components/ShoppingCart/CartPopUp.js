@@ -7,7 +7,8 @@ import { withRouter } from 'react-router-dom'
 import UserService from  '../../services/UserService';
 import { MovieListRow } from '../MovieListRow';
 import MovieService from "../../services/MovieService";
-
+import ShoppingService from "../../services/ShoppingService";
+import {CartListRow} from "./CartListRow";
 
 const Item = ({ label, children }) => (
     <IconSeparator labelStyle={{color: 'white', marginLeft: "-20px"}} label={label} iconBefore component="li" className="md-cell md-cell--12">
@@ -15,7 +16,7 @@ const Item = ({ label, children }) => (
     </IconSeparator>
 );
 const CartList = ({data, onDelete}) => (
-    <div>{data.map((movie, i) => <MovieListRow key={i} movie={movie} onDelete={(id) => onDelete(id)} />)}</div>
+    <div>{data.map((cart, i) => <CartListRow key={i} cart={cart} onDelete={(id) => onDelete(id)} />)}</div>
 );
 
 
@@ -33,8 +34,10 @@ class CartPopUp extends React.Component {
         this.setState({
             loading: true
         });
+        let userId = UserService.getCurrentUser().id;
 
-        MovieService.getMovies().then((data) => {
+        ShoppingService.listCart(userId).then((data) => {
+            console.log(data)
             this.setState({
                 data: [...data],
                 loading: false
@@ -42,9 +45,10 @@ class CartPopUp extends React.Component {
         }).catch((e) => {
             console.error(e);
         });
+
     }
 
-    deleteMovie(id) {
+    deleteCartItem(cartId) {
         this.setState({
             data: [...this.state.data],
             loading: true
