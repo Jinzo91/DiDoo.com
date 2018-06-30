@@ -40,7 +40,7 @@ const listcart = async (req, res) => {
         _id: {
             $in: tickets.map(ticket => ticket.attractionId)
         }
-    },{title:1,posters:1});
+    },{title:1,posters:1,price:1});
     carts = carts.map(cart => {
         cart = cart.toObject();
         cart.ticket = tickets.filter(ticket => ticket._id.toString() === cart.ticketId.toString())[0].toObject();

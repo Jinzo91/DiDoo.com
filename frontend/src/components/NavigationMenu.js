@@ -46,6 +46,22 @@ const defaultNavItems = [{
     to: '/',
     icon: 'home',
 }, {
+    label: 'Login',
+    to: '/login',
+    icon: 'how_to_reg',
+}, {
+    label: 'Register',
+    to: '/register',
+    icon: 'person_add',
+}];
+
+
+const visitorNavItems = [{
+    exact: true,
+    label: 'Home',
+    to: '/',
+    icon: 'home',
+}, {
     label: 'My Order',
     to: '/myorder',
     icon: 'bookmark',
@@ -100,6 +116,7 @@ class NavigationMenu extends React.Component {
         const navMap = {
             admin: adminNavItems,
             ta: taNavItems,
+            visitor: visitorNavItems
 
         }
         this.state = {
