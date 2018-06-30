@@ -32,7 +32,7 @@ export class CartListRow extends React.Component {
                     : <TableColumn><Link to={'/login'}><FontIcon>mode_edit</FontIcon></Link></TableColumn>
                 }
                 {UserService.isAuthenticated() ?
-                    <TableColumn><Button onClick={() => this.props.onDelete(this.props.movie._id)} icon>delete</Button></TableColumn>
+                    <TableColumn><Button onClick={() => this.props.onDelete(this.props.cart._id)} icon>delete</Button></TableColumn>
                     : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
                 }
 

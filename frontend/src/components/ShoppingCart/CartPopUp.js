@@ -37,7 +37,6 @@ class CartPopUp extends React.Component {
         let userId = UserService.getCurrentUser().id;
 
         ShoppingService.listCart(userId).then((data) => {
-            console.log(data)
             this.setState({
                 data: [...data],
                 loading: false
@@ -53,15 +52,16 @@ class CartPopUp extends React.Component {
             data: [...this.state.data],
             loading: true
         });
-        MovieService.deleteMovie(id).then((message) => {
+        ShoppingService.deleteCartItem(cartId).then((message) => {
 
-            let movieIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
-            let movies = this.state.data;
-            movies.splice(movieIndex, 1);
+            let cartIndex = this.state.data.map(cart => cart['_id']).indexOf(cartId);
+            let carts = this.state.data;
+            carts.splice(cartIndex, 1);
             this.setState({
-                data: [...movies],
+                data: [...carts],
                 loading: false
             });
+            console.log(message)
         }).catch((e) => {
             console.error(e);
         });
@@ -77,7 +77,7 @@ class CartPopUp extends React.Component {
                 iconChildren={<icon style={{color:'white'}}>shopping_cart</icon>}
                 className={this.props.className}
                 menuItems={this.state.username !== 'admin' && this.state.user ? [
-                    <CartList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>]
+                    <CartList data={this.state.data} onDelete={(cartId) => this.deleteCartItem(cartId)}/>]
                     : [<ListItem style={{minHeight: "50px"}} leftIcon={<img style={{marginRight:"-10px", marginTop: "-5px", height: "40px", width: "45px"}} src="https://res.cloudinary.com/sivadass/image/upload/v1495427934/icons/empty-cart.png"/>} key={1} primaryTextStyle={{marginTop: "10px", fontWeight: "bold"}} primaryText="Empty Cart" onClick={() => this.props.history.push('/mycart')}/>]}
             >
                 {/*Account*/}

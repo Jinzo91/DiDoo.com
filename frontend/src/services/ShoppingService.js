@@ -67,7 +67,7 @@ export default class ShoppingService {
 
     static deleteCartItem(cartId) {
         return new Promise((resolve, reject) => {
-            HttpService.remove(`${ShoppingService.baseURL()}/cart`, function (data) {
+            HttpService.remove(`${ShoppingService.baseURL()}/cart/${cartId}`, function (data) {
                 if (data.message != undefined) {
                     resolve(data.message);
                 }

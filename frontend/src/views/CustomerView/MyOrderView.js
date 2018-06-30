@@ -24,7 +24,7 @@ export class MyOrderView extends React.Component {
             loading: true
         });
         //let id = this.state.user.id//'5b22622b0fa7313444b36628';
-        let id = '5b22622b0fa7313444b36628'//'5b22622b0fa7313444b36628';
+        let id = UserService.getCurrentUser().id;//'5b22622b0fa7313444b36628';
         ShoppingService.getOrder(id).then(data => {  // 從SERVICE裏抓數據放入data
             this.setState({
                 data: [...data],
