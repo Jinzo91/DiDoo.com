@@ -87,6 +87,16 @@ const addtoorder = async (req, res) => {
 
 
 };
+
+const buyall = async (req, res) => {
+    const {userId} = req.params;
+    const orders = await CartOrderModel.update({userId:userId}, {
+        status: 'inOrder',
+    },{ multi: true });
+    res.status(200).json(orders);
+
+
+};
 /*const create = async (req, res) => {
     const {
         ticketInfo
@@ -156,6 +166,7 @@ module.exports = {//这里为啥也有export
     addtocart,
     removefromcart,
     listcart,
+    buyall,
     listorder,
     addtoorder,
     removefromorder,
