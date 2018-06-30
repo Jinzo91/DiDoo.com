@@ -3,7 +3,6 @@
 import React from 'react';
 import ShoppingCartList from '../../components/ShoppingCart/ShoppingCartList';
 import ShoppingService from '../../services/ShoppingService';
-import MovieService from '../../services/MovieService';
 import UserService from "../../services/UserService";
 
 
@@ -21,9 +20,9 @@ export class MyCartView extends React.Component {
 
     componentWillMount(){
 
-        //let id = this.state.user.id;//'5b2261b20fa7313444b36627';
-        let id = '5b2261b20fa7313444b36627';
-        ShoppingService.getCart(id).then(data => {
+        let id = this.state.user.id;
+        //let id = '5b2b79e775c5ad24707e4581';
+        ShoppingService.listCart(id).then(data => {
             this.setState({
                 data: [...data],
                 loading: false,
@@ -34,24 +33,6 @@ export class MyCartView extends React.Component {
 
     }
 
-    deleteMovie(id) {
-        this.setState({
-            data: [...this.state.data],
-            loading: true
-        });
-        MovieService.deleteMovie(id).then((message) => {
-
-            let movieIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
-            let movies = this.state.data;
-            movies.splice(movieIndex, 1);
-            this.setState({
-                data: [...movies],
-                loading: false
-            });
-        }).catch((e) => {
-            console.error(e);
-        });
-    }
 
     render() {
         if (this.state.loading) {
@@ -59,7 +40,7 @@ export class MyCartView extends React.Component {
         }
 
         return (
-            <ShoppingCartList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
+            <ShoppingCartList data={this.state.data}/>
         );
     }
 }

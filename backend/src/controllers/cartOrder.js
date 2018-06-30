@@ -40,7 +40,7 @@ const listcart = async (req, res) => {
         _id: {
             $in: tickets.map(ticket => ticket.attractionId)
         }
-    },{title:1,posters:1});
+    },{title:1,posters:1,price:1});
     carts = carts.map(cart => {
         cart = cart.toObject();
         cart.ticket = tickets.filter(ticket => ticket._id.toString() === cart.ticketId.toString())[0].toObject();
@@ -84,6 +84,16 @@ const addtoorder = async (req, res) => {
         new: true
     });
     res.status(200).json(order);
+
+
+};
+
+const buyall = async (req, res) => {
+    const {userId} = req.params;
+    const orders = await CartOrderModel.update({userId:userId}, {
+        status: 'inOrder',
+    },{ multi: true });
+    res.status(200).json(orders);
 
 
 };
@@ -156,6 +166,7 @@ module.exports = {//这里为啥也有export
     addtocart,
     removefromcart,
     listcart,
+    buyall,
     listorder,
     addtoorder,
     removefromorder,

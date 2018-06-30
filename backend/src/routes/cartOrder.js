@@ -10,6 +10,7 @@ router.delete('/cart/:cartOrderId', CartOrderController.removefromcart); // Dele
 router.get('/cart/:userId', CartOrderController.listcart); // List all ticket in cart
 router.get('/:userId', CartOrderController.listorder); // List all ticket in cart
 router.post('/addtoorder', CartOrderController.addtoorder); // Delete a ticket in cart by Id
+router.get('/buyall/:userId', CartOrderController.buyall); // Delete a ticket in cart by Id
 router.delete('/order', CartOrderController.removefromorder); // Delete a ticket in cart by Id
 router.post('/increase', CartOrderController.increaseCartQuantity); // Delete a ticket in cart by Id
 router.post('/decrease', CartOrderController.decreaseCartQuantity); // Delete a ticket in cart by Id
