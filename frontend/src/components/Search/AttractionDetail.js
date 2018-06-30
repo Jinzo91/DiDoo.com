@@ -97,7 +97,7 @@ class AttractionDetail extends React.Component {
                             color:'white',
                             fontSize:'50px',
                             marginTop:'100px',
-                        }}  onClick={() => this.props.history.push('/myorder')}>Buy now</Button></div>
+                        }}  onClick={() => this.props.history.push('/mycart')}>Buy now</Button></div>
 
                     </div>
                 </div>

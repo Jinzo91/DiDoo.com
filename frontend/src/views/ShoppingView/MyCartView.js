@@ -2,7 +2,9 @@
 
 import React from 'react';
 import ShoppingCartList from '../../components/ShoppingCart/ShoppingCartList';
+import ShoppingService from '../../services/ShoppingService';
 import MovieService from '../../services/MovieService';
+import UserService from "../../services/UserService";
 
 
 export class MyCartView extends React.Component {
@@ -12,23 +14,24 @@ export class MyCartView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            data: [],
+            user: UserService.getCurrentUser(),
         };
     }
 
     componentWillMount(){
-        this.setState({
-            loading: true
-        });
 
-        MovieService.getMovies().then((data) => {
+        //let id = this.state.user.id;//'5b2261b20fa7313444b36627';
+        let id = '5b2261b20fa7313444b36627';
+        ShoppingService.getCart(id).then(data => {
             this.setState({
                 data: [...data],
-                loading: false
+                loading: false,
             });
         }).catch((e) => {
             console.error(e);
         });
+
     }
 
     deleteMovie(id) {

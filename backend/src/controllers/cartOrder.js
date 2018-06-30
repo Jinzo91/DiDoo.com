@@ -20,7 +20,7 @@ const addtocart = async (req, res) => {
 const removefromcart = async (req, res) => {
     const {
         cartOrderId
-    } = req.body;
+    } = req.params;
 
     await CartOrderModel.findByIdAndRemove(cartOrderId);
     res.status(200).json({message: `cart with id${cartOrderId} was deleted`});
