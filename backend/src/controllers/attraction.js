@@ -125,8 +125,14 @@ const listattraction  = async(req, res) => {
     res.status(200).send(attractions);
 };
 
+const getAttractionidbytitle  = async(req, res) => {
+    const {
+        attractionTitle,
+    } = req.params;
+    const attraction = await AttractionModel.findOne({title:attractionTitle});
 
-
+    res.status(200).json(attraction);
+};
 
 
 module.exports = {//这里为啥也有export
@@ -140,4 +146,5 @@ module.exports = {//这里为啥也有export
     readgeneralinfo,
     listpreattraction,
     listattraction,
+    getAttractionidbytitle,
 };

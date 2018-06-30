@@ -16,5 +16,6 @@ router.get('/readdetail/:attractionId', AttractionController.readdetailinfo);// 
 router.get('/readgeneral/:attractionId', AttractionController.readgeneralinfo);// Read a attraction by Id
 router.get('/pre', AttractionController.listpreattraction); // List all attractions
 router.get('/', AttractionController.listattraction); // List all attractions
+router.get('/title/:attractionTitle', AttractionController.getAttractionidbytitle); // List all attractions
 
 module.exports = router;
