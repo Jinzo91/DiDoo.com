@@ -17,7 +17,7 @@ export class ShoppingCartRow extends React.Component {
     render() {
         return (
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
-            <TableRow style={{display: 'flex', height: '220px', minWidth: '900px', width: '70%', marginTop: '20px', borderStyle: 'solid', borderColor: 'green'}} key={this.props.key}>
+            <TableRow style={{ background: 'white', display: 'flex', height: '220px', minWidth: '900px', width: '70%', marginTop: '20px', borderStyle: 'solid', borderColor: 'green'}} key={this.props.key}>
                 <TableColumn style={{marginTop: '30px'}}>
                     <Media style={{ width: 160, height: 160 }} aspectRatio="4-3">
                         <img src={this.props.cart.attraction.posters.original}/>
