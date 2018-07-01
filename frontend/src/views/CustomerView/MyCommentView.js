@@ -5,6 +5,8 @@ import React from 'react';
 import CommentList from '../../components/Customer/CommentList';
 import CommentService from '../../services/CommentService';
 import UserService from "../../services/UserService";
+import Background from '../../images/AdminBG.png';
+import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
 
 export class MyCommentView extends React.Component {
@@ -36,32 +38,32 @@ export class MyCommentView extends React.Component {
 
     }
 
-    /*deleteComment(id) {
+    deleteComment(id) {
         this.setState({
             data: [...this.state.data],
             loading: true
         });
-        TicketService.deleteTicket(id).then((message) => {
+        CommentService.deleteComment(id).then((message) => {
 
-            let ticketIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
-            let ticket = this.state.data;
-            ticket.splice(ticketIndex, 1);
+            let commentIndex = this.state.data.map(comment => comment['_id']).indexOf(id);
+            let comments = this.state.data;
+            comments.splice(commentIndex, 1);
             this.setState({
-                data: [...tick()],
+                data: [...comments],
                 loading: false
             });
         }).catch((e) => {
             console.error(e);
         });
-    }*/
+    }
 
     render() {
-        if (this.state.loading) {
-            return (<h2>Loading...</h2>);
-        }
 
         return (
-            <CommentList data={this.state.data}/>
+            <div>
+                <img src={Background} className="bg" />
+                <CommentList data={this.state.data} onDelete={(id) => this.deleteComment(id)}/>
+            </div>
         );
     }
 }

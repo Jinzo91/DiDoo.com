@@ -7,12 +7,12 @@ import {Autocomplete} from "react-md/es/index";
 import CommentRow from "../Customer/CommentRow";
 
 
-const testCard = (key, attractionId, context, attraction) => <CommentRow
+const testCard = (key, commentId, context, attraction,onDelete) => <CommentRow
     key={key}
-    attractionId = {attractionId}
+    commentId = {commentId}
     context = {context}
     attraction={attraction}
-
+    onDelete={onDelete}
 />;
 
 
@@ -25,8 +25,8 @@ class CommentList extends Component {
 
     }
     componentWillReceiveProps(props){
-        console.log(this.props);
-        const testCards = props.data.map( (data, i)=>testCard(i, data.attractionId, data.context, data.attraction));
+        console.log(props.data);
+        const testCards = props.data.map( (data, i)=>testCard(i, data._id, data.context, data.attraction,props.onDelete));
         /*赋予上一个view的，用数据库的名字*/
         this.setState({testCards});
     }
@@ -38,7 +38,7 @@ class CommentList extends Component {
                 <div style={{
                     position:'relative',
                 }}>
-                    {this.props.data.map((data, i) => <CommentRow key={i} {...data} onDelete={(id) => this.props.onDelete(id)} />)}
+                    {this.state.testCards}
                 </div>
             </div>
         </Page>

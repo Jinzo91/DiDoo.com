@@ -19,7 +19,7 @@ const addcomment= async (req, res) => {
 const removecomment = async(req, res) => {
     const {
         commentId,
-    } = req.body;
+    } = req.params;
     await CommentModel.findByIdAndRemove(commentId);
 
     res.status(200).json({message: `comment with id${commentId} was deleted`});
@@ -29,7 +29,7 @@ const listcommentbyattraction  = async (req, res) => {
     const {
         attractionId,
     } = req.params;
-    let comments = await CommentModel.find({attractionId},{userId:1,context:1});//暫時不要createdAt: 1
+    let comments = await CommentModel.find({attractionId},{userId:1,context:1,createdAt:1});//暫時不要createdAt: 1
     const users = await UserModel.find({
         _id: {
             $in: comments.map(comment => comment.userId)

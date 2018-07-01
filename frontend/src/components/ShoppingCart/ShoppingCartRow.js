@@ -1,73 +1,59 @@
 "use strict";
+
 import React from 'react';
-import { TableRow, TableColumn, FontIcon, Button, Media } from 'react-md';
-import { Link } from 'react-router-dom';
-import { SimpleLink } from '../SimpleLink';
+import {TableRow, TableColumn, FontIcon, Button, Avatar, Media, MediaOverlay} from 'react-md';
+import {Link} from 'react-router-dom';
+import {SimpleLink} from '../SimpleLink';
+import ShoppingService from "../../services/ShoppingService";
 import UserService from '../../services/UserService';
+
 
 export class ShoppingCartRow extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            quantity: props.cart.quantity,
+        }
+
+    }
+    incrementQuantity = () => {
+        this.setState({
+            quantity: this.state.quantity + 1
+        })
+        ShoppingService.increaseCartQuantity(this.props.cart._id);
+    }
+
+    decrementQuantity = () => {
+        this.setState({
+            quantity: this.state.quantity - 1
+        })
+        ShoppingService.decreaseCartQuantity(this.props.cart._id);
     }
     render() {
         return (
-            <div  style={{
-                marginTop:'10px',
-                marginLeft:'15%',
-                width: '80%',
-                maxHeight: '250px',
-                display: 'flex',
-                paddingTop:'1%',
-                paddingBottom:'1%',
-                paddingLeft:'1%',
-                background:'white',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-            }}>
-                {/* <TableRow key={this.props.key}>*/}
-
-                <div style={{
-                    width: '30%',
-                    height: '20%'
-                }}>
-                    <Media aspectRatio='1-1'>
-                        <img src={this.props.image} alt="presentation" style={{
-                            objectFit: 'cover', maxHeight: "50%", maxWidth: "50%"
-                        }}/>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+            <TableRow style={{ background: 'white', display: 'flex', height: '220px', minWidth: '900px', width: '70%', marginTop: '20px', borderStyle: 'solid', borderColor: 'green'}} key={this.props.key}>
+                <TableColumn style={{marginTop: '30px'}}>
+                    <Media style={{ width: 160, height: 160 }} aspectRatio="4-3">
+                        <img src={this.props.cart.attraction.posters.original}/>
                     </Media>
-                </div>
+                </TableColumn>
+                <TableColumn style={{marginLeft: '50px', marginTop: '100px', width: '10%'}}><SimpleLink
+                    to={`/attraction/${this.props.cart.attraction._id}`}>{this.props.cart.attraction.title}</SimpleLink></TableColumn>
+                <TableColumn style={{marginLeft: 'auto', marginTop: '100px', textAlign: 'center', width: '10%'}}>{(new Date(this.props.cart.ticket.date)).toLocaleString("en-GB").slice(0, 10)}</TableColumn>
+                <TableColumn style={{marginLeft: '50px', marginTop: '100px', textAlign: 'center', width: '10%'}}>Quantity: {this.state.quantity}</TableColumn>
+                <TableColumn style={{marginLeft: 'auto', marginTop: '100px', textAlign: 'center', width: '10%'}}>
+                    <Button style={{marginLeft: '-10px', marginTop: '-13px'}} icon onClick={this.incrementQuantity}>add_circle</Button>
+                    <Button style={{marginLeft: '-10px', marginTop: '-13px'}} icon  disabled={this.state.quantity < 2} onClick={this.decrementQuantity}>remove_circle</Button>
+                </TableColumn>
+                {UserService.isAuthenticated() ?
+                    <TableColumn style={{marginLeft: '50px', marginTop: '97px', width: '50px'}}><Button style={{marginTop: '-10px'}} onClick={() => this.props.onDelete(this.props.cart._id)} icon>delete</Button></TableColumn>
+                    : <TableColumn><Link to={'/login'}><FontIcon>delete</FontIcon></Link></TableColumn>
+                }
+                <TableColumn style={{marginLeft: 'auto', marginTop: '100px', textAlign: 'center', width: '10%'}}>Price: {(this.state.quantity) * (this.props.cart.attraction.price)} ¥</TableColumn>
 
-
-                <div style={{
-                    width: '70%',
-                    marginLeft:'3%'
-                }}>
-                    <h1>{this.props.title}</h1>
-
-                    <div>
-
-                        {this.props.comment}
-
-                    </div>
-                </div>
-
-                <div>
-                    <Button style={{
-                        background:'green',
-                        color:'white',
-                        fontSize:'20px'
-
-                    }}  onClick={() => this.props.history.push('/')}>edit</Button>
-                    <Button style={{
-                        background:'green',
-                        color:'white',
-                        fontSize:'20px'
-
-                    }}  onClick={() => this.props.history.push('/')}>delete</Button>
-                </div>
-
-
+            </TableRow>
             </div>
         );
     }

@@ -68,3 +68,9 @@ database/journal/WiredTigerLog.0000000012
 database/diagnostic.data/metrics.2018-06-30T08-55-40Z-00000
 database/diagnostic.data/metrics.2018-06-29T13-20-15Z-00000
 database/diagnostic.data/metrics.2018-06-28T14-32-26Z-00000
+database/index-2-203544536363179829.wt
+database/index-1-203544536363179829.wt
+database/collection-0-203544536363179829.wt
+database/journal/WiredTigerLog.0000000013
+database/diagnostic.data/metrics.interim.temp
+database/diagnostic.data/metrics.2018-07-01T09-06-37Z-00000

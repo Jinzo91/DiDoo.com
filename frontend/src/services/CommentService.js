@@ -1,6 +1,7 @@
 "use strict";
 
 import HttpService from './HttpService';
+import AttractionService from "./AttractionService";
 
 export default class CommentService {
 
@@ -53,11 +54,11 @@ export default class CommentService {
         });
     }
 
-    static deleteComment(id) {
+    static deleteComment(commentId) {
         return new Promise((resolve, reject) => {
-            HttpService.remove(`${CommentService.baseURL()}/${id}`, function(data) {
-                if(data.message != undefined) {
-                    resolve(data.message);
+            HttpService.remove(`${CommentService.baseURL()}/${commentId}`, function(data) {
+                if(data != undefined) {
+                    resolve(data);
                 }
                 else {
                     reject('Error while deleting');
@@ -68,9 +69,9 @@ export default class CommentService {
         });
     }
 
-    static createComment(comment) {
+    static createComment(userId,attractionId,context) {
         return new Promise((resolve, reject) => {
-             HttpService.post(`${this.baseURL()}`, comment, function(data) {
+             HttpService.post(`${this.baseURL()}`, {userId,attractionId,context}, function(data) {
                  resolve(data);
              }, function(textStatus) {
                  reject(textStatus);
@@ -78,22 +79,7 @@ export default class CommentService {
          });
     }
 
-    static editComments(comment) {
-        comment.id = Math.floor((Math.random() * 100000000) + 1).toString();
-        /*movie.posters = {
-            thumbnail: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
-            profile: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
-            detailed: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
-            original: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg"
-        };*/
-        return new Promise((resolve, reject) => {
-            HttpService.post(CommentService.baseURL(), comment, function(data) {
-                resolve(data);
-            }, function(textStatus) {
-                reject(textStatus);
-            });
-        });
-    }
+
     static getCommentsbyAttration(id) {//用attraction找評論
         return new Promise((resolve, reject) => {
             HttpService.get(`${CommentService.baseURL()}/${id}`, function(data) {

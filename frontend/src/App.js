@@ -50,14 +50,6 @@ export default class App extends React.Component {
                 { component: ReportChartView , path: '/admin/report', exact: true},
                 /*{ component: ManageTAView , path: '/ta', exact: true},*/
                 { component: ManageInventoryView , path: '/admin/inventory', exact: true},
-
-                /*{ render: (props) => {
-                        if(UserService.isAuthenticated() && UserService.getCurrentUser().isAdmin) {
-                            return (<AdminView {... props} />)
-                        }
-                        else {
-                            return (<Redirect to={'/login'}/>)
-                        }} , path: '/admin', exact: true},*/
                 { component: MovieListView , path: '/', exact: true},
                 { component: MyOrderView , path: '/myorder',exact: true},
                 { component: MyCommentView , path: '/mycomments',exact: true},

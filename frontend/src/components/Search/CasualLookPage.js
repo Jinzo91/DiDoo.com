@@ -29,7 +29,7 @@ class CasualLookPage extends Component {
         super(props);
         this.state = {
             testCards: [],
-            attractionIds:[],
+            attractionIds: [],
             district: [],
             type: [],
             price: []
@@ -37,7 +37,7 @@ class CasualLookPage extends Component {
     }
 
     componentWillReceiveProps(props) {
-        props.data.map( data => this.state.attractionIds.push(data._id));
+        props.data.map(data => this.state.attractionIds.push(data._id));
         const testCards = props.data.map((data, i) => testCard(i, data._id, data.title, data.posters.original, data.type, data.rating, data.address, data.introduction, data.price));
         this.setState({testCards});
     }
@@ -46,7 +46,7 @@ class CasualLookPage extends Component {
         if (isChecked) {
             this.state.district.push(value);
         } else {
-            this.state.district.splice(this.state.district.indexOf(value),1)
+            this.state.district.splice(this.state.district.indexOf(value), 1)
         }
     }
 
@@ -54,7 +54,7 @@ class CasualLookPage extends Component {
         if (isChecked) {
             this.state.type.push(value);
         } else {
-            this.state.type.splice(this.state.type.indexOf(value),1)
+            this.state.type.splice(this.state.type.indexOf(value), 1)
         }
     }
 
@@ -72,13 +72,13 @@ class CasualLookPage extends Component {
         if (isChecked) {
             this.state.price.push(price);
         } else {
-            this.state.price.splice(this.state.price.indexOf(price),1)
+            this.state.price.splice(this.state.price.indexOf(price), 1)
         }
     }
 
 
     handlefilter() {
-        this.props.onFilter(this.state.attractionIds,this.state.district, this.state.type, this.state.price);
+        this.props.onFilter(this.state.attractionIds, this.state.district, this.state.type, this.state.price);
     }
 
     districtsCheckboxs = (districts) => {
@@ -158,7 +158,8 @@ class CasualLookPage extends Component {
                     height: '200px',
                     background: 'white',
                     borderColor: 'green',
-                    padding: '10px'
+                    padding: '20px',
+                    paddingBottom:'20px'
                 }}>
                     <div style={{
                         display: 'flex',
@@ -183,12 +184,21 @@ class CasualLookPage extends Component {
                     }}>
                         {this.pricesCheckboxs(prices)}
                     </div>
-                    <Button style={{
-                        background: 'green',
-                        color: 'white',
-                        fontSize:'20px'
-                    }}
-                            onClick={() => this.handlefilter()}>Filter</Button>
+                    <div style={{
+                        width: '100%',
+                        display: 'flex',
+                        flexDirection: 'row-reverse',
+                    }}>
+                        <div style={{width:'100px'}}>
+                        </div>
+                        <Button style={{
+                            background: 'green',
+                            color: 'white',
+                            fontSize: '30px',
+                            borderRadius:'8px',
+                        }}
+                                onClick={() => this.handlefilter()}>Filter</Button>
+                    </div>
                 </div>
                 <div style={{
                     position: 'relative',
