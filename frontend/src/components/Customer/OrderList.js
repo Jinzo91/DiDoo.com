@@ -24,6 +24,7 @@ class OrderList extends React.Component {
         }
 
     }
+
     componentWillReceiveProps(props){
         console.log(this.props);
         const testCards = props.data.map( (data, i)=>testCard(i, data.quantity, data.ticketId, data.createdAt, data.ticket, data.date, data.attractionId, data.attraction));
