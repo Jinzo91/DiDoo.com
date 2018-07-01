@@ -5,7 +5,6 @@ import React from 'react';
 import {InventoryList} from '../../components/Admin/InventoryList';
 
 import AttractionService from '../../services/AttractionService';
-import TicketService from '../../services/TicketService';
 
 import Background from '../../images/AdminBG.png';
 import '../../css/bg.css';
@@ -17,7 +16,6 @@ export class ManageInventoryView extends React.Component {
         this.state = {
             loading: true,
             data: [],
-/*            dataTicket:[]*/
         };
     }
 

@@ -8,7 +8,6 @@ import  'echarts/lib/chart/bar';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 import Page from '../../components/Page';
-import { SelectDate } from '../../components/Ta/SelectDate';
 import {SelectAttraction}  from '../../components/Ta/SelectAttraction';
 import AttractionService from "../../services/AttractionService";
 import TicketService from "../../services/TicketService";

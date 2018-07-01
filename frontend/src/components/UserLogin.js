@@ -8,7 +8,13 @@ import { AlertMessage } from './AlertMessage';
 import Page from './Page';
 
 
-const style = { maxWidth: 500 };
+const style = { maxWidth: 400,
+    marginTop: '200px',
+    marginBottom: '20px',
+    borderRadius:'10px',
+    backgroundColor:'rgba(255, 255, 255, 0.7)',
+};
+
 
 
 class UserLogin extends React.Component {

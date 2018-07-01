@@ -1,17 +1,11 @@
 "use strict";
 
 import React from 'react';
-import { Avatar, TableRow, TableColumn, FontIcon, Button,Card, CardTitle, CardText, Slider, TextField } from 'react-md';
-import { Link } from 'react-router-dom';
-import { SimpleLink } from '../SimpleLink';
-import UserService from '../../services/UserService';
+import { Avatar, TableRow, TableColumn, Button, TextField } from 'react-md';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
-import ShoppingService from "../../services/ShoppingService";
-import TicketService from "../../services/TicketService";
-import AttractionService from "../../services/AttractionService";
 
+import TicketService from "../../services/TicketService";
 
 export class InventoryRow extends React.Component {
 

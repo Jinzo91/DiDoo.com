@@ -66,7 +66,7 @@ export class CommentRow extends React.Component {
                     id="simple-action-dialog"
                     visible={visible}
                     onHide={this.hide}
-                    actions={  <Button onClick={() => this.props.onDelete(this.props.commentId) && this.hide} icon>delete</Button>}
+                    actions={ <Button onClick={() => this.props.onDelete(this.props.commentId) && this.hide} icon>delete</Button>}
                     title="sure to delete?"
                 >
 

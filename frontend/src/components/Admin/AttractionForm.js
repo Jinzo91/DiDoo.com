@@ -12,8 +12,8 @@ const style = { maxWidth: 800,
                  marginTop: '20px',
                  marginBottom: '20px',
                  borderRadius:'10px',
+                 backgroundColor:'rgba(255, 255, 255, 0.7)',
 };
-
 
 class AttractionForm extends React.Component {
 

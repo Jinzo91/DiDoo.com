@@ -51,7 +51,7 @@ export class AttractionCreateView extends React.Component {
         if(this.state.data === undefined) {
             AttractionService.createAttractions(attraction).then((data) => {
                 console.log(attraction)
-                this.props.history.push('/admin');
+                this.props.history.push('/admin/unapproved');
             }).catch((e) => {
                 console.error(e + ' Error while creating attraction');
                 this.setState(Object.assign({}, this.state, {error: 'Error while creating attraction'}));
