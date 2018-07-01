@@ -9,6 +9,7 @@ import ShoppingService from "../../services/ShoppingService";
 import {CartListRow} from "./CartListRow";
 import Page from '../Page'
 import {ShoppingCartRow} from "./ShoppingCartRow";
+import Background from '../../images/AdminBG.png';
 
 const Item = ({ label, children }) => (
     <IconSeparator labelStyle={{color: 'white', marginLeft: "-20px"}} label={label} iconBefore component="li" className="md-cell md-cell--12">
@@ -72,9 +73,9 @@ class ShoppingCartList extends React.Component {
     render() {
         return (
             <Page>
-                img
+                <img src={Background} className="bg" />
                 <ShopCartList data={this.state.data} onDelete={(cartId) => this.deleteCartItem(cartId)}/>
-                <Button flat secondary swapTheming style={{margin: 'auto'}}>BUY</Button>
+                <Button flat primary swapTheming style={{fontSize: '20px', fontWeight: 'bold', height: '50px',width: '50px', position: 'center', marginLeft: '48%', marginTop: '30px'}}>BUY</Button>
             </Page>
         );
     }

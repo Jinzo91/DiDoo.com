@@ -158,7 +158,7 @@ class NavigationMenu extends React.Component {
                         <Button onClick={() => this.props.history.push('/')}><Avatar src={imgURL} role="presentation" suffix="green-300" /></Button>
                     </Item>}
                     toolbarTitleMenu={this.props.userRole !== 'admin' && <Item>
-                            <Autocomplete style={{marginLeft: "-50px", width: "30%", height: "35px", background: "white", color: 'black'}}
+                            <Autocomplete style={{marginLeft: "-20px", width: "30%", height: "35px", background: "white", color: 'black'}}
                                           data={this.state.titles = this.state.attractions.map(attractions => attractions.title)}
                                           filter={Autocomplete.caseInsensitiveFilter}
                                           onAutocomplete={(value) => this.setState({ searchValue: value })}
