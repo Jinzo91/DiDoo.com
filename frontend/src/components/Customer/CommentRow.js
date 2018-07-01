@@ -58,7 +58,7 @@ export class CommentRow extends React.Component {
             </CardTitle>
            
             <CardText>
-                <p>
+                <p >
                     {this.props.context}
                 </p>
                 <Button raised onClick={this.show} icon>delete</Button>
@@ -66,7 +66,7 @@ export class CommentRow extends React.Component {
                     id="simple-action-dialog"
                     visible={visible}
                     onHide={this.hide}
-                    actions={actions}
+                    actions={  <Button onClick={() => this.props.onDelete(this.props.commentId) && this.hide} icon>delete</Button>}
                     title="sure to delete?"
                 >
 

@@ -8,13 +8,13 @@ import UserService from '../../services/UserService';
 import OrderList from "./OrderList";
 
 const style = { maxWidth: '80%', marginBottom: '5px', marginTop: '5px'};
-
 export class OrderRow extends React.Component {
 
     constructor(props) {
         super(props);
-    }
 
+
+    }
     state = { visible: false };
 
     show = () => {
@@ -41,6 +41,7 @@ export class OrderRow extends React.Component {
                 <CardText>
                     <p>valid until:{this.props.ticket.date} </p>
                     <p>quantity:{this.props.quantity}</p>
+                    <p>in process</p>
                     <Button  raised onClick={this.show} onClick={() => this.props.history.push(`/mycomments/addcomments/${this.props.ticket.attractionId}`)} flat icon>edit</Button>
                     <Button  raised onClick={this.show} flat icon>undo</Button>
                     <DialogContainer height={'300px'} width={'700px'}
