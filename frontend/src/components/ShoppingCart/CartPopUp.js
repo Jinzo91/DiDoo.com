@@ -37,7 +37,6 @@ class CartPopUp extends React.Component {
         let userId = UserService.getCurrentUser().id;
 
         ShoppingService.listCart(userId).then((data) => {
-            console.log(data)
             this.setState({
                 data: [...data],
                 loading: false

@@ -5,13 +5,13 @@ const TicketModel = require('../models/ticket');
 const AttractionModel = require('../models/attraction');//这是啥，调用吗
 const addtocart = async (req, res) => {
     const {
-        quantity,userId,date,attractionId
+        quantity, userId, date, attractionId
     } = req.body;
-    const ticket =  await TicketModel.findOne({attractionId:attractionId, date:date});
+    const ticket = await TicketModel.findOne({attractionId: attractionId, date: date});
     const cart = await CartOrderModel.create({
         quantity: quantity || 1,
-        ticketId:ticket._id,
-        userId:userId,
+        ticketId: ticket._id,
+        userId: userId,
     });
 
     res.status(200).json(cart);
@@ -27,20 +27,24 @@ const removefromcart = async (req, res) => {
 };
 
 const listcart = async (req, res) => {
-    const{
+    const {
         userId
     } = req.params;
-    let carts = await CartOrderModel.find({userId, status:"inCart"},{quantity:1,ticketId:1,createdAt:1});
+    let carts = await CartOrderModel.find({userId, status: "inCart"}, {quantity: 1, ticketId: 1, createdAt: 1}, {
+        sort: {
+            createdAt: -1
+        }
+    });
     const tickets = await TicketModel.find({
         _id: {
             $in: carts.map(cart => cart.ticketId)
         }
-    },{date:1,attractionId:1});
+    }, {date: 1, attractionId: 1});
     const attractions = await AttractionModel.find({
         _id: {
             $in: tickets.map(ticket => ticket.attractionId)
         }
-    },{title:1,posters:1,price:1});
+    }, {title: 1, posters: 1, price: 1});
     carts = carts.map(cart => {
         cart = cart.toObject();
         cart.ticket = tickets.filter(ticket => ticket._id.toString() === cart.ticketId.toString())[0].toObject();
@@ -52,20 +56,24 @@ const listcart = async (req, res) => {
 };
 
 const listorder = async (req, res) => {
-    const{
+    const {
         userId
     } = req.params;
-    let orders = await CartOrderModel.find({userId, status:"inOrder"},{quantity:1,ticketId:1,createdAt:1});
+    let orders = await CartOrderModel.find({userId, status: "inOrder"}, {quantity: 1, ticketId: 1, createdAt: 1}, {
+        sort: {
+            createdAt: -1
+        }
+    });
     const tickets = await TicketModel.find({
         _id: {
             $in: orders.map(order => order.ticketId)
         }
-    },{date:1,attractionId:1});
+    }, {date: 1, attractionId: 1});
     const attractions = await AttractionModel.find({
         _id: {
             $in: tickets.map(ticket => ticket.attractionId)
         }
-    },{title:1,posters:1});
+    }, {title: 1, posters: 1});
     orders = orders.map(order => {
         order = order.toObject();
         order.ticket = tickets.filter(ticket => ticket._id.toString() === order.ticketId.toString())[0].toObject();
@@ -80,7 +88,7 @@ const addtoorder = async (req, res) => {
     const {cartOrderIds} = req.body;
     const order = await CartOrderModel.findByIdAndUpdate(cartOrderId, {
         status: 'inOrder',
-    },{
+    }, {
         new: true
     });
     res.status(200).json(order);
@@ -90,9 +98,9 @@ const addtoorder = async (req, res) => {
 
 const buyall = async (req, res) => {
     const {userId} = req.params;
-    const orders = await CartOrderModel.update({userId:userId}, {
+    const orders = await CartOrderModel.update({userId: userId}, {
         status: 'inOrder',
-    },{ multi: true });
+    }, {multi: true});
     res.status(200).json(orders);
 
 
@@ -137,8 +145,8 @@ const increaseCartQuantity = async (req, res) => {
             quantity: 1,
         },
     }, {
-            new: true
-        });
+        new: true
+    });
 
     res.status(200).json(cart);
 };
@@ -151,7 +159,7 @@ const decreaseCartQuantity = async (req, res) => {
         $inc: {
             quantity: -1,
         },
-    },{
+    }, {
         new: true
     });
 

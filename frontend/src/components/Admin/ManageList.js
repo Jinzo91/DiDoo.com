@@ -18,7 +18,6 @@ export class ManageList extends Component {
     }
 
     componentWillReceiveProps(props){
-        console.log(this.props);
         const testCards = props.data.map( (data, i)=>testCard(i,data, props.onDelete));
         /*赋予上一个view的，用数据库的名字*/
         this.setState({testCards});
