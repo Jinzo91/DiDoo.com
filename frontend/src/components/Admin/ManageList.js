@@ -18,7 +18,6 @@ export class ManageList extends Component {
     }
 
     componentWillReceiveProps(props){
-        console.log(this.props);
         const testCards = props.data.map( (data, i)=>testCard(i,data, props.onDelete));
         /*赋予上一个view的，用数据库的名字*/
         this.setState({testCards});
@@ -41,7 +40,7 @@ export class ManageList extends Component {
                     flexDirection: 'row-reverse'*/
                 }}>
                     {/*<Button onClick={() => this.props.history.push('/')} icon>search</Button>*/}
-                    <Autocomplete style={{ maxWidth: '20%', marginLeft: '415px'}}
+                    <Autocomplete style={{maxWidth: '20%', marginLeft: '420px', }}
                                   label="Search"
                                   data={['abc','bcd']}
                                   filter={Autocomplete.caseInsensitiveFilter}
@@ -50,7 +49,7 @@ export class ManageList extends Component {
                 </div>
                 <div >
                     <div style={{
-                        position:'relative',
+                        position:'relative', marginTop: '10px'
                     }}>
                         {/*{this.props.data.map((data, i) => <ManageCard key={i} {...data} onDelete={(id) => this.props.onDelete(id)} />)}*/}
                         {this.state.testCards}

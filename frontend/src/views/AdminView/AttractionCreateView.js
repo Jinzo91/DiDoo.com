@@ -51,7 +51,7 @@ export class AttractionCreateView extends React.Component {
         if(this.state.data === undefined) {
             AttractionService.createAttractions(attraction).then((data) => {
                 console.log(attraction)
-                this.props.history.push('/');
+                this.props.history.push('/admin');
             }).catch((e) => {
                 console.error(e + ' Error while creating attraction');
                 this.setState(Object.assign({}, this.state, {error: 'Error while creating attraction'}));
@@ -59,7 +59,7 @@ export class AttractionCreateView extends React.Component {
         } else {
             console.log(attraction);
             AttractionService.updateAttractions(attraction).then((data) => {
-                this.props.history.goBack();
+                this.props.history.push('/admin');
             }).catch((e) => {
                 console.error(e + ' Error while updating attraction');
                 this.setState(Object.assign({}, this.state, {error: 'Error while updating attraction'}));

@@ -18,7 +18,7 @@ export class InventoryRow extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            date: moment(),//当前时间
+            date: 0,//当前时间
             stock: 0,//Service passes parameter to here 100
             title: this.props.attraction.title,
             image: this.props.attraction.posters.detailed

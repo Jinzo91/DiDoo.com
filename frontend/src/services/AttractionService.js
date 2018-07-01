@@ -62,7 +62,7 @@ export default class AttractionService {
     static approveAttractions(id) {
         return new Promise((resolve, reject) => {
             HttpService.put(`${AttractionService.baseURL()}/approve/${id}`,{}, function(data) {
-                console.log(data);
+                /*console.log(data);*/
                 if(data != undefined) {
                     resolve(data);
                 }

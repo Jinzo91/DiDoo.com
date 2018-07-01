@@ -88,6 +88,8 @@ class AttractionDetail extends React.Component {
                                 starCount={5}
                                 value={this.props.attraction.rating}
                             />
+                            <div style={{color:'red',fontSize:'50px',fontFamily:'Book Antiqua'}}>¥{this.props.attraction.price} now
+                            </div>
                             <p style={{width: '80%',marginTop:'30px'}}>{this.props.attraction.introduction}</p>
                         </div>
                         <div style={{

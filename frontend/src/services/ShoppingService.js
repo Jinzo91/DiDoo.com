@@ -48,6 +48,16 @@ export default class ShoppingService {
         });
     }
 
+    static buyall(userId) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${ShoppingService.baseURL()}/buyall/${userId}`, function(data) {
+                resolve(data);
+            }, function (textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static getOrder(id) {
         return new Promise((resolve, reject) => {
             HttpService.get(`${ShoppingService.baseURL()}/${id}`, function(data) {
@@ -75,6 +85,35 @@ export default class ShoppingService {
                     reject('Error while deleting item');
                 }
             }, function (textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+    static increaseCartQuantity(cartOrderId) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${ShoppingService.baseURL()}/increase`, {cartOrderId},function (data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving order list');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
+    static decreaseCartQuantity(cartOrderId) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${ShoppingService.baseURL()}/decrease`, {cartOrderId},function (data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving order list');
+                }
+            }, function(textStatus) {
                 reject(textStatus);
             });
         });
