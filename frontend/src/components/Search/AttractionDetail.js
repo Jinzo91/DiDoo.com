@@ -105,7 +105,7 @@ class AttractionDetail extends React.Component {
                             justifyContent: 'space-between',
                         }}>
                             <div>
-                                <h2>Quatity:</h2>
+                                <h2>Quantity:</h2>
                                 <div style={{
                                     width: '300px',
                                     display: 'flex',
