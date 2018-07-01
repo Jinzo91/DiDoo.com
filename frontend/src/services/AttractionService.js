@@ -88,8 +88,8 @@ export default class AttractionService {
 
     static createAttractions(attraction) {
         attraction.posters = {
-            detailed: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg",
-            original: "http://resizing.flixster.com/AeDB8hgaGed_TMCcIF1P_gubGwA=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/27/63/11276344_ori.jpg"
+            detailed: "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1530467488&di=045b47d23a2cdff2582a159c7864053a&src=http://image.naic.org.cn/uploadfile/2017/0731/1501481954471681.jpg",
+            original: "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1530467488&di=045b47d23a2cdff2582a159c7864053a&src=http://image.naic.org.cn/uploadfile/2017/0731/1501481954471681.jpg"
         };
         return new Promise((resolve, reject) => {
             HttpService.post(AttractionService.baseURL(),attraction, function(data) {

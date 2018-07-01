@@ -113,7 +113,7 @@ class ShoppingCartList extends React.Component {
         actions.push(<Button flat primary onClick={() => this.buyall()}>Purchase</Button>);
         return (
             <Page>
-                <img src={Background} className="bg"/>
+                <img src={'https://wallpaperstudio10.com/static/wpdb/wallpapers/3840x2160/186919.jpg'} className="bg"/>
                 <ShopCartList data={this.state.data} onDelete={(cartId) => this.deleteCartItem(cartId)}/>
 
                 <Button flat primary swapTheming style={{
@@ -134,7 +134,7 @@ class ShoppingCartList extends React.Component {
                     title="Sure to buy?"
                 >
                     <p>
-                        Your tickets will delivered to your address. We accept cash and EC-card for payment.
+                        Your tickets will be delivered to your address. We accept cash and bank card for payment.
                     </p>
                 </DialogContainer>
             </Page>
