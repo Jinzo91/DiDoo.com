@@ -91,12 +91,13 @@ const list  = async(req, res) => {
 
 const remainingticket  = async(req, res) => {
     const {
-        ticketId,
-    } = req.params;
-    const ticket = await TicketModel.findById(ticketId);
+        attractionId,
+        date,
+    } = req.body;
+    const ticket = await TicketModel.findOne({attractionId:attractionId,date:date});
     const orders = await CartOrderModel.find({
-        ticketId,
-        buydate: ticket.date,
+        ticketId:ticket._id,
+        status: 'inOrder',
     });
     let totalsale = 0;
     let remainingticket;

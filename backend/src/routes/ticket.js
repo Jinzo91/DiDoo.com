@@ -12,7 +12,7 @@ router.post('/readstock',TicketController.readstock);
 router.delete('/',TicketController.remove);
 router.get('/readdetail/:ticketId', TicketController.readdetailinfo);// Read a ticket by Id
 router.get('/:attractionId',TicketController.list);
-router.get('/remainingticket/:ticketId',TicketController.remainingticket);
+router.post('/remainingticket',TicketController.remainingticket);
 router.post('/checksale',TicketController.checksale);
 
 

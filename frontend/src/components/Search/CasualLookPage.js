@@ -152,12 +152,11 @@ class CasualLookPage extends Component {
             <div style={{marginBottom: "40px"}}>
                 <div style={{
                     marginTop: '20px',
-                    borderStyle: 'solid',
                     width: '90%',
                     marginLeft: '5%',
-                    height: '200px',
+                    height: '210px',
                     background: 'white',
-                    borderColor: 'green',
+                    backgroundColor:'rgba(255, 255, 255, 0.7)',
                     padding: '20px',
                     paddingBottom:'20px'
                 }}>
@@ -189,13 +188,18 @@ class CasualLookPage extends Component {
                         display: 'flex',
                         flexDirection: 'row-reverse',
                     }}>
-                        <div style={{width:'100px'}}>
+                        <div style={{width:'4%'}}>
                         </div>
                         <Button style={{
-                            background: 'green',
-                            color: 'white',
-                            fontSize: '30px',
-                            borderRadius:'8px',
+                            background:'green',
+                            borderRadius:'10px',
+                            color:'white',
+                            paddingLeft:'20px',
+                            paddingRight:'20px',
+                            paddingTop:'5px',
+                            paddingBottom:'5px',
+                            fontSize:'19px',
+                            fontFamily:'San Francisco'
                         }}
                                 onClick={() => this.handlefilter()}>Filter</Button>
                     </div>
