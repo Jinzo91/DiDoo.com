@@ -1,7 +1,7 @@
 "use strict";
 
-const TicketModel = require('../models/ticket');//这是啥，调用吗
-const CartOrderModel =require('../models/cartOrder');
+const TicketModel = require('../models/ticket');
+const CartOrderModel = require('../models/cartOrder');
 
 const create = async (req, res) => {
     const {
@@ -19,7 +19,7 @@ const create = async (req, res) => {
     res.status(200).json(tickets);
 };
 
-const readdetailinfo  = async(req, res) => {
+const readdetailinfo = async (req, res) => {
     const {
         ticketId,
     } = req.params;
@@ -40,7 +40,7 @@ const update = async (req, res) => {
                 date,
                 stock,
             },
-        },{
+        }, {
             new: true
         });
     res.status(200).json(ticket);
@@ -52,12 +52,12 @@ const updatestock = async (req, res) => {
         date,
         stock,
     } = req.body;
-    const ticket = await TicketModel.findOneAndUpdate({attractionId:attractionId,date:date},
+    const ticket = await TicketModel.findOneAndUpdate({attractionId: attractionId, date: date},
         {
             $set: {
                 stock,
             },
-        },{
+        }, {
             new: true
         });
     res.status(200).json(ticket);
@@ -68,7 +68,7 @@ const readstock = async (req, res) => {
         attractionId,
         date,
     } = req.body;
-    const ticket = await TicketModel.findOne({attractionId:attractionId,date:date});
+    const ticket = await TicketModel.findOne({attractionId: attractionId, date: date});
     res.status(200).json(ticket);
 };
 
@@ -81,7 +81,7 @@ const remove = async (req, res) => {
 };
 
 
-const list  = async(req, res) => {
+const list = async (req, res) => {
     const {
         attractionId,
     } = req.params;
@@ -89,28 +89,28 @@ const list  = async(req, res) => {
     res.status(200).json(tickets);
 };
 
-const remainingticket  = async(req, res) => {
+const remainingticket = async (req, res) => {
     const {
         attractionId,
         date,
     } = req.body;
-    const ticket = await TicketModel.findOne({attractionId:attractionId,date:date});
+    const ticket = await TicketModel.findOne({attractionId: attractionId, date: date});
     const orders = await CartOrderModel.find({
-        ticketId:ticket._id,
+        ticketId: ticket._id,
         status: 'inOrder',
     });
     let totalsale = 0;
     let remainingticket;
 
     orders.forEach((order) => {
-            totalsale = totalsale + order.quantity
+        totalsale = totalsale + order.quantity
 
     });
 
     remainingticket = ticket.stock - totalsale;
     res.status(200).json(remainingticket);
 };
-const checksale  = async(req, res) => {
+const checksale = async (req, res) => {
     const {
         fromdate,
         todate,
@@ -129,7 +129,7 @@ const checksale  = async(req, res) => {
     });
 
     const orders = await CartOrderModel.find({
-        ticketId:{
+        ticketId: {
             $in: tickets.map((ticket) => ticket._id)//
         }
     });
@@ -139,7 +139,7 @@ const checksale  = async(req, res) => {
     res.status(200).json(totalsale);
 };
 
-module.exports = {//这里为啥也有export
+module.exports = {
     create,
     update,
     updatestock,

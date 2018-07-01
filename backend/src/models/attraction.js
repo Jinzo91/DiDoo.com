@@ -3,14 +3,14 @@
 const mongoose = require('mongoose');
 // Define the attraction schema
 
-const AttractionSchema  = new mongoose.Schema({
+const AttractionSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
     },
     type: String,
-    address : String,
-    rating : Number,
+    address: String,
+    rating: Number,
     introduction: String,
     district: String,
     price: {

@@ -1,8 +1,8 @@
 "use strict";
 
-const CartOrderModel = require('../models/cartOrder');//这是啥，调用吗
+const CartOrderModel = require('../models/cartOrder');
 const TicketModel = require('../models/ticket');
-const AttractionModel = require('../models/attraction');//这是啥，调用吗
+const AttractionModel = require('../models/attraction');
 const addtocart = async (req, res) => {
     const {
         quantity, userId, date, attractionId
@@ -105,28 +105,7 @@ const buyall = async (req, res) => {
 
 
 };
-/*const create = async (req, res) => {
-    const {
-        ticketInfo
-    } = req.body;
 
-    updateOne: {
-        filter: { name: 'Eddard Stark' },
-        // If you were using the MongoDB driver directly, you'd need to do
-        // `update: { $set: { title: ... } }` but mongoose adds $set for
-        // you.
-        update: { title: 'Hand of the King' }
-    }
-    const tickets = await TicketModel.bulkWrite(
-        ticketInfo.map(info => ({
-            updateOne: {
-                update:{status: 'inOrder'}
-    }}
-            }
-        }))
-    );
-    res.status(200).json(tickets);
-};*/
 const removefromorder = async (req, res) => {
     const {
         cartOrderId

@@ -1,7 +1,7 @@
-"use strict";//配合，前后端接应上
+"use strict";
 
-const express  = require('express');
-const router   = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const AttractionController = require('../controllers/attraction');
 

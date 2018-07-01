@@ -4,14 +4,14 @@ const mongoose = require('mongoose');
 
 // Define the ticket schema
 
-const TicketsSchema  = new mongoose.Schema({
-    date : {
+const TicketsSchema = new mongoose.Schema({
+    date: {
         type: Date,
         required: true,
     },
     stock: {
-        type:Number,
-        required:true,
+        type: Number,
+        required: true,
     },
     attractionId: {
         type: mongoose.SchemaTypes.ObjectId,

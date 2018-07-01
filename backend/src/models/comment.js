@@ -3,19 +3,19 @@
 const mongoose = require('mongoose');
 // Define the Comment schema
 
-const CommentSchema  = new mongoose.Schema({
+const CommentSchema = new mongoose.Schema({
 
-    userId:  {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
-        required :true
+        required: true
     },
     attractionId: {
         type: mongoose.Schema.Types.ObjectId,
-        required :true
+        required: true
     },
     context: {
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     }
 
 });

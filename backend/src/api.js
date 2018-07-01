@@ -1,19 +1,17 @@
 "use strict";
 
 
-const express    = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
-const helmet     = require('helmet');
+const helmet = require('helmet');
 
 const middlewares = require('./middlewares');
 
-const auth  = require('./routes/auth');
-const movie = require('./routes/movie');
+const auth = require('./routes/auth');
 const ticket = require('./routes/ticket');
 const attraction = require('./routes/attraction');
 const cartOrder = require('./routes/cartOrder');
 const comment = require('./routes/comment');
-
 
 
 const api = express();
@@ -22,7 +20,7 @@ const api = express();
 // Adding Basic Middlewares
 api.use(helmet());
 api.use(bodyParser.json());
-api.use(bodyParser.urlencoded({ extended: false }));
+api.use(bodyParser.urlencoded({extended: false}));
 api.use(middlewares.allowCrossDomain);
 
 
@@ -34,12 +32,11 @@ api.get('/', (req, res) => {
 });
 
 // API routes
-api.use('/auth'  , auth);
-api.use('/movies', movie);
+api.use('/auth', auth);
 api.use('/attraction', attraction);
-api.use('/cartOrder'  , cartOrder);
+api.use('/cartOrder', cartOrder);
 api.use('/comment', comment);
-api.use('/ticket'  , ticket);
+api.use('/ticket', ticket);
 
 
 module.exports = api;

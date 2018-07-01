@@ -6,11 +6,11 @@ const search = async (req, res) => {
     const title = req.query.title;//url?后面的
     const titleRegex = new RegExp(title, 'g');
     const attractions = await AttractionModel.find({
-        $or : [
+        $or: [
             {title: titleRegex},
-            {type : titleRegex}
-        ],status:"hasapproved"
-    },{title: 1,type: 1,address: 1,introduction: 1,rating: 1 ,price:1,posters:1});
+            {type: titleRegex}
+        ], status: "hasapproved"
+    }, {title: 1, type: 1, address: 1, introduction: 1, rating: 1, price: 1, posters: 1});
     res.status(200).json(attractions);
 };
 const filterattraction = async (req, res) => {
@@ -34,12 +34,21 @@ const filterattraction = async (req, res) => {
     }
 
     const query = {};
-    if (attractionIds.length !== 0) query._id  = {$in: attractionIds};
+    if (attractionIds.length !== 0) query._id = {$in: attractionIds};
     if (price.length !== 0) query.$or = price.map(mapPriceRange);
-    if (district.length !== 0) query.district  = {$in: district};
-    if (type.length !== 0) query.type  = {$in: type};
+    if (district.length !== 0) query.district = {$in: district};
+    if (type.length !== 0) query.type = {$in: type};
     query.status = 'hasapproved';
-    const attraction = await AttractionModel.find(query,{title: 1,type: 1,district:1,address: 1,introduction: 1,rating: 1 ,price:1,posters:1});
+    const attraction = await AttractionModel.find(query, {
+        title: 1,
+        type: 1,
+        district: 1,
+        address: 1,
+        introduction: 1,
+        rating: 1,
+        price: 1,
+        posters: 1
+    });
 
     res.status(200).json(attraction);
 };
@@ -51,20 +60,6 @@ const createpreattraction = async (req, res) => {
 
     res.status(200).json(attraction);
 };
-
-/*const createpreattraction = async (req, res) => {
-    if (Object.keys(req.body).length === 0) return res.status(400).json({
-        error: 'Bad Request',
-        message: 'The request body is empty'
-    });
-
-    AttractionModel.create(req.body)
-        .then(attraction => res.status(201).json(attraction))
-        .catch(error => res.status(500).json({
-            error: 'Internal server error',
-            message: error.message
-        }));
-};*/
 
 const updateattraction = async (req, res) => {
 
@@ -96,7 +91,7 @@ const approveattraction = async (req, res) => {
     res.status(200).json(attraction);
 };
 
-const readdetailinfo   = async(req, res) => {
+const readdetailinfo = async (req, res) => {
     const {
         attractionId,
     } = req.params;
@@ -105,37 +100,61 @@ const readdetailinfo   = async(req, res) => {
     res.status(200).json(attraction);
 };
 
-const readgeneralinfo   = async(req, res) => {
+const readgeneralinfo = async (req, res) => {
     const {
         attractionId,
     } = req.params;
-    const attraction = await AttractionModel.findById(attractionId,{ title: 1,type: 1,address: 1,introduction: 1,rating: 1 ,price:1,posters:1});
+    const attraction = await AttractionModel.findById(attractionId, {
+        title: 1,
+        type: 1,
+        address: 1,
+        introduction: 1,
+        rating: 1,
+        price: 1,
+        posters: 1
+    });
 
     res.status(200).json(attraction);
 };
-const listpreattraction  = async(req, res) => {
+const listpreattraction = async (req, res) => {
 
-    const attractions = await AttractionModel.find({status:"waitapproved"},{title: 1,type: 1,address: 1,introduction: 1,rating: 1 ,price:1,posters:1});
+    const attractions = await AttractionModel.find({status: "waitapproved"}, {
+        title: 1,
+        type: 1,
+        address: 1,
+        introduction: 1,
+        rating: 1,
+        price: 1,
+        posters: 1
+    });
     res.status(200).send(attractions);
 };
 
-const listattraction  = async(req, res) => {
+const listattraction = async (req, res) => {
 
-    const attractions = await AttractionModel.find({status:"hasapproved"},{title: 1,type: 1,address: 1,introduction: 1,rating: 1 ,price:1,posters:1});
+    const attractions = await AttractionModel.find({status: "hasapproved"}, {
+        title: 1,
+        type: 1,
+        address: 1,
+        introduction: 1,
+        rating: 1,
+        price: 1,
+        posters: 1
+    });
     res.status(200).send(attractions);
 };
 
-const getAttractionidbytitle  = async(req, res) => {
+const getAttractionidbytitle = async (req, res) => {
     const {
         attractionTitle,
     } = req.params;
-    const attraction = await AttractionModel.findOne({title:attractionTitle});
+    const attraction = await AttractionModel.findOne({title: attractionTitle});
 
     res.status(200).json(attraction);
 };
 
 
-module.exports = {//这里为啥也有export
+module.exports = {
     search,
     filterattraction,
     createpreattraction,
