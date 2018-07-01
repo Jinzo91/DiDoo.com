@@ -9,6 +9,7 @@ import { MovieFormView }   from './views/MovieFormView';
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 import { TAManagementView } from "./views/AdminView/TAManagementView";
+import { WtaManagementView } from "./views/AdminView/WtaManagementView";
 import { ApproveTAView } from "./views/TaView/ApproveTAView";
 import { MyOrderView } from "./views/CustomerView/MyOrderView";
 import { MyCommentView } from "./views/CustomerView/MyCommentView";
@@ -41,12 +42,13 @@ export default class App extends React.Component {
                 { component: CasualLookView, path: '/casuallook',exact: true},
                 { component: AttractionDetailView , path: '/attraction/:id'},
                 { component: TAManagementView , path: '/admin', exact: true},
+                { component: WtaManagementView , path: '/admin/unapproved', exact: true},
                 { component: AttractionFormView , path: '/edit/:attractionId', exact: true},
                 { component: AttractionCreateView , path: '/add', exact: true},
-                { component: ApproveTAView , path: '/admin/approveta', exact: true},
+                { component: ApproveTAView , path: '/ta', exact: true},
                 /*{ component: VisitorManagementView , path: '/admin/managevisitor', exact: true},*/
                 { component: ReportChartView , path: '/admin/report', exact: true},
-                { component: ManageTAView , path: '/ta', exact: true},
+                /*{ component: ManageTAView , path: '/ta', exact: true},*/
                 { component: ManageInventoryView , path: '/admin/inventory', exact: true},
 
                 /*{ render: (props) => {
