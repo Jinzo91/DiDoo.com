@@ -96,7 +96,6 @@ class ShoppingCartList extends React.Component {
     render() {
         if (this.state.data.length === 0) {
             return (<Page>
-                <img src={Background} className="bg"/>
                 <h2 style={{
                     marginTop: '350px',
                     position: 'relative',

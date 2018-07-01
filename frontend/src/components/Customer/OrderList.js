@@ -3,6 +3,7 @@
 import React from 'react';
 import Page from '../Page'
 import OrderRow from "../Customer/OrderRow";
+import Background from '../../images/comment2.jpg';
 
 const testCard = (key, quantity, ticketId,createdAt,ticket,date,attractionId,attraction) => <OrderRow
     key={key}
@@ -35,6 +36,7 @@ class OrderList extends React.Component {
     render() {
         return (
             <Page>
+                <img src={Background} className="bg"/>
                     <div style={{
                         position:'relative',
                     }}>

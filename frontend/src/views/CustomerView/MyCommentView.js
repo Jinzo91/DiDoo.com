@@ -5,7 +5,7 @@ import React from 'react';
 import CommentList from '../../components/Customer/CommentList';
 import CommentService from '../../services/CommentService';
 import UserService from "../../services/UserService";
-import Background from '../../images/AdminBG.png';
+import Background from '../../images/comment1.jpg';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
 

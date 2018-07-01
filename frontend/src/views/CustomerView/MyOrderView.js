@@ -70,7 +70,7 @@ export class MyOrderView extends React.Component {
         }
 
        return (
-            <OrderList data={this.state.data}onDelete={(id) => this.deleteMovie(id)}/>
+            <OrderList data={this.state.data}/>
         );
     }
 }

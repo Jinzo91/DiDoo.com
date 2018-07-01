@@ -21,7 +21,7 @@ export class OrderRow extends React.Component {
         this.setState({ visible: true });
     };
     changeprocess = () => {
-        this.setState({ process: 'in process' });
+        this.setState({ process: 'In process' });
         this.setState({ visible:false });
 
     };
@@ -32,23 +32,21 @@ export class OrderRow extends React.Component {
         const { visible } = this.state;
         const actions = [];
         actions.push({ secondary: true, children: 'Cancel', onClick: this.hide });
-        actions.push(<Button flat primary onClick={this.changeprocess}>Confirm</Button>);
+        actions.push(<Button flat primary swapTheming onClick={this.changeprocess}>Confirm</Button>);
         return (
-            <Card style={{ maxWidth: '70%', height:'30%', marginBottom: '5px', marginTop: '30px'}}
+            <Card style={{border: '1px solid transparent', borderRadius: '15px', maxWidth: '70%', height:'260px', marginBottom: '5px', marginTop: '30px',backgroundColor:'rgba(255,255,255,0.7)'}}
                   className="md-block-centered">
-                <CardTitle style={{marginLeft: '40px', marginTop: '20px', width: '80%'}}
-                    avatar ={<img src={this.props.attraction.posters.original}/>}
-                ><p style={{marginLeft: '50px', marginTop: '-100px'}}>{this.props.attraction.title}</p>
+                <CardTitle style={{marginLeft: '40px', marginTop: '20px', width: '80%',}}
+                    avatar ={<img style={{width: '240px', height: '200px'}} src={this.props.attraction.posters.original}/>}
+                >
+                    <p style={{fontSize: '36px', fontWeight: 'bold', marginLeft: '50px', marginTop: '-100px'}}>{this.props.attraction.title}</p>
                 </CardTitle>
 
                 <CardText style={{marginLeft: '400px', marginTop: '-150px', width: '40%'}}>
-                    <p>valid until:{this.props.ticket.date} </p>
-                    <p>quantity:{this.props.quantity}</p>
-                    <p    style={{fontSize: '18px', color:'red'}}
+                    <p style={{fontWeight: 'bold'}}>Valid until: {this.props.ticket.date.slice(0, 10)}</p>
+                    <p style={{fontWeight: 'bold'}}>Quantity: {this.props.quantity}</p>
+                    <p style={{fontSize: '18px', color:'red'}}
                         >{this.state.process}</p>
-
-
-
                     <DialogContainer height={'300px'} width={'700px'}
                         id="simple-action-dialog"
                         visible={visible}
@@ -71,11 +69,12 @@ export class OrderRow extends React.Component {
                         />
                     </DialogContainer>
                 </CardText>
-
-                <Button style={{marginLeft:'900px', marginTop:'-80px'}}
-                        raised onClick={this.show} onClick={() => this.props.history.push(`/mycomments/addcomments/${this.props.ticket.attractionId}`)} flat icon>edit</Button>
-                <Button style={{marginLeft:'1000px',marginTop:'-100px'}}
-                        raised onClick={this.show} flat icon>undo</Button>
+                <div>
+                    <Button style={{marginLeft:'70%'}}
+                            onClick={this.show} onClick={() => this.props.history.push(`/mycomments/addcomments/${this.props.ticket.attractionId}`)} flat iconChildren={'mode_comment'}>Comment</Button>
+                    <Button style={{margin:'auto'}}
+                            onClick={this.show} flat iconChildren={'undo'}>Return Ticket</Button>
+                </div>
             </Card>
         );
     }
