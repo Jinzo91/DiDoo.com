@@ -1,30 +1,32 @@
 "use strict";
 
 import React from 'react';
-import { Avatar,Card, CardTitle,Button, FontIcon, TextField } from 'react-md';
-import { withRouter } from 'react-router-dom'
-import UserService from  '../../services/UserService';
-import { AlertMessage } from '../../components/AlertMessage';
+import {Avatar, Card, CardTitle, Button, FontIcon, TextField} from 'react-md';
+import {withRouter} from 'react-router-dom'
+import UserService from '../../services/UserService';
+import {AlertMessage} from '../../components/AlertMessage';
 import Page from '../../components/Page';
 import AttractionService from "../../services/AttractionService";
 import CommentService from "../../services/CommentService";
 import Background from '../../images/comment1.jpg';
-const style = { maxWidth: '60%', marginBottom: '5px', marginTop: '100px'};
+
+const style = {maxWidth: '60%', marginBottom: '5px', marginTop: '100px'};
 
 
 class AddComment extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             attractionId: this.props.match.params.attractionId,
-            attraction:[],
-            comment:''
+            attraction: [],
+            comment: ''
         }
         this.handleChangeComment = this.handleChangeComment.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentWillMount(){
+
+    componentWillMount() {
         AttractionService.getAttraction(this.state.attractionId).then((data) => {
             this.setState({
                 attraction: data,
@@ -54,9 +56,14 @@ class AddComment extends React.Component {
         return (
             <Page>
                 <img src={Background} className="bg"/>
-                <Card style={{maxWidth: '60%', marginBottom: '5px', marginTop: '100px',backgroundColor:'rgba(255,255,255,0.7)'}} className="md-block-centered">
+                <Card style={{
+                    maxWidth: '60%',
+                    marginBottom: '5px',
+                    marginTop: '100px',
+                    backgroundColor: 'rgba(255,255,255,0.7)'
+                }} className="md-block-centered">
                     <CardTitle
-                        title={ this.state.attraction.title}
+                        title={this.state.attraction.title}
                         //avatar ={<Avatar src={this.state.attraction.posters.original} role="presentation"/>}
                     >
                     </CardTitle>
@@ -72,10 +79,11 @@ class AddComment extends React.Component {
                             errorText="Comment is required"/>
 
                         <Button id="submit" type="submit"
-                                disabled={ this.state.context == ''}
+                                disabled={this.state.context == ''}
                                 primary swapTheming className="md-cell md-cell--2">Save</Button>
                         <Button id="reset" type="reset" primary className="md-cell md-cell--2">Dismiss</Button>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                        <AlertMessage
+                            className="md-row md-full-width">{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
             </Page>

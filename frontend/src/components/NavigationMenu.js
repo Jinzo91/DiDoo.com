@@ -8,20 +8,18 @@ import imgURL from '../images/didoo.png';
 import NavigationMenuStyle from '../css/NavigationMenuStyle.css';
 import CartPopUp from './ShoppingCart/CartPopUp';
 import AttractionService from '../services/AttractionService';
-import UserService from "../services/UserService";
-import MovieService from "../services/MovieService";
-import CommentService from "../services/CommentService";
 
 
-const Item = ({ label, children }) => (
-    <IconSeparator style={{fontFamily:'Papyrus', fontSize:'25px', fontWeight:'bold'}} label={label} iconBefore component="li" className="md-cell md-cell--12">
+const Item = ({label, children}) => (
+    <IconSeparator style={{fontFamily: 'Papyrus', fontSize: '25px', fontWeight: 'bold'}} label={label} iconBefore
+                   component="li" className="md-cell md-cell--12">
         {children}
     </IconSeparator>
 );
 
-const NavLink = ({ label, to, exact, icon }) => (
+const NavLink = ({label, to, exact, icon}) => (
     <Route path={to} exact={exact}>
-        {({ match }) => {
+        {({match}) => {
             let leftIcon;
             if (icon) {
                 leftIcon = <FontIcon>{icon}</FontIcon>;
@@ -129,7 +127,7 @@ class NavigationMenu extends React.Component {
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
         AttractionService.getAttractions().then((data) => {
             this.setState({
                 attractions: [...data],
@@ -155,23 +153,31 @@ class NavigationMenu extends React.Component {
                     className="NavigationMenuStyle"
                     drawerTitle="My Menu"
                     toolbarTitle={<Item label="DiDoo.com">
-                        <Button onClick={() => this.props.history.push('/')}><Avatar src={imgURL} role="presentation" suffix="green-300" /></Button>
+                        <Button onClick={() => this.props.history.push('/')}><Avatar src={imgURL} role="presentation"
+                                                                                     suffix="green-300"/></Button>
                     </Item>}
                     toolbarTitleMenu={this.props.userRole !== 'admin' && <Item>
-                            <Autocomplete style={{marginLeft: "-20px", width: "30%", height: "35px", background: "white", color: 'black'}}
-                                          data={this.state.titles = this.state.attractions.map(attractions => attractions.title)}
-                                          filter={Autocomplete.caseInsensitiveFilter}
-                                          onAutocomplete={(value) => this.setState({ searchValue: value })}
-                                          onChange={(value) => this.setState({ searchValue: value })}
-                            />
-                            <Button style={{marginLeft: "auto", width: "10%"}} onClick={() => this.newSearch()} flat iconBefore={true} iconChildren={"search"}/>
+                        <Autocomplete style={{
+                            marginLeft: "-20px",
+                            width: "30%",
+                            height: "35px",
+                            background: "white",
+                            color: 'black'
+                        }}
+                                      data={this.state.titles = this.state.attractions.map(attractions => attractions.title)}
+                                      filter={Autocomplete.caseInsensitiveFilter}
+                                      onAutocomplete={(value) => this.setState({searchValue: value})}
+                                      onChange={(value) => this.setState({searchValue: value})}
+                        />
+                        <Button style={{marginLeft: "auto", width: "10%"}} onClick={() => this.newSearch()} flat
+                                iconBefore={true} iconChildren={"search"}/>
 
                     </Item>}
-                    toolbarActions={<KebabMenu id="toolbar-colored-kebab-menu" />}
+                    toolbarActions={<KebabMenu id="toolbar-colored-kebab-menu"/>}
                     /*toolbarChildren={<Button style={{width: "15"}} flat iconChildren="shopping_cart"></Button>}*/
                     /*toolbarChildren={<Button style={{marginTop: "12px", marginRight: "5px"}} onClick={() => this.props.history.push('/mycart')} icon>shopping_cart</Button>}*/
-                    toolbarChildren={this.props.userRole === 'visitor' && <CartPopUp id="toolbar-cart-overlay" />}
-                    navItems={this.state.navItems.map(props => <NavLink {...props} key={props.to} />)}
+                    toolbarChildren={this.props.userRole === 'visitor' && <CartPopUp id="toolbar-cart-overlay"/>}
+                    navItems={this.state.navItems.map(props => <NavLink {...props} key={props.to}/>)}
                 >
                 </NavigationDrawer>
             </div>

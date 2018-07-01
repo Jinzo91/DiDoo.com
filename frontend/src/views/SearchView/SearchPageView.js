@@ -6,7 +6,7 @@ import '../../css/bg.css';
 import SearchBarComponent from "../../components/Search/SearchBarComponent";
 import SearchHeader from '../../components/Search/SearchHeader';
 
-export class  SearchPageView extends React.Component {
+export class SearchPageView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,14 +16,14 @@ export class  SearchPageView extends React.Component {
 
     }
 
-    render(){
+    render() {
         return (
             <section>
-                <SearchHeader title={this.state.title} />
-                <img src={Background} className="bg" />
-                <div style={{marginTop:'25%', position: 'relative'}}>
-                <SearchBarComponent
-                /></div>
+                <SearchHeader title={this.state.title}/>
+                <img src={Background} className="bg"/>
+                <div style={{marginTop: '25%', position: 'relative'}}>
+                    <SearchBarComponent
+                    /></div>
             </section>
 
         )

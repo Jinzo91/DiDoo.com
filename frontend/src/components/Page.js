@@ -1,9 +1,9 @@
 "use strict";
 
 import React from 'react';
-import { Footer } from './Footer';
+import {Footer} from './Footer';
 import NavigationMenu from './NavigationMenu';
-import UserService from  '../services/UserService';
+import UserService from '../services/UserService';
 
 export default class Page extends React.Component {
 
@@ -17,10 +17,10 @@ export default class Page extends React.Component {
         }
     }
 
-    componentDidMount(){
-       this.setState({
-           title: document.title,
-       });
+    componentDidMount() {
+        this.setState({
+            title: document.title,
+        });
 
     }
 
@@ -32,7 +32,7 @@ export default class Page extends React.Component {
                 <NavigationMenu title={this.state.title} userRole={this.state.userRole = this.state.user.status}/>
 
                 {this.props.children}
-                <Footer />
+                <Footer/>
             </section>
         );
     }

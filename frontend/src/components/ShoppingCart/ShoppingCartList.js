@@ -1,16 +1,13 @@
 "use strict";
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import {MenuButton, ListItem, Avatar, FontIcon, Button, DialogContainer, IconSeparator} from 'react-md';
 import {withRouter} from 'react-router-dom'
 import UserService from '../../services/UserService';
 import ShoppingService from "../../services/ShoppingService";
-import {CartListRow} from "./CartListRow";
 import Page from '../Page'
 import {ShoppingCartRow} from "./ShoppingCartRow";
 import Background from '../../images/AdminBG.png';
-import AttractionService from "../../services/AttractionService";
 
 const Item = ({label, children}) => (
     <IconSeparator labelStyle={{color: 'white', marginLeft: "-20px"}} label={label} iconBefore component="li"

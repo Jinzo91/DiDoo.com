@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {SVGIcon, SelectField} from 'react-md';
-import { Button } from 'react-md';
-import { DatePicker } from 'react-md';
+import {Button} from 'react-md';
+import {DatePicker} from 'react-md';
 import moment from 'moment';
 
 import arrowDropDown from '../../images/arrow_drop_down.png';
@@ -13,14 +13,14 @@ export class SelectAttraction extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fromdate:moment(),
-            todate:moment(),
-            attractionTitle1:[],
-            attractionTitle2:[],
-            attractionTitle3:[],
-            attractionTitle4:[],
-            attractionTitle5:[],
-            attractionTitle6:[],
+            fromdate: moment(),
+            todate: moment(),
+            attractionTitle1: [],
+            attractionTitle2: [],
+            attractionTitle3: [],
+            attractionTitle4: [],
+            attractionTitle5: [],
+            attractionTitle6: [],
             item: [],
         };
         this.handleChangeFromDate = this.handleChangeFromDate.bind(this);
@@ -53,62 +53,69 @@ export class SelectAttraction extends Component {
 
     handleChangeAttraction1(value) {
         this.setState({
-            attractionTitle1:value,
+            attractionTitle1: value,
         });
     }
 
     handleChangeAttraction2(value) {
         this.setState({
-            attractionTitle2:value,
+            attractionTitle2: value,
         });
     }
 
     handleChangeAttraction3(value) {
         this.setState({
-            attractionTitle3:value,
+            attractionTitle3: value,
         });
     }
 
     handleChangeAttraction4(value) {
         this.setState({
-            attractionTitle4:value,
+            attractionTitle4: value,
         });
     }
 
     handleChangeAttraction5(value) {
         this.setState({
-            attractionTitle5:value,
+            attractionTitle5: value,
         });
     }
 
     handleChangeAttraction6(value) {
         this.setState({
-            attractionTitle6:value,
+            attractionTitle6: value,
         });
     }
 
     handleClick() {
         this.props.onClick(this.state.fromdate,
-                             this.state.todate,
-                             this.state.attractionTitle1,
-                             this.state.attractionTitle2,
-                             this.state.attractionTitle3,
-                             this.state.attractionTitle4,
-                             this.state.attractionTitle5,
-                             this.state.attractionTitle6
-            );
+            this.state.todate,
+            this.state.attractionTitle1,
+            this.state.attractionTitle2,
+            this.state.attractionTitle3,
+            this.state.attractionTitle4,
+            this.state.attractionTitle5,
+            this.state.attractionTitle6
+        );
     }
 
     render() {
-        const {fromdate,todate,attractionTitle1,attractionTitle2,attractionTitle3,attractionTitle4,attractionTitle5,attractionTitle6} = this.state;
+        const {fromdate, todate, attractionTitle1, attractionTitle2, attractionTitle3, attractionTitle4, attractionTitle5, attractionTitle6} = this.state;
         return (
-            <div style={{marginTop:'8%',marginLeft:'10%',backgroundColor:'rgba(255, 255, 255, 0.7)',marginRight:'10%'}}>
+            <div style={{
+                marginTop: '8%',
+                marginLeft: '10%',
+                backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                marginRight: '10%'
+            }}>
                 <div className="md-grid">
                     <h4 className="md-cell md-cell--12"
-                        style={{fontSize:'20px',
+                        style={{
+                            fontSize: '20px',
                             fontFamily: "Franklin Gothic Medium",
-                            color:'#39963D',
-                            fontWeight:'bold'}}>Select Date</h4>
+                            color: '#39963D',
+                            fontWeight: 'bold'
+                        }}>Select Date</h4>
                     <DatePicker
                         id="fromDate"
                         label="From Date"
@@ -125,10 +132,12 @@ export class SelectAttraction extends Component {
                 </div>
                 <div className="md-grid">
                     <h4 className="md-cell md-cell--12"
-                        style={{fontSize:'20px',
+                        style={{
+                            fontSize: '20px',
                             fontFamily: "Franklin Gothic Medium",
-                            color:'#39963D',
-                            fontWeight:'bold'}}>Select Attractions</h4>
+                            color: '#39963D',
+                            fontWeight: 'bold'
+                        }}>Select Attractions</h4>
                     <SelectField
                         id="select-field-2"
                         label="Attraction1"
@@ -181,9 +190,10 @@ export class SelectAttraction extends Component {
                         background: '#4CAF50',
                         color: 'white',
                         fontSize: '20px',
-                        marginLeft:'90%'
+                        marginLeft: '90%'
                     }}
-                            onClick={() => this.props.onClick(fromdate,todate,attractionTitle1,attractionTitle2,attractionTitle3,attractionTitle4,attractionTitle5,attractionTitle6)} icon>check_box</Button>
+                            onClick={() => this.props.onClick(fromdate, todate, attractionTitle1, attractionTitle2, attractionTitle3, attractionTitle4, attractionTitle5, attractionTitle6)}
+                            icon>check_box</Button>
                 </div>
             </div>
         )

@@ -18,7 +18,7 @@ export class MyCartView extends React.Component {
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
 
         let id = this.state.user.id;
         ShoppingService.listCart(id).then(data => {

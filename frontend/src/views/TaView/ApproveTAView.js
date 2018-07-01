@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ApproveList } from '../../components/Ta/ApproveList';
+import {ApproveList} from '../../components/Ta/ApproveList';
 import Background from '../../images/frak-lopez-89003-unsplash.jpg';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
@@ -15,8 +15,7 @@ export class ApproveTAView extends React.Component {
         };
     }
 
-    componentWillMount()
-    {
+    componentWillMount() {
         this.setState({
             loading: true
         });
@@ -28,7 +27,7 @@ export class ApproveTAView extends React.Component {
             });
         }).catch((e) => {
             console.error(e);
-        });/*获得数据，从后端*/
+        });
     }
 
     approveAttractions(id) {
@@ -53,7 +52,7 @@ export class ApproveTAView extends React.Component {
 
         return (
             <div>
-                <img src={Background} className="bg" />
+                <img src={Background} className="bg"/>
                 <ApproveList data={this.state.data} onApprove={(id) => this.approveAttractions(id)}/>
             </div>
         );

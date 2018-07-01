@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { Button, Media } from 'react-md';
-import { withRouter } from 'react-router-dom'
+import React, {Component} from 'react';
+import {Button, Media} from 'react-md';
+import {withRouter} from 'react-router-dom'
 import StarRatingComponent from 'react-star-rating-component';
+
 class SearchResultCard extends Component {
     constructor(props) {
         super(props);
@@ -11,23 +12,23 @@ class SearchResultCard extends Component {
 
     render() {
         return (
-            <div  style={{
-                marginTop:'10px',
-                marginLeft:'5%',
+            <div style={{
+                marginTop: '10px',
+                marginLeft: '5%',
                 width: '90%',
                 display: 'flex',
-                paddingTop:'1%',
-                paddingBottom:'1%',
-                paddingLeft:'1%',
-                background:'white',
+                paddingTop: '1%',
+                paddingBottom: '1%',
+                paddingLeft: '1%',
+                background: 'white',
                 flexDirection: 'row',
                 justifyContent: 'space-between',
             }}>
                 <div style={{
                     width: '50%',
-                    flex:'0.8'
+                    flex: '0.8'
                 }}>
-                    <Media >
+                    <Media>
                         <img src={this.props.image} alt="presentation" style={{
                             objectFit: 'cover'
                         }}/>
@@ -37,8 +38,8 @@ class SearchResultCard extends Component {
                     width: '40%',
                 }}>
                     <h1 style={{
-                        fontWeight:'bolder',
-                        fontFamily:'Lucida Bright'
+                        fontWeight: 'bolder',
+                        fontFamily: 'Lucida Bright'
                     }}>{this.props.title}</h1>
                     <StarRatingComponent
                         name="rate2"
@@ -47,41 +48,41 @@ class SearchResultCard extends Component {
                         value={this.props.rating}
                     />
                     <div style={{
-                        marginTop:'10px',
-                        color:'grey'
+                        marginTop: '10px',
+                        color: 'grey'
                     }}
                     >{this.props.address}</div>
-                    <h3  style={{
-                            width: '70%',
-                            marginTop:'40px'
-                        }}>Type:{this.props.type}</h3>
-                    <div>{this.props.introduction.slice(0,200)+'...'}
+                    <h3 style={{
+                        width: '70%',
+                        marginTop: '40px'
+                    }}>Type:{this.props.type}</h3>
+                    <div>{this.props.introduction.slice(0, 200) + '...'}
+                    </div>
                 </div>
-                </div>
-                <div style={{width:'13%'}}>
-                    <div  style={{
-                        color:'green',
-                        marginTop:'120px',
-                        marginRight:'50px',
-                        fontSize:'40px',
+                <div style={{width: '13%'}}>
+                    <div style={{
+                        color: 'green',
+                        marginTop: '120px',
+                        marginRight: '50px',
+                        fontSize: '40px',
                     }}>¥{this.props.price}</div>
-                    <Button  primary style={{
-                        background:'green',
-                        borderRadius:'10px',
-                        color:'white',
-                        marginTop:'15px',
-                        paddingLeft:'20px',
-                        paddingRight:'20px',
-                        paddingTop:'10px',
-                        paddingBottom:'10px',
-                        marginRight:'50px',
-                        fontSize:'22px',
-                        fontFamily:'San Francisco'
-                    }}  onClick={() => this.props.history.push(`/attraction/${this.props.id}`)}>Select</Button>
+                    <Button primary style={{
+                        background: 'green',
+                        borderRadius: '10px',
+                        color: 'white',
+                        marginTop: '15px',
+                        paddingLeft: '20px',
+                        paddingRight: '20px',
+                        paddingTop: '10px',
+                        paddingBottom: '10px',
+                        marginRight: '50px',
+                        fontSize: '22px',
+                        fontFamily: 'San Francisco'
+                    }} onClick={() => this.props.history.push(`/attraction/${this.props.id}`)}>Select</Button>
                 </div>
             </div>
         );
     }
 }
 
-export default withRouter (SearchResultCard);
+export default withRouter(SearchResultCard);

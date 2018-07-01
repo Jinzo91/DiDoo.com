@@ -1,18 +1,19 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, TextField } from 'react-md';
-import { withRouter } from 'react-router-dom';
+import {Card, Button, TextField} from 'react-md';
+import {withRouter} from 'react-router-dom';
 
-import { AlertMessage } from './AlertMessage';
+import {AlertMessage} from './AlertMessage';
 import Page from './Page';
 
 
-const style = { maxWidth: 400,
+const style = {
+    maxWidth: 400,
     marginTop: '200px',
     marginBottom: '20px',
-    borderRadius:'10px',
-    backgroundColor:'rgba(255, 255, 255, 0.7)',
+    borderRadius: '10px',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
 };
 
 
@@ -22,8 +23,8 @@ class UserSignup extends React.Component {
         super(props);
 
         this.state = {
-            username : '',
-            password : ''
+            username: '',
+            password: ''
         };
 
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -79,7 +80,8 @@ class UserSignup extends React.Component {
                                 disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
                                 raised primary className="md-cell md-cell--2">Register</Button>
                         <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                        <AlertMessage
+                            className="md-row md-full-width">{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
             </Page>

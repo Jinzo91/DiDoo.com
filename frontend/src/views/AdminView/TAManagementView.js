@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ManageList } from '../../components/Admin/ManageList';
+import {ManageList} from '../../components/Admin/ManageList';
 import Background from '../../images/frak-lopez-89003-unsplash.jpg';
 import '../../css/bg.css';
 import AttractionService from "../../services/AttractionService";
@@ -15,8 +15,7 @@ export class TAManagementView extends React.Component {
         };
     }
 
-    componentWillMount()
-    {
+    componentWillMount() {
         this.setState({
             loading: true
         });
@@ -28,7 +27,8 @@ export class TAManagementView extends React.Component {
             });
         }).catch((e) => {
             console.error(e);
-        });/*获得数据，从后端*/
+        });
+        /*获得数据，从后端*/
     }
 
     deleteAttractions(id) {
@@ -54,7 +54,7 @@ export class TAManagementView extends React.Component {
 
         return (
             <div>
-                <img src={Background} className="bg" />
+                <img src={Background} className="bg"/>
                 <ManageList data={this.state.data} onDelete={(id) => this.deleteAttractions(id)}/>
             </div>
         );

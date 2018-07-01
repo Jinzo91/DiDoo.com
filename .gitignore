@@ -74,3 +74,5 @@ database/collection-0-203544536363179829.wt
 database/journal/WiredTigerLog.0000000013
 database/diagnostic.data/metrics.interim.temp
 database/diagnostic.data/metrics.2018-07-01T09-06-37Z-00000
+database/journal/WiredTigerLog.0000000014
+database/diagnostic.data/metrics.2018-07-01T19-48-01Z-00000

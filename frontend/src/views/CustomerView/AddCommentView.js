@@ -3,9 +3,6 @@
 import React from 'react';
 
 import AddComment from '../../components/Customer/AddComment';
-import AttractionService from '../../services/AttractionService';
-import CommentService from '../../services/CommentService';
-import UserService from "../../services/UserService";
 
 
 export class AddCommentView extends React.Component {
@@ -14,8 +11,8 @@ export class AddCommentView extends React.Component {
         super(props);
         this.setState({
             loading: true,
-            data:[],
-            attraction:[]
+            data: [],
+            attraction: []
         })
     }
 
@@ -27,7 +24,6 @@ export class AddCommentView extends React.Component {
             error: undefined
         });
     }
-
 
 
     render() {

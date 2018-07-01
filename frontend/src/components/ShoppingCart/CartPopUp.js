@@ -3,20 +3,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {MenuButton, ListItem, Avatar, FontIcon, Button, IconSeparator} from 'react-md';
-import { withRouter } from 'react-router-dom'
-import UserService from  '../../services/UserService';
-import { MovieListRow } from '../MovieListRow';
-import MovieService from "../../services/MovieService";
+import {withRouter} from 'react-router-dom'
+import UserService from '../../services/UserService';
 import ShoppingService from "../../services/ShoppingService";
 import {CartListRow} from "./CartListRow";
 
-const Item = ({ label, children }) => (
-    <IconSeparator labelStyle={{color: 'white', marginLeft: "-20px"}} label={label} iconBefore component="li" className="md-cell md-cell--12">
+const Item = ({label, children}) => (
+    <IconSeparator labelStyle={{color: 'white', marginLeft: "-20px"}} label={label} iconBefore component="li"
+                   className="md-cell md-cell--12">
         {children}
     </IconSeparator>
 );
 const CartList = ({data, onDelete}) => (
-    <div>{data.map((cart, i) => <CartListRow key={i} cart={cart} onDelete={(id) => onDelete(id)} />)}</div>
+    <div>{data.map((cart, i) => <CartListRow key={i} cart={cart} onDelete={(id) => onDelete(id)}/>)}</div>
 );
 
 
@@ -30,7 +29,7 @@ class CartPopUp extends React.Component {
         }
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.setState({
             loading: true
         });
@@ -74,11 +73,15 @@ class CartPopUp extends React.Component {
                 menuStyle={{marginTop: "15px", marginRight: "5px"}}
                 id={this.props.id}
                 /*icon*/
-                iconChildren={<icon style={{color:'white'}}>shopping_cart</icon>}
+                iconChildren={<icon style={{color: 'white'}}>shopping_cart</icon>}
                 className={this.props.className}
                 menuItems={this.state.username !== 'admin' && this.state.user ? [
-                    <CartList data={this.state.data} onDelete={(cartId) => this.deleteCartItem(cartId)}/>]
-                    : [<ListItem style={{minHeight: "50px"}} leftIcon={<img style={{marginRight:"-10px", marginTop: "-5px", height: "40px", width: "45px"}} src="https://res.cloudinary.com/sivadass/image/upload/v1495427934/icons/empty-cart.png"/>} key={1} primaryTextStyle={{marginTop: "10px", fontWeight: "bold"}} primaryText="Empty Cart" onClick={() => this.props.history.push('/mycart')}/>]}
+                        <CartList data={this.state.data} onDelete={(cartId) => this.deleteCartItem(cartId)}/>]
+                    : [<ListItem style={{minHeight: "50px"}} leftIcon={<img
+                        style={{marginRight: "-10px", marginTop: "-5px", height: "40px", width: "45px"}}
+                        src="https://res.cloudinary.com/sivadass/image/upload/v1495427934/icons/empty-cart.png"/>}
+                                 key={1} primaryTextStyle={{marginTop: "10px", fontWeight: "bold"}}
+                                 primaryText="Empty Cart" onClick={() => this.props.history.push('/mycart')}/>]}
             >
                 {/*Account*/}
                 <Item label={'My Cart'}/>

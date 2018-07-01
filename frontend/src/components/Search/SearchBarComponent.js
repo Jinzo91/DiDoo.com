@@ -1,9 +1,10 @@
 "use strict";
 
 import React from 'react';
-import { withRouter } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import SearchBar from 'material-ui-search-bar';
-import {Button } from 'react-md';
+import {Button} from 'react-md';
+
 class SearchBarComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -17,28 +18,29 @@ class SearchBarComponent extends React.Component {
         return (
             <div>
                 <div style={{
-                    display:'flex',
+                    display: 'flex',
                     width: '60%',
                     margin: '0 auto'
                 }}>
                     <SearchBar className={"searchtoolbar"}
-                        onChange={(value) => this.setState({ searchValue: value }) }
-                        onRequestSearch={() => this.props.history.push(`/searchresult?query=${this.state.searchValue}`)}
-                        style={{
-                            flex: '1'
-                        }}
+                               onChange={(value) => this.setState({searchValue: value})}
+                               onRequestSearch={() => this.props.history.push(`/searchresult?query=${this.state.searchValue}`)}
+                               style={{
+                                   flex: '1'
+                               }}
                     />
-                    <Button  raised primary swapTheming style={{
-                        height:'47px',
-                        fontSize:'15px',
-                        background:'green',
-                        color:'white'
-                    }}  onClick={() => this.props.history.push('/casuallook')}>Casual Look</Button>
+                    <Button raised primary swapTheming style={{
+                        height: '47px',
+                        fontSize: '15px',
+                        background: 'green',
+                        color: 'white'
+                    }} onClick={() => this.props.history.push('/casuallook')}>Casual Look</Button>
                 </div>
 
             </div>
         );
     }
 }
+
 export default withRouter(SearchBarComponent);
 

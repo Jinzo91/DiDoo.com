@@ -1,18 +1,19 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, FontIcon, TextField } from 'react-md';
-import { withRouter } from 'react-router-dom'
+import {Card, Button, FontIcon, TextField} from 'react-md';
+import {withRouter} from 'react-router-dom'
 
-import { AlertMessage } from '../AlertMessage';
+import {AlertMessage} from '../AlertMessage';
 import Page from '../Page';
 
 
-const style = { maxWidth: 800,
-                 marginTop: '20px',
-                 marginBottom: '20px',
-                 borderRadius:'10px',
-                 backgroundColor:'rgba(255, 255, 255, 0.7)',
+const style = {
+    maxWidth: 800,
+    marginTop: '20px',
+    marginBottom: '20px',
+    borderRadius: '10px',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
 };
 
 class AttractionForm extends React.Component {
@@ -20,27 +21,27 @@ class AttractionForm extends React.Component {
     constructor(props) {
         super(props);
 
-        if(this.props.data != undefined) {
+        if (this.props.data != undefined) {
             this.state = {
-                title : props.data.title,
-                type : props.data.type,
-                address : props.data.address,
-                rating : props.data.rating,
+                title: props.data.title,
+                type: props.data.type,
+                address: props.data.address,
+                rating: props.data.rating,
                 introduction: props.data.introduction,
-                district : props.data.district,
-                price : props.data.price,
-                openTime : props.data.openTime
+                district: props.data.district,
+                price: props.data.price,
+                openTime: props.data.openTime
             };
         } else {
-            this.state ={
-                title : '',
-                type : '',
-                address : '',
-                rating : '',
+            this.state = {
+                title: '',
+                type: '',
+                address: '',
+                rating: '',
                 introduction: '',
-                district : '',
-                price : '',
-                openTime : ''
+                district: '',
+                price: '',
+                openTime: ''
             };
         }
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -91,7 +92,7 @@ class AttractionForm extends React.Component {
         event.preventDefault();
 
         let data = this.props.data;
-        if(data == undefined) {
+        if (data == undefined) {
             data = {};
         }
 
@@ -131,7 +132,7 @@ class AttractionForm extends React.Component {
                             value={this.state.type}
                             onChange={this.handleChangeType}
                             errorText="Type is required"
-                            />
+                        />
                         <TextField
                             label="Address"
                             id="AddressField"
@@ -191,12 +192,11 @@ class AttractionForm extends React.Component {
                             errorText="Opentime is required"/>
 
                         <Button id="submit" type="submit"
-                                disabled={ this.state.title == undefined || this.state.title == ''
-                                            /*|| this.state.type == undefined || this.state.type == ''
-                                            || this.state.address == undefined || this.state.address == ''*/}
+                                disabled={this.state.title == undefined || this.state.title == ''}
                                 raised primary className="md-cell md-cell--2">Save</Button>
                         <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                        <AlertMessage
+                            className="md-row md-full-width">{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
                     </form>
                 </Card>
             </Page>

@@ -28,7 +28,7 @@ export class UserSignupView extends React.Component {
     render() {
         return (
             <div>
-                <img src={Background} className="bg" />
+                <img src={Background} className="bg"/>
                 <UserSignup onSubmit={(user) => this.signup(user)} error={this.state.error}></UserSignup>
             </div>
         );

@@ -1,9 +1,9 @@
 import React from 'react';
 import AttractionService from "../../services/AttractionService";
 import CommentService from "../../services/CommentService";
-import { Footer } from '../../components/Footer';
+import {Footer} from '../../components/Footer';
 import NavigationMenu from '../../components/NavigationMenu';
-import AttractionDetail  from '../../components/Search/AttractionDetail';
+import AttractionDetail from '../../components/Search/AttractionDetail';
 import CommentDetailPage from '../../components/Search/CommentDetailPage';
 
 const districts = {
@@ -16,6 +16,7 @@ const types = {
 const prices = {
     Price: ['¥ 0 - 25', '¥ 25 - 50', '¥ 50 - 75', '¥ 75 - 100']
 }
+
 export class AttractionDetailView extends React.Component {
 
     constructor(props) {
@@ -23,12 +24,11 @@ export class AttractionDetailView extends React.Component {
         this.state = {
             loading: true,
             attraction: [],
-            comment:[],
+            comment: [],
         };
     }
 
-    componentWillMount()
-    {
+    componentWillMount() {
         this.setState({
             loading: true
         });
@@ -50,6 +50,7 @@ export class AttractionDetailView extends React.Component {
             console.error(e);
         });
     }
+
     render() {
 
         return (
@@ -59,15 +60,15 @@ export class AttractionDetailView extends React.Component {
                     loading={this.state.loading}
                     attraction={this.state.attraction}/>
                 <h1 style={{
-                    color:'black',
+                    color: 'black',
                     marginLeft: '15%',
-                    marginTop:'50px',
-                    marginBottom:'20px'
+                    marginTop: '50px',
+                    marginBottom: '20px'
                 }}>COMMENT:</h1>
                 <CommentDetailPage
                     loading={this.state.loading}
                     comment={this.state.comment}/>
-                <Footer />
+                <Footer/>
             </div>
         );
     }

@@ -4,26 +4,28 @@ import HttpService from './HttpService';
 
 export default class AttractionService {
 
-    constructor(){
+    constructor() {
     }
 
-    static baseURL() {return "http://localhost:3000/attraction" }//后端
+    static baseURL() {
+        return "http://localhost:3000/attraction"
+    }
 
-    static getAttractions(){
+    static getAttractions() {
         return new Promise((resolve, reject) => {
-            HttpService.get(this.baseURL(), function(data) {
+            HttpService.get(this.baseURL(), function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
 
-    static getPreAttractions(){
+    static getPreAttractions() {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${AttractionService.baseURL()}/pre`, function(data) {
+            HttpService.get(`${AttractionService.baseURL()}/pre`, function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -31,14 +33,14 @@ export default class AttractionService {
 
     static getAttraction(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${AttractionService.baseURL()}/readdetail/${id}`, function(data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
+            HttpService.get(`${AttractionService.baseURL()}/readdetail/${id}`, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
                     reject('Error while retrieving attraction');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -46,14 +48,14 @@ export default class AttractionService {
 
     static deleteAttractions(id) {
         return new Promise((resolve, reject) => {
-            HttpService.remove(`${AttractionService.baseURL()}/${id}`, function(data) {
-                if(data != undefined) {
+            HttpService.remove(`${AttractionService.baseURL()}/${id}`, function (data) {
+                if (data != undefined) {
                     resolve(data);
                 }
                 else {
                     reject('Error while deleting');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -61,15 +63,15 @@ export default class AttractionService {
 
     static approveAttractions(id) {
         return new Promise((resolve, reject) => {
-            HttpService.put(`${AttractionService.baseURL()}/approve/${id}`,{}, function(data) {
+            HttpService.put(`${AttractionService.baseURL()}/approve/${id}`, {}, function (data) {
                 /*console.log(data);*/
-                if(data != undefined) {
+                if (data != undefined) {
                     resolve(data);
                 }
                 else {
                     reject('Error while approving');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 console.log(textStatus)
                 reject(textStatus);
             });
@@ -78,9 +80,9 @@ export default class AttractionService {
 
     static updateAttractions(attraction) {
         return new Promise((resolve, reject) => {
-            HttpService.put(`${this.baseURL()}/${attraction._id}`, attraction, function(data) {
+            HttpService.put(`${this.baseURL()}/${attraction._id}`, attraction, function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -92,24 +94,24 @@ export default class AttractionService {
             original: "https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1530467488&di=045b47d23a2cdff2582a159c7864053a&src=http://image.naic.org.cn/uploadfile/2017/0731/1501481954471681.jpg"
         };
         return new Promise((resolve, reject) => {
-            HttpService.post(AttractionService.baseURL(),attraction, function(data) {
+            HttpService.post(AttractionService.baseURL(), attraction, function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
 
-    static getAttractionsUser(id) {//用user找評論
+    static getAttractionsUser(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${AttractionService.baseURL()}/visitor/${id}`, function(data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
+            HttpService.get(`${AttractionService.baseURL()}/visitor/${id}`, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
                     reject('Error while retrieving attraction');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -117,52 +119,59 @@ export default class AttractionService {
 
     static getAttractionidbytitle(title) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${AttractionService.baseURL()}/title/${title}`, function(data)  {
-                if(data != undefined || Object.keys(data).length !== 0) {
+            HttpService.get(`${AttractionService.baseURL()}/title/${title}`, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
                     reject('Error while retrieving attractionId');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
 
     static getAttractionbysearch(title) {
-        return new Promise((resolve, reject) => {//往哪里请求， 用到httpservice
-            HttpService.get(`${AttractionService.baseURL()}/search?title=${title}`, function(data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${AttractionService.baseURL()}/search?title=${title}`, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
                     reject('Error while retrieving attraction');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
+
     static getAttractionDetail(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${AttractionService.baseURL()}/readdetail/${id}`, function(data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
+            HttpService.get(`${AttractionService.baseURL()}/readdetail/${id}`, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
                     reject('Error while retrieving movie');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
-    static filterattraction(attractionIds,district, type, price) {
+
+    static filterattraction(attractionIds, district, type, price) {
         return new Promise((resolve, reject) => {
-            HttpService.post(`${AttractionService.baseURL()}/filter`,{attractionIds,district, type, price}, function(data) {
+            HttpService.post(`${AttractionService.baseURL()}/filter`, {
+                attractionIds,
+                district,
+                type,
+                price
+            }, function (data) {
                 resolve(data);
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });

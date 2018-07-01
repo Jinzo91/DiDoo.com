@@ -13,15 +13,15 @@ export class AttractionFormView extends React.Component {
         super(props);
     }
 
-    componentWillMount(){
-        if(this.props.history.location.pathname === '/add') {
+    componentWillMount() {
+        if (this.props.history.location.pathname === '/add') {
             this.setState({
                 loading: false,
                 data: undefined,
                 error: undefined
             });
         }
-        else if(this.props.location.state !== undefined && this.props.location.state.data !== undefined) {
+        else if (this.props.location.state !== undefined && this.props.location.state.data !== undefined) {
             this.setState({
                 loading: false,
                 data: this.props.location.state.data,
@@ -43,12 +43,12 @@ export class AttractionFormView extends React.Component {
                 });
             }).catch((e) => {
                 console.error(e);
-            });/*获得数据，从后端*/
+            });
         }
     }
 
     updateAttractions(attraction) {
-        if(this.state.data === undefined) {
+        if (this.state.data === undefined) {
             AttractionService.createAttractions(attraction).then((data) => {
                 this.props.history.push('/');
             }).catch((e) => {
@@ -73,9 +73,10 @@ export class AttractionFormView extends React.Component {
 
         return (
             <div>
-                <img src={Background} className="bg" />
-                <AttractionForm data={this.state.data} onSubmit={(attraction) => this.updateAttractions(attraction)} error={this.state.error} />
+                <img src={Background} className="bg"/>
+                <AttractionForm data={this.state.data} onSubmit={(attraction) => this.updateAttractions(attraction)}
+                                error={this.state.error}/>
             </div>
-            );
+        );
     }
 }

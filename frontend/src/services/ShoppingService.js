@@ -14,7 +14,7 @@ export default class ShoppingService {
 
     static addToCart(userId, attractionId, quantity, date) {
         return new Promise((resolve, reject) => {
-            HttpService.post(this.baseURL(),{userId, attractionId, quantity, date},function (data) {
+            HttpService.post(this.baseURL(), {userId, attractionId, quantity, date}, function (data) {
                 resolve(data);
             }, function (textStatus) {
                 reject(textStatus);
@@ -35,8 +35,8 @@ export default class ShoppingService {
 
     static listCart(userId) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${ShoppingService.baseURL()}/cart/${userId}`, function(data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
+            HttpService.get(`${ShoppingService.baseURL()}/cart/${userId}`, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
@@ -50,7 +50,7 @@ export default class ShoppingService {
 
     static buyall(userId) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${ShoppingService.baseURL()}/buyall/${userId}`, function(data) {
+            HttpService.get(`${ShoppingService.baseURL()}/buyall/${userId}`, function (data) {
                 resolve(data);
             }, function (textStatus) {
                 reject(textStatus);
@@ -60,19 +60,18 @@ export default class ShoppingService {
 
     static getOrder(id) {
         return new Promise((resolve, reject) => {
-            HttpService.get(`${ShoppingService.baseURL()}/${id}`, function(data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
+            HttpService.get(`${ShoppingService.baseURL()}/${id}`, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
                     reject('Error while retrieving order list');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
-
 
 
     static deleteCartItem(cartId) {
@@ -89,16 +88,17 @@ export default class ShoppingService {
             });
         });
     }
+
     static increaseCartQuantity(cartOrderId) {
         return new Promise((resolve, reject) => {
-            HttpService.post(`${ShoppingService.baseURL()}/increase`, {cartOrderId},function (data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
+            HttpService.post(`${ShoppingService.baseURL()}/increase`, {cartOrderId}, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
                     reject('Error while retrieving order list');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
@@ -106,26 +106,17 @@ export default class ShoppingService {
 
     static decreaseCartQuantity(cartOrderId) {
         return new Promise((resolve, reject) => {
-            HttpService.post(`${ShoppingService.baseURL()}/decrease`, {cartOrderId},function (data) {
-                if(data != undefined || Object.keys(data).length !== 0) {
+            HttpService.post(`${ShoppingService.baseURL()}/decrease`, {cartOrderId}, function (data) {
+                if (data != undefined || Object.keys(data).length !== 0) {
                     resolve(data);
                 }
                 else {
                     reject('Error while retrieving order list');
                 }
-            }, function(textStatus) {
+            }, function (textStatus) {
                 reject(textStatus);
             });
         });
     }
 
-    static returnTicket(ticket) {
-        /*return new Promise((resolve, reject) => {
-            HttpService.put(`${this.baseURL()}/${movie._id}`, movie, function(data) {
-                resolve(data);
-            }, function(textStatus) {
-                reject(textStatus);
-            });
-        });*/
-    }
 }

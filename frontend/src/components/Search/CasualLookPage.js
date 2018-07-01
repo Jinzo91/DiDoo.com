@@ -156,9 +156,9 @@ class CasualLookPage extends Component {
                     marginLeft: '5%',
                     height: '210px',
                     background: 'white',
-                    backgroundColor:'rgba(255, 255, 255, 0.7)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.7)',
                     padding: '20px',
-                    paddingBottom:'20px'
+                    paddingBottom: '20px'
                 }}>
                     <div style={{
                         display: 'flex',
@@ -188,18 +188,18 @@ class CasualLookPage extends Component {
                         display: 'flex',
                         flexDirection: 'row-reverse',
                     }}>
-                        <div style={{width:'4%'}}>
+                        <div style={{width: '4%'}}>
                         </div>
                         <Button style={{
-                            background:'green',
-                            borderRadius:'10px',
-                            color:'white',
-                            paddingLeft:'20px',
-                            paddingRight:'20px',
-                            paddingTop:'5px',
-                            paddingBottom:'5px',
-                            fontSize:'19px',
-                            fontFamily:'San Francisco'
+                            background: 'green',
+                            borderRadius: '10px',
+                            color: 'white',
+                            paddingLeft: '20px',
+                            paddingRight: '20px',
+                            paddingTop: '5px',
+                            paddingBottom: '5px',
+                            fontSize: '19px',
+                            fontFamily: 'San Francisco'
                         }}
                                 onClick={() => this.handlefilter()}>Filter</Button>
                     </div>

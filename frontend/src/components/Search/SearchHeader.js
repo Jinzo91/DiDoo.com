@@ -1,8 +1,8 @@
 "use strict";
 
 import React from 'react';
-import { Toolbar, Button } from 'react-md';//从react-md里面要东西
-import { withRouter } from 'react-router-dom'
+import {Toolbar, Button} from 'react-md';
+import {withRouter} from 'react-router-dom'
 import KebabMenu from '../KebabMenu';
 import searchtoolbar from '../../css/searchtoolbar.css';
 import CartPopUp from '../ShoppingCart/CartPopUp';
@@ -10,7 +10,7 @@ import UserService from "../../services/UserService";
 
 class SearchHeader extends React.Component {
 
-    constructor(props) {//构造函数，传入的数据
+    constructor(props) {
         super(props);
         this.state = {
             title: '',
@@ -20,13 +20,13 @@ class SearchHeader extends React.Component {
 
     render() {
         return (
-            <Toolbar  className={searchtoolbar}
-                actions={
-                    [this.state.user.status == 'visitor' &&
-                    <CartPopUp id="toolbar-cart-overlay" />,
-                    <KebabMenu id="toolbar-colored-kebab-menu" />
-                    ]
-                }>
+            <Toolbar className={searchtoolbar}
+                     actions={
+                         [this.state.user.status == 'visitor' &&
+                         <CartPopUp id="toolbar-cart-overlay"/>,
+                             <KebabMenu id="toolbar-colored-kebab-menu"/>
+                         ]
+                     }>
 
             </Toolbar>
 

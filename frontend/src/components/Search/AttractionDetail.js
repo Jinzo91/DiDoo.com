@@ -21,7 +21,7 @@ class AttractionDetail extends React.Component {
             quantity: 1,
             date: moment(),
             cartstatus: 'ADD TO CART',
-            remainingticket:''
+            remainingticket: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClickAddToCart = this.handleClickAddToCart.bind(this);
@@ -31,9 +31,9 @@ class AttractionDetail extends React.Component {
         this.setState({
             date: date.hours(0).minutes(0).seconds(0).milliseconds(0)
         });
-        TicketService.remainingtickets(this.props.attraction._id,date.hours(0).minutes(0).seconds(0).milliseconds(0)).then((data) => {
+        TicketService.remainingtickets(this.props.attraction._id, date.hours(0).minutes(0).seconds(0).milliseconds(0)).then((data) => {
             this.setState({
-                remainingticket: 'Only '+ data.toString() +' tickets left',
+                remainingticket: 'Only ' + data.toString() + ' tickets left',
             });
         }).catch((e) => {
             console.error(e);
@@ -71,21 +71,20 @@ class AttractionDetail extends React.Component {
                     <div style={{
                         padding: '0 100px',
                     }}>
-                        <div style={{
-                        }}>
-                            <Media style={{borderRadius:'15px',boxShadow:'4px 4px 10px gray'}} aspectRatio="1-1">
-                                <img  src={this.props.attraction.posters.detailed} alt="Something from unsplash.it"/>
+                        <div style={{}}>
+                            <Media style={{borderRadius: '15px', boxShadow: '4px 4px 10px gray'}} aspectRatio="1-1">
+                                <img src={this.props.attraction.posters.detailed} alt="Something from unsplash.it"/>
                             </Media></div>
                     </div>
                     <div>
-                        <div style={{marginTop:'7%'}}>
+                        <div style={{marginTop: '7%'}}>
                             <h1 style={{
-                                fontSize:'50px',
-                                fontWeight:'bolder',
-                                fontFamily:'San Francisco'
+                                fontSize: '50px',
+                                fontWeight: 'bolder',
+                                fontFamily: 'San Francisco'
                             }}>{this.props.attraction.title}</h1>
                             <h2 style={{
-                                marginTop:'20px'
+                                marginTop: '20px'
                             }}>{this.props.attraction.type}</h2>
                             <StarRatingComponent
                                 name="rate2"
@@ -93,15 +92,22 @@ class AttractionDetail extends React.Component {
                                 starCount={5}
                                 value={this.props.attraction.rating}
                             />
-                            <div style={{fontSize:'35px',fontFamily:'San Francisco'}}>¥{this.props.attraction.price} now
+                            <div style={{
+                                fontSize: '35px',
+                                fontFamily: 'San Francisco'
+                            }}>¥{this.props.attraction.price} now
                             </div>
-                            <p style={{width: '80%',marginTop:'30px',fontFamily:'San Francisco'}}>{this.props.attraction.introduction}</p>
+                            <p style={{
+                                width: '80%',
+                                marginTop: '30px',
+                                fontFamily: 'San Francisco'
+                            }}>{this.props.attraction.introduction}</p>
                         </div>
                         <div style={{
                             width: '80%',
                             display: 'flex',
                             flexDirection: 'row',
-                            marginTop:'50px',
+                            marginTop: '50px',
                             justifyContent: 'space-between',
                         }}>
                             <div>
@@ -115,20 +121,20 @@ class AttractionDetail extends React.Component {
                                             disabled={this.state.quantity < 2}
                                             onClick={this.decrementQuantity}
                                     >arrow_left</Button>
-                                    <TextField  style={{
+                                    <TextField style={{
                                         width: '50%',
                                         textAlign: 'center'
                                     }}
-                                        id='quantity'
-                                        className='quantity-input'
-                                        type='number'
-                                        value={this.state.quantity}
-                                        onChange={(value) => {
-                                            this.setState({quantity: value})
-                                        }}
-                                        defaultValue={1}
-                                        step={1}
-                                        min={1}/>
+                                               id='quantity'
+                                               className='quantity-input'
+                                               type='number'
+                                               value={this.state.quantity}
+                                               onChange={(value) => {
+                                                   this.setState({quantity: value})
+                                               }}
+                                               defaultValue={1}
+                                               step={1}
+                                               min={1}/>
                                     <Button icon
                                             onClick={this.incrementQuantity}
                                     >arrow_right</Button>
@@ -144,7 +150,12 @@ class AttractionDetail extends React.Component {
                                     onChange={this.handleChange}
                                 ></DatePicker>
                                 </div>
-                                <h1 style={{marginTop:'10%',color:'red', fontSize:'30px', fontFamily:'San Francisco'}}>{this.state.remainingticket}</h1>
+                                <h1 style={{
+                                    marginTop: '10%',
+                                    color: 'red',
+                                    fontSize: '30px',
+                                    fontFamily: 'San Francisco'
+                                }}>{this.state.remainingticket}</h1>
                             </div>
                         </div>
                         <div style={{
@@ -161,7 +172,7 @@ class AttractionDetail extends React.Component {
                                     paddingLeft: '25px',
                                     paddingRight: '25px',
                                     paddingTop: '15px',
-                                    fontFamily:'San Francisco',
+                                    fontFamily: 'San Francisco',
                                     paddingBottom: '15px',
                                     borderRadius: '20px',
                                     marginTop: '100px',
@@ -175,7 +186,7 @@ class AttractionDetail extends React.Component {
                                     paddingLeft: '25px',
                                     paddingRight: '25px',
                                     paddingTop: '15px',
-                                    fontFamily:'San Francisco',
+                                    fontFamily: 'San Francisco',
                                     paddingBottom: '15px',
                                     borderRadius: '20px',
                                     marginTop: '100px',

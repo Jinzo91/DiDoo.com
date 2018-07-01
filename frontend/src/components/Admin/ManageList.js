@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Page from '../Page';
-import { ManageCard } from '../Admin/ManageCard';
-import { Autocomplete } from "react-md/es/index";
+import {ManageCard} from '../Admin/ManageCard';
+import {Autocomplete} from "react-md/es/index";
 
-const testCard = (key,data, onDelete) => <ManageCard
+const testCard = (key, data, onDelete) => <ManageCard
     {...data}
     onDelete={onDelete}
 />;
@@ -17,8 +17,8 @@ export class ManageList extends Component {
         this.onSearch = this.onSearch.bind(this);
     }
 
-    componentWillReceiveProps(props){
-        const testCards = props.data.map( (data, i)=>testCard(i,data, props.onDelete));
+    componentWillReceiveProps(props) {
+        const testCards = props.data.map((data, i) => testCard(i, data, props.onDelete));
         /*赋予上一个view的，用数据库的名字*/
         this.setState({testCards});
     }
@@ -26,7 +26,7 @@ export class ManageList extends Component {
     onSearch(value) {
         const newCards = this.props.data
             .filter(data => data.title.toLowerCase().includes(value.toLowerCase()))
-            .map( (data, i)=>testCard(i,data, this.props.onDelete));
+            .map((data, i) => testCard(i, data, this.props.onDelete));
         this.setState({
             testCards: newCards
         })
@@ -36,16 +36,16 @@ export class ManageList extends Component {
         return (
             <Page>
                 <div>
-                    <Autocomplete style={{maxWidth: '20%', marginLeft: '420px', }}
+                    <Autocomplete style={{maxWidth: '20%', marginLeft: '420px',}}
                                   label="Search"
-                                  data={['abc','bcd']}
+                                  data={['abc', 'bcd']}
                                   filter={Autocomplete.caseInsensitiveFilter}
                                   onChange={this.onSearch}
                     ></Autocomplete>
                 </div>
-                <div >
+                <div>
                     <div style={{
-                        position:'relative', marginTop: '10px'
+                        position: 'relative', marginTop: '10px'
                     }}>
                         {this.state.testCards}
                     </div>
