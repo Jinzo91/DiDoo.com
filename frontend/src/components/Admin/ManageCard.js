@@ -22,17 +22,15 @@ export class ManageCard extends Component {
         <Card style={style}
               className="md-block-centered"
               key={this.props.key}>
-            <CardTitle
+            <CardTitle style={{marginLeft:'10px'}}
                 title={this.props.title}
                 subtitle={this.props.type}
                 avatar={<Avatar src={this.props.posters.detailed} role="presentation"/>}
             >
-                {/*<SimpleLink to={`/attractiondetail/${this.props.movie._id}`}>{this.props.movie.title}</SimpleLink>*/}
             </CardTitle>
             <CardActions expander>
-                {<Button style={{marginRight:'30px'}} raised primary><Link to={`/edit/${this.props._id}`}></Link>Edit</Button>}
-                {/*<Button flat>edit</Button>*/}
-                <Button  raised primary onClick={() => this.props.onDelete(this.props._id)}>delete</Button>
+                <Button style={{marginLeft:'15px',marginRight:'20px', marginBottom:'5px', color:'white'}} raised primary><Link style={{textDecoration:'none',color:'white'}} to={`/edit/${this.props._id}`}>Edit</Link></Button>
+                <Button style={{marginRight:'50px',marginBottom:'5px',color:'white'}} raised primary onClick={() => this.props.onDelete(this.props._id)}>delete</Button>
             </CardActions>
             <CardText expandable>
                 <p>

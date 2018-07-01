@@ -1,26 +1,30 @@
 "use strict";
 
 import React, { PureComponent }from 'react';
-import { Avatar, TableRow, TableColumn, FontIcon, Button,Card, CardTitle, CardText, Slider,DialogContainer, TextField } from 'react-md';
+import { Media,Avatar, TableRow, TableColumn, FontIcon, Button,Card, CardTitle, CardText, Slider,DialogContainer, TextField } from 'react-md';
 import {Link, withRouter} from 'react-router-dom';
 import { SimpleLink } from '../SimpleLink';
 import UserService from '../../services/UserService';
 import OrderList from "./OrderList";
 
-const style = { maxWidth: '80%', marginBottom: '5px', marginTop: '5px'};
 export class OrderRow extends React.Component {
 
     constructor(props) {
         super(props);
-
-
+        this.state={
+            process:'',
+            visible: false
+        }
     }
-    state = { visible: false };
-
+/*    state = { visible: false };*/
     show = () => {
         this.setState({ visible: true });
     };
+    changeprocess = () => {
+        this.setState({ process: 'in process' });
+        this.setState({ visible:false });
 
+    };
     hide = () => {
         this.setState({ visible: false });
     };
@@ -28,22 +32,23 @@ export class OrderRow extends React.Component {
         const { visible } = this.state;
         const actions = [];
         actions.push({ secondary: true, children: 'Cancel', onClick: this.hide });
-        actions.push(<Button flat primary onClick={this.hide}>Confirm</Button>);
+        actions.push(<Button flat primary onClick={this.changeprocess}>Confirm</Button>);
         return (
-
-            <Card style={style}
+            <Card style={{ maxWidth: '70%', height:'30%', marginBottom: '5px', marginTop: '30px'}}
                   className="md-block-centered">
-                <CardTitle
-                    title =  {this.props.attraction.title}
-                    avatar ={<Avatar src={this.props.attraction.posters.original} role="presentation"/>}>
+                <CardTitle style={{marginLeft: '40px', marginTop: '20px', width: '80%'}}
+                    avatar ={<img src={this.props.attraction.posters.original}/>}
+                ><p style={{marginLeft: '50px', marginTop: '-100px'}}>{this.props.attraction.title}</p>
                 </CardTitle>
 
-                <CardText>
+                <CardText style={{marginLeft: '400px', marginTop: '-150px', width: '40%'}}>
                     <p>valid until:{this.props.ticket.date} </p>
                     <p>quantity:{this.props.quantity}</p>
-                    <p>in process</p>
-                    <Button  raised onClick={this.show} onClick={() => this.props.history.push(`/mycomments/addcomments/${this.props.ticket.attractionId}`)} flat icon>edit</Button>
-                    <Button  raised onClick={this.show} flat icon>undo</Button>
+                    <p    style={{fontSize: '18px', color:'red'}}
+                        >{this.state.process}</p>
+
+
+
                     <DialogContainer height={'300px'} width={'700px'}
                         id="simple-action-dialog"
                         visible={visible}
@@ -66,6 +71,11 @@ export class OrderRow extends React.Component {
                         />
                     </DialogContainer>
                 </CardText>
+
+                <Button style={{marginLeft:'900px', marginTop:'-80px'}}
+                        raised onClick={this.show} onClick={() => this.props.history.push(`/mycomments/addcomments/${this.props.ticket.attractionId}`)} flat icon>edit</Button>
+                <Button style={{marginLeft:'1000px',marginTop:'-100px'}}
+                        raised onClick={this.show} flat icon>undo</Button>
             </Card>
         );
     }

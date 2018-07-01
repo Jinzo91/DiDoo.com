@@ -46,7 +46,7 @@ export class CommentRow extends React.Component {
         const { visible } = this.state;
         const actions = [];
         actions.push({ secondary: true, children: 'Cancel', onClick: this.hide });
-        actions.push(<Button flat primary onClick={this.hide}>Confirm</Button>);
+        actions.push(<Button flat primary onClick={() => {this.props.onDelete(this.props.commentId) && this.hide}}>Confirm</Button>);
         return (
 
             <Card style={style}
@@ -66,7 +66,7 @@ export class CommentRow extends React.Component {
                     id="simple-action-dialog"
                     visible={visible}
                     onHide={this.hide}
-                    actions={  <Button onClick={() => this.props.onDelete(this.props.commentId) && this.hide} icon>delete</Button>}
+                    actions={actions}
                     title="sure to delete?"
                 >
 
