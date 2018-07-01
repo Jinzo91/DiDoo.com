@@ -3,7 +3,7 @@
 import React from 'react';
 
 import UserLogin from '../components/UserLogin';
-
+import Background from '../images/bamboo.jpg';
 import UserService from '../services/UserService';
 
 
@@ -30,7 +30,10 @@ export class UserLoginView extends React.Component {
 
     render() {
         return (
-          <UserLogin onSubmit={(user) => this.login(user)} error={this.state.error}/>
+            <div>
+                <img src={Background} className="bg" />
+                <UserLogin onSubmit={(user) => this.login(user)} error={this.state.error}/>
+            </div>
         );
     }
 }

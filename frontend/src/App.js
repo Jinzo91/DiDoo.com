@@ -15,10 +15,8 @@ import { MyOrderView } from "./views/CustomerView/MyOrderView";
 import { MyCommentView } from "./views/CustomerView/MyCommentView";
 import UserService from "./services/UserService";
 import { MyCartView } from "./views/ShoppingView/MyCartView";
-import { VisitorManagementView } from "./views/AdminView/VisitorManagementView";
 import { AttractionCreateView } from "./views/AdminView/AttractionCreateView";
 import { ReportChartView } from "./views/TaView/ReportChartView";
-import { ManageTAView } from "./views/TaView/ManageTAView";
 import { ManageInventoryView } from "./views/AdminView/ManageInventoryView";
 import {AttractionFormView} from "./views/AdminView/AttractionFormView";
 import {SearchPageView} from "./views/SearchView/SearchPageView";
@@ -46,9 +44,7 @@ export default class App extends React.Component {
                 { component: AttractionFormView , path: '/edit/:attractionId', exact: true},
                 { component: AttractionCreateView , path: '/add', exact: true},
                 { component: ApproveTAView , path: '/ta', exact: true},
-                /*{ component: VisitorManagementView , path: '/admin/managevisitor', exact: true},*/
                 { component: ReportChartView , path: '/admin/report', exact: true},
-                /*{ component: ManageTAView , path: '/ta', exact: true},*/
                 { component: ManageInventoryView , path: '/admin/inventory', exact: true},
                 { component: MovieListView , path: '/', exact: true},
                 { component: MyOrderView , path: '/myorder',exact: true},

@@ -14,7 +14,7 @@ import CommentService from "../services/CommentService";
 
 
 const Item = ({ label, children }) => (
-    <IconSeparator label={label} iconBefore component="li" className="md-cell md-cell--12">
+    <IconSeparator style={{fontFamily:'Papyrus', fontSize:'25px', fontWeight:'bold'}} label={label} iconBefore component="li" className="md-cell md-cell--12">
         {children}
     </IconSeparator>
 );

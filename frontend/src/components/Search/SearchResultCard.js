@@ -53,15 +53,15 @@ class SearchResultCard extends Component {
                     >{this.props.address}</div>
                     <h3  style={{
                             width: '70%',
-                            marginTop:'70px'
+                            marginTop:'40px'
                         }}>Type:{this.props.type}</h3>
                     <div>{this.props.introduction.slice(0,200)+'...'}
                 </div>
                 </div>
-                <div style={{width:'20%'}}>
+                <div style={{width:'13%'}}>
                     <div  style={{
                         color:'green',
-                        marginTop:'75px',
+                        marginTop:'120px',
                         marginRight:'50px',
                         fontSize:'40px',
                     }}>¥{this.props.price}</div>
@@ -69,13 +69,14 @@ class SearchResultCard extends Component {
                         background:'green',
                         borderRadius:'10px',
                         color:'white',
-                        marginTop:'35px',
-                        paddingLeft:'15px',
-                        paddingRight:'15px',
-                        paddingTop:'7px',
-                        paddingBottom:'7px',
+                        marginTop:'15px',
+                        paddingLeft:'20px',
+                        paddingRight:'20px',
+                        paddingTop:'10px',
+                        paddingBottom:'10px',
                         marginRight:'50px',
-                        fontSize:'40px'
+                        fontSize:'22px',
+                        fontFamily:'San Francisco'
                     }}  onClick={() => this.props.history.push(`/attraction/${this.props.id}`)}>Select</Button>
                 </div>
             </div>

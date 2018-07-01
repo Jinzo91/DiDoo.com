@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {SVGIcon, SelectField} from 'react-md';
-import SearchResultCard from '../../components/Search/SearchResultCard';
-import {Checkbox, Button, Divider, Slider} from 'react-md';
+import { Button } from 'react-md';
 import { DatePicker } from 'react-md';
 import moment from 'moment';
 
@@ -104,7 +102,7 @@ export class SelectAttraction extends Component {
     render() {
         const {fromdate,todate,attractionTitle1,attractionTitle2,attractionTitle3,attractionTitle4,attractionTitle5,attractionTitle6} = this.state;
         return (
-            <div>
+            <div style={{marginTop:'8%',marginLeft:'10%',backgroundColor:'rgba(255, 255, 255, 0.7)',marginRight:'10%'}}>
                 <div className="md-grid">
                     <h4 className="md-cell md-cell--12"
                         style={{fontSize:'20px',

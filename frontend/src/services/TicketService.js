@@ -28,6 +28,17 @@ export default class TicketService {
             });
         });
     }
+
+    static remainingtickets(attractionId,date) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(`${TicketService.baseURL()}/remainingticket`,{attractionId,date},function (data) {
+                resolve(data);
+            }, function (textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
     static getTickets(){
         return new Promise((resolve, reject) => {
             HttpService.get(this.baseURL(), function(data) {
@@ -72,6 +83,7 @@ export default class TicketService {
             });
         });
     }
+
     static createComments(ticket) {
         ticket.id = Math.floor((Math.random() * 100000000) + 1).toString();
         /*movie.posters = {

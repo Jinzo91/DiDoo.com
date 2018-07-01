@@ -9,6 +9,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import moment from 'moment';
 import ShoppingService from '../../services/ShoppingService';
 import UserService from '../../services/UserService';
+import TicketService from "../../services/TicketService";
 
 const style = {maxWidth: 500};
 
@@ -19,7 +20,8 @@ class AttractionDetail extends React.Component {
         this.state = {
             quantity: 1,
             date: moment(),
-            cartstatus: 'ADD TO CART'
+            cartstatus: 'ADD TO CART',
+            remainingticket:''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClickAddToCart = this.handleClickAddToCart.bind(this);
@@ -28,6 +30,13 @@ class AttractionDetail extends React.Component {
     handleChange(date) {
         this.setState({
             date: date.hours(0).minutes(0).seconds(0).milliseconds(0)
+        });
+        TicketService.remainingtickets(this.props.attraction._id,date.hours(0).minutes(0).seconds(0).milliseconds(0)).then((data) => {
+            this.setState({
+                remainingticket: 'Only '+ data.toString() +' tickets left',
+            });
+        }).catch((e) => {
+            console.error(e);
         });
     }
 
@@ -63,21 +72,17 @@ class AttractionDetail extends React.Component {
                         padding: '0 100px',
                     }}>
                         <div style={{
-                            borderStyle: 'solid',
-                            borderColor: 'green',
-                            borderWidth: '5px',
-                            padding: '2px'
                         }}>
-                            <Media aspectRatio="1-1">
-                                <img src={this.props.attraction.posters.detailed} alt="Something from unsplash.it"/>
+                            <Media style={{borderRadius:'15px',boxShadow:'4px 4px 10px gray'}} aspectRatio="1-1">
+                                <img  src={this.props.attraction.posters.detailed} alt="Something from unsplash.it"/>
                             </Media></div>
                     </div>
                     <div>
-                        <div>
+                        <div style={{marginTop:'7%'}}>
                             <h1 style={{
                                 fontSize:'50px',
                                 fontWeight:'bolder',
-                                fontFamily:'Calisto MT'
+                                fontFamily:'San Francisco'
                             }}>{this.props.attraction.title}</h1>
                             <h2 style={{
                                 marginTop:'20px'
@@ -88,12 +93,12 @@ class AttractionDetail extends React.Component {
                                 starCount={5}
                                 value={this.props.attraction.rating}
                             />
-                            <div style={{color:'red',fontSize:'50px',fontFamily:'Book Antiqua'}}>¥{this.props.attraction.price} now
+                            <div style={{fontSize:'35px',fontFamily:'San Francisco'}}>¥{this.props.attraction.price} now
                             </div>
-                            <p style={{width: '80%',marginTop:'30px'}}>{this.props.attraction.introduction}</p>
+                            <p style={{width: '80%',marginTop:'30px',fontFamily:'San Francisco'}}>{this.props.attraction.introduction}</p>
                         </div>
                         <div style={{
-                            width: '100%',
+                            width: '80%',
                             display: 'flex',
                             flexDirection: 'row',
                             marginTop:'50px',
@@ -139,10 +144,11 @@ class AttractionDetail extends React.Component {
                                     onChange={this.handleChange}
                                 ></DatePicker>
                                 </div>
+                                <h1 style={{marginTop:'10%',color:'red', fontSize:'30px', fontFamily:'San Francisco'}}>{this.state.remainingticket}</h1>
                             </div>
                         </div>
                         <div style={{
-                            width: '80%',
+                            width: '68%',
                             display: 'flex',
                             flexDirection: 'row',
                             justifyContent: 'space-between',
@@ -151,12 +157,13 @@ class AttractionDetail extends React.Component {
                                 <Button style={{
                                     background: 'green',
                                     color: 'white',
-                                    fontSize: '35px',
-                                    paddingLeft: '15px',
-                                    paddingRight: '15px',
-                                    paddingTop: '7px',
-                                    paddingBottom: '7px',
-                                    borderRadius: '10px',
+                                    fontSize: '30px',
+                                    paddingLeft: '25px',
+                                    paddingRight: '25px',
+                                    paddingTop: '15px',
+                                    fontFamily:'San Francisco',
+                                    paddingBottom: '15px',
+                                    borderRadius: '20px',
                                     marginTop: '100px',
                                 }} onClick={() => this.handleClickAddToCart()}>{this.state.cartstatus}</Button>
                             </div>
@@ -164,12 +171,13 @@ class AttractionDetail extends React.Component {
                                 <Button style={{
                                     background: 'green',
                                     color: 'white',
-                                    fontSize: '35px',
-                                    paddingLeft: '15px',
-                                    paddingRight: '15px',
-                                    paddingTop: '7px',
-                                    paddingBottom: '7px',
-                                    borderRadius: '10px',
+                                    fontSize: '30px',
+                                    paddingLeft: '25px',
+                                    paddingRight: '25px',
+                                    paddingTop: '15px',
+                                    fontFamily:'San Francisco',
+                                    paddingBottom: '15px',
+                                    borderRadius: '20px',
                                     marginTop: '100px',
                                 }} onClick={() => this.props.history.push('/mycart')}>BUY NOW</Button>
                             </div>
